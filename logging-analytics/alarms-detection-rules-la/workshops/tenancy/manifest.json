@@ -23,6 +23,26 @@
             "filename": "../../alarms-detection-rules/alarms-detection-rules.md"
         },
         {
+			"title": "Lab 3: Oracle Database Abnormal Termination",
+			"description": "",
+			"filename": "../../create-oracle-database-abnormal-termination-detection-rules/create-oracle-database-abnormal-termination-detection-rules.md"
+		},
+        {
+			"title": "Lab 4: Sensitive Configuration and Privilege Escalation",
+			"description": "",
+			"filename": "../../sensitive-configuration-and-privilege-escalation/sensitive-configuration-and-privilege-escalation.md"
+		},
+		{
+			"title": "Lab 5: Suspicious Activity and Data Exfiltration",
+			"description": "",
+			"filename": "../../suspicious-activity-and-data-exfiltration/suspicious-activity-and-data-exfiltration.md"
+		},
+        {
+			"title": "Lab 6: Container Image Pulled Manually",
+			"description": "",
+			"filename": "../../container-image-pulled-manually/container-image-pulled-manually.md"
+		},
+        {
             "title": "Lab 10: Unsuccessful Food Orders",
             "description": "This lab explains the guided regex parser creation flow to create single and multi-parser",
             "filename": "../../unsuccessful-food-orders/unsuccessful-food-orders.md"
