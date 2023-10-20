@@ -4,9 +4,6 @@ Alarms and Detection Rules are corner stones of a secure and performant environm
 
 Estimated Workshop Time: |hours| hours |minutes| minutes
 
-Watch the video below for a quick walk-through of the lab.
-|share the video here|
-
 ### Objectives
 
 In this workshop, you will learn how to:
