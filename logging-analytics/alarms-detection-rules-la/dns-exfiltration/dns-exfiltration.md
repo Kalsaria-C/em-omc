@@ -204,10 +204,7 @@ In this lab, you will:
 
 ## **Task 11:**  Navigate to Detection Rules
 
-1. Click on the **Administration** option inside the drop-down menu to access to **Administration Overview**.
-   ![](./images/admin-access.png "UIdescription")
-
-2. Click on the option **Detection Rules** inside **Resources** sidebar menu at the left.
+1. Click on the option **Detection Rules** inside **Resources** sidebar menu at the left.
    ![](./images/detection-rules-access.png "UIdescription")
 
   Now you are in **Detection Rules**.
@@ -218,19 +215,19 @@ In this lab, you will:
 1. In this lab you will use both **Scheduled search detection rule** and **Ingest time detection rule** for creating more performant and sophisticated detection rules for alarms.
 
   Click on **Create** inside **Detection Rules** page to start creating a new detection rule.
-   ![](./images/detection-rules-create.png "UIdescription")
+   ![](./images/scheduled-search-create-01.png "UIdescription")
 
   First, we will create a **Scheduled search** type detection rule.
-   ![](./images/scheduled-search-option.png "UIdescription")
+   ![](./images/scheduled-search-create-02.png "UIdescription")
 
-2. Specify a **Rule name** and **Saved search compartment**. Then, select the **Saved search** we created for the scheduled task.
-   ![](./images/specify-rule-name.png "UIdescription")
+2. Specify a **Rule name** and **Saved search compartment**. At **Saved search**, select **DNS Exfiltration on Windows Systems** which is the log search we created previously.
+   ![](./images/scheduled-search-create-03.png "UIdescription")
 
-3. Select **Monitoring** as **Target Service**. Specify a **Metric Compartment**, **Metric Namespace** and **Metric Name**. Finally, set the **Interval** to **1 Hours** and click on **Create detection rule**.
-   ![](./images/detection-rule-create.png "UIdescription")
-
+3. Select **Monitoring** as **Target Service**. Specify a **Metric Compartment**, **Metric Namespace** and **Metric Name**. Finally, set the **Interval** to **30 Minutes** and click on **Create detection rule**.
+   ![](./images/scheduled-search-create-04.png "UIdescription")
+   
 4. The detection rule is saved successfully.
-   ![](./images/detection-rule-saved-successfully.png "UIdescription")
+   ![](./images/scheduled-search-create-05.png "UIdescription")
 
 ## **Task 13:**  Navigate to Labels
 
@@ -251,19 +248,19 @@ In this lab, you will:
 ## **Task 15:**  Create Ingest time detection rule
 
 1. Click on **Create** inside **Detection Rules** page.
-   ![](./images/detection-rules-create.png "UIdescription")
+   ![](./images/scheduled-search-create-01.png "UIdescription")
 
 2. Click on **Ingest time detection rule**.
    ![](./images/ingest-time-option.png "UIdescription")
 
-3. Specify the **Rule name**. Select the **Label** we created and **Host (Windows)** for **Filter by entity type**.
+3. Specify the **Rule name**. For the **Label**, select **DNS Exfiltration Attempt****Label** which is the one we created previously and **DNS Exfiltration on Windows Systems** for **Filter by log source**.
    ![](./images/ingest-time-create-01.png "UIdescription")
 
 4. Select **Monitoring** as **Target Service**. Specify a **Metric Compartment**, **Metric Namespace** and **Metric Name**. Finally, click on **Create detection rule**.
    ![](./images/ingest-time-create-02.png "UIdescription")
 
 5. The detection rule is saved successfully.
-   ![](./images/ingest-time-saved-successfully.png "UIdescription")
+   ![](./images/ingest-time-create-03.png "UIdescription")
 
 
 ## Acknowledgements
