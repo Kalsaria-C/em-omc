@@ -4,7 +4,7 @@
 
 In this lab, you will understand the concept of Alarms and Detection rules in Logging Analytics.
 
-Estimated Time: x minutes.
+Estimated Time: 40 minutes.
 
 ### Objectives
 
@@ -37,7 +37,7 @@ For creating a detection rule, you need a log source and entity associated with 
 
 1. From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Detection Rules box** > **Create Detection Rule**.
 
-![detection-rules-navigation](images/detection-rules-navigation.mov) |v1|
+![detection-rules-navigation](images/v1.gif =1921x970) 
 
 2. Create detection rule dialog box opens. Click on **Ingest time detection rule**.
 
@@ -45,11 +45,9 @@ For creating a detection rule, you need a log source and entity associated with 
 
 3. Specify a **Rule name** for the ingest time detection rule.Let say, you named it as **Livelabs\_detection\_rule**. Verify the **Rule compartment** as it is read-only.
 
-4. In the **Select a label** section, from the dropdown, select the Label which must be detected in the log records. You can select a predefined label or can create a custom label.
+4. In the **Select a label** section, from the dropdown, select the Label which must be detected in the log records. You can select a predefined label or can create a custom label. Let's say you have selected a custom label named **AuthError_Livelabs** which has a specific condition on which it will get associated to logs if that condition matches with any log record.
 
-    - Let's say you have selected a custom label named **AuthError_Livelabs** which has a specific condition on which it will get associated to logs if that condition matches with any log record.
-
-    - Additionally, you can specify the **entity type** and **log source** to use for filtering the log records.
+5. (Optional) You can specify the **entity type** and **log source** to use for filtering the log records.
 
 5. Specify the **Target Service** where the alert must be reported. Select **Monitoring service**. The metric generated in the Monitoring service with the information of the alerts generated.
 
@@ -57,11 +55,11 @@ For creating a detection rule, you need a log source and entity associated with 
 
 7. Select **Metric Namespace**, the metric namespace where you want to put the new metric. The scope of options available for selecting the namespace is defined by the selection of Metric Compartment in the previous step. If options are not available, then you can also enter a new value for the namespace. Let's say, you have named Metric Namespace as **"livelabmtericnamespace"**.
 
-    - Additionally, you can specify the **Resource Group**, the group that the metric belongs to. A resource group is a custom string provided with a custom metric.
+8. (Optional) You can specify the **Resource Group**, the group that the metric belongs to. A resource group is a custom string provided with a custom metric.
 
 8. Specify a **Metric Name**, the name of the metric, used in the Monitoring service explorer to view the metrics.Let's say you named it as **"Livelab_metricname"**.
 
-9. By default, Label and Rule OCID are used as **Dimensions**. Additionally, if required, you can select more values from the available options of fields for Dimensions. These are the values that can be used to filter the metric data. The field options available to you for selection depend on the log source you specified in step 4 in addition to some commonly used fields. If no log source is specified, then all fields are available.
+9. (Optional) By default, Label and Rule OCID are used as **Dimensions**. Additionally, if required, you can select more values from the available options of fields for Dimensions. These are the values that can be used to filter the metric data. The field options available to you for selection depend on the log source you specified in step 4 in addition to some commonly used fields. If no log source is specified, then all fields are available.
 
 ![detection-rule-info](images/detection-rule-info.png)
 
@@ -77,7 +75,7 @@ When the match specified in the log source is encountered in the log record whil
     - Select the **Compartment** of your alarms in the **Scope section**.
     - Click on the **Create Alarm**. The Create Alarm dialog box opens.
 
-![alarms-navigation](images/alarms-navigation.mov) |v2|
+![alarms-navigation](images/v2.gif =1921x970)
 
 2. Specify the **Alarm name**. Let's say you named it as **"Livelab_alarm"**.
 
@@ -194,4 +192,3 @@ For further reading please refer to the resources.
 * **Author** - Chintan Kalsaria, OCI Logging Analytics
 * **Contributors** -  Kiran Palukuri, Santhosh Kumar Vuda, Venkataramana Manikyam, OCI Logging Analytics
 * **Last Updated By/Date** - Chintan Kalsaria, Oct, 2023
-
