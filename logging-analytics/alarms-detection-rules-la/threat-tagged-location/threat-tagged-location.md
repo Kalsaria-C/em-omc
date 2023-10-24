@@ -76,6 +76,47 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
   The ingest time detection rule is saved successfully.
    ![](./images/detection-rules-create-05.png "UIdescription")
 
+## **Task 6:**  Navigate to Uploads
+
+1. Click on the option **Uploads** inside **Resources** sidebar menu at the left.
+   ![](./images/uploads-access.png "UIdescription")
+
+  Now you are in **Uploads**.
+   ![](./images/uploads-page.png "UIdescription")
+
+## **Task 7:**  Upload logs file
+
+1. Click on **Upload Files**.
+   ![](./images/upload-logs-01.png "UIdescription")
+
+2. Specify an **Upload Name** and **Log Group Compartment**. Select a **Log Group** or create a new one.
+   ![](./images/upload-logs-02.png "UIdescription")
+
+5. Download sample logs file for [Log Sample](./files/threat-tagged-location-logs.log)</br>
+   Click on **Select Files** and select the **threat-tagged-location-logs.log** file.
+   ![](./images/upload-logs-03.png "UIdescription")
+   ![](./images/upload-logs-04.png "UIdescription")
+
+6. Click on **Next**.
+   ![](./images/upload-logs-05.png "UIdescription")
+
+7. Click on **Set Properties**.
+   ![](./images/upload-logs-06.png "UIdescription")
+
+8. At **Source**, select **Copy of OCI Object Storage Access Logs** which is the source we created previously. Click on **Save Changes**.
+   ![](./images/upload-logs-07.png "UIdescription")
+
+9. Click on **Next**.
+   ![](./images/upload-logs-08.png "UIdescription")
+
+10. Click on **Upload**.
+   ![](./images/upload-logs-09.png "UIdescription")
+
+11. When the **Submission Status** is **Success**, click on **Close**.
+   ![](./images/upload-logs-10.png "UIdescription")
+
+   The logs file is uploaded successfully.
+   ![](./images/upload-logs-11.png "UIdescription")
 
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
