@@ -59,12 +59,10 @@ In this lab, you will:
    We verify that the fields are matching with the example logs we provided.
    ![](./images/parsers-create-09.png "UIdescription")
 
-## **Task 2:**  Save Parser
-
-1. Click on **Create Parser**.
+8. Click on **Create Parser**.
    ![](./images/parsers-save-01.png "UIdescription")
 
-2. The parser is saved successfully.
+9. The parser is saved successfully.
    ![](./images/parsers-save-02.png "UIdescription")
 
 
@@ -113,7 +111,7 @@ In this lab, you will:
 6. Click on **Add**.
    ![](./images/sources-create-10.png "UIdescription")
 
-## **Task 5:**  Save User Defined Source
+## **Task 6:**  Save User Defined Source
 
 1. Click on **Create Source**.
    ![](./images/sources-create-11.png "UIdescription")
@@ -121,7 +119,7 @@ In this lab, you will:
    The source is saved successfully.
    ![](./images/sources-create-12.png "UIdescription")
 
-## **Task 6:**  Navigate to Uploads
+## **Task 7:**  Navigate to Uploads
 
 1. Click on the option **Uploads** inside **Resources** sidebar menu at the left.
    ![](./images/uploads-access.png "UIdescription")
@@ -129,7 +127,7 @@ In this lab, you will:
   Now you are in **Uploads**.
    ![](./images/uploads-page.png "UIdescription")
 
-## **Task 7:**  Upload logs file
+## **Task 8:**  Upload logs file
 
 1. Click on **Upload Files**.
    ![](./images/upload-logs-01.png "UIdescription")
@@ -169,7 +167,7 @@ In this lab, you will:
    The logs file is uploaded successfully.
    ![](./images/upload-logs-13.png "UIdescription")
 
-## **Task 8:**  Navigate to Log Explorer
+## **Task 9:**  Navigate to Log Explorer
 
 1. Click on the **Log Explorer** option inside the drop-down menu.
    ![](./images/log-explorer-access.png "UIdescription")
@@ -177,7 +175,7 @@ In this lab, you will:
 2. Now you are in **Log Explorer**.
    ![](./images/log-explorer.png "UIdescription")
 
-## **Task 9:**  Create a new Log Search
+## **Task 10:**  Create a new Log Search
 
 1. Type the following query in the text input **'Log Source' = 'DNS Exfiltration on Windows Systems' | timestats count as logrecords by 'Log Source'**
    ![](./images/log-search-create-01.png "UIdescription")
@@ -191,7 +189,7 @@ In this lab, you will:
 4. Click on **Run** and see the results below.
    ![](./images/log-search-create-04.png "UIdescription")
 
-## **Task 10:**  Save the Log Search
+## **Task 11:**  Save the Log Search
 
 1. Open the **Actions** drop-down and click on **Save as...**.
    ![](./images/log-search-create-05.png "UIdescription")
@@ -202,7 +200,7 @@ In this lab, you will:
   The log search is saved successfully.
    ![](./images/log-search-create-07.png "UIdescription")
 
-## **Task 11:**  Navigate to Detection Rules
+## **Task 12:**  Navigate to Detection Rules
 
 1. Click on the option **Detection Rules** inside **Resources** sidebar menu at the left.
    ![](./images/detection-rules-access.png "UIdescription")
@@ -210,7 +208,7 @@ In this lab, you will:
   Now you are in **Detection Rules**.
    ![](./images/detection-rules.png "UIdescription")
 
-## **Task 12:**  Create Scheduled search detection rule
+## **Task 13:**  Create Scheduled search detection rule
 
 1. In this lab you will use both **Scheduled search detection rule** and **Ingest time detection rule** for creating more performant and sophisticated detection rules for alarms.
 
@@ -229,7 +227,7 @@ In this lab, you will:
 4. The detection rule is saved successfully.
    ![](./images/scheduled-search-create-05.png "UIdescription")
 
-## **Task 13:**  Navigate to Labels
+## **Task 14:**  Navigate to Labels
 
 1. Click on the option **Labels** inside **Resources** sidebar menu at the left.
    ![](./images/labels-access.png "UIdescription")
@@ -237,7 +235,7 @@ In this lab, you will:
 2. Click on **Create** inside **Labels** page to start creating a new label.
    ![](./images/labels-create.png "UIdescription")
 
-## **Task 14:**  Create new Label
+## **Task 15:**  Create new Label
 
 1. Specify the **Label** and **Description (optional)**.
    ![](./images/label-create-01.png "UIdescription")
@@ -245,7 +243,7 @@ In this lab, you will:
 2. Mark the **Use this label to indicate a problem** checkbox inside **Denotes Problem**. Then, select **High** for **Problem Priority**. Click on **Create**.
    ![](./images/label-create-02.png "UIdescription")
 
-## **Task 15:**  Create Ingest time detection rule
+## **Task 16:**  Create Ingest time detection rule
 
 1. Click on **Create** inside **Detection Rules** page.
    ![](./images/scheduled-search-create-01.png "UIdescription")
@@ -259,11 +257,37 @@ In this lab, you will:
 4. Select **Monitoring** as **Target Service**. Specify a **Metric Compartment**, **Metric Namespace** and **Metric Name**. Finally, click on **Create detection rule**.
    ![](./images/ingest-time-create-02.png "UIdescription")
 
-5. The detection rule is saved successfully.
+   The detection rule is saved successfully.
    ![](./images/ingest-time-create-03.png "UIdescription")
 
+## **Task 17:**  Create alarm for Detection Rules
+
+1. Navigate to **Detection Rules**.
+
+2. Click on **DNS Exfiltration on Windows Systems** Scheduled search type.
+   ![](./images/scheduled-search-alarm-01.png "UIdescription")
+
+3. Click on **Create Alarm**.
+   ![](./images/scheduled-search-alarm-02.png "UIdescription")
+
+4. Specify an **Alarm name** and **Alarm body (optional)**. Set **Critical** for **Alarm severity**.
+   ![](./images/scheduled-search-alarm-03.png "UIdescription")
+
+5. Inside **Destination** click on **Create a topic**.
+   ![](./images/scheduled-search-alarm-04.png "UIdescription")
+
+6. Specify a **Topic name** and **Topic description (optional)**. Select **Email** as **Subscription protocol** and specify a **Subscription Email**. Click on **Create topic and subscription**.
+   ![](./images/scheduled-search-alarm-05.png "UIdescription")
+
+7. Click on **Save alarm**.
+   ![](./images/scheduled-search-alarm-06.png "UIdescription")
+
+   The alarm is saved successfully.
+   ![](./images/scheduled-search-alarm-07.png "UIdescription")
+
+8. Do the same process for the **DNS Exfiltration on Windows Systems** Ingest time type.
 
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
 * **Contributors** -  Kumar Varun, Logging Analytics Product Management - Kiran Palukuri, Logging Analytics Product Management - Vikram Reddy, Logging Analytics Development Team 
-* **Last Updated By/Date** - Oswaldo Osuna, Oct 23 2023
+* **Last Updated By/Date** - Oswaldo Osuna, Oct 24 2023

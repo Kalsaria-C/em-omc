@@ -1,6 +1,6 @@
 
-9/25/2023 6:07:54 PM 03B4 EVENT  192.168.1.10 The DNS server has started.
-9/26/2023 3:16:44 PM 00DC PACKET 10.0.0.5  00000000016B80A0 UDP Rcv ::1             9ebb   Q [0001   D   NOERROR] SOA    (5)xyztu(4)labs(0)
+10/24/2023 3:07:54 AM 03B4 EVENT  192.168.1.10 The DNS server has started.
+10/24/2023 6:16:44 AM 00DC PACKET 10.0.0.5  00000000016B80A0 UDP Rcv ::1             9ebb   Q [0001   D   NOERROR] SOA    (5)xyztu(4)labs(0)
 UDP question info at 00000000016B80A0
   Socket = 336
   Remote addr ::1, port 64329
@@ -36,7 +36,7 @@ UDP question info at 00000000016B80A0
     ADDITIONAL SECTION:
       empty
 
-9/26/2023 3:16:44 PM 00DC PACKET 192.168.2.20  00000000016B80A0 UDP Snd ::1             9ebb R Q [8085 A DR  NOERROR] SOA    (5)xyztu(4)labs(0)
+10/24/2023 6:16:44 AM 00DC PACKET 192.168.2.20  00000000016B80A0 UDP Snd ::1             9ebb R Q [8085 A DR  NOERROR] SOA    (5)xyztu(4)labs(0)
 UDP response info at 00000000016B80A0
   Socket = 336
   Remote addr ::1, port 64329
@@ -91,7 +91,7 @@ UDP response info at 00000000016B80A0
       DLEN   4
       DATA   192.168.1.12
 
-9/26/2023 3:12:57 PM 00DC PACKET 192.168.2.20 00000000014BCD70 UDP Rcv 192.168.1.2     0e78   Q [0001   D   NOERROR] PTR    (1)7(3)250(3)167(3)192(7)in-addr(4)arpa(0)
+10/24/2023 6:12:57 AM 00DC PACKET 192.168.2.20 00000000014BCD70 UDP Rcv 192.168.1.2     0e78   Q [0001   D   NOERROR] PTR    (1)7(3)250(3)167(3)192(7)in-addr(4)arpa(0)
 UDP question info at 00000000014BCD70
   Socket = 328
   Remote addr 192.168.1.2, port 37325
@@ -127,7 +127,7 @@ UDP question info at 00000000014BCD70
     ADDITIONAL SECTION:
       empty
 
-9/26/2023 3:12:57 PM 00DC PACKET 10.1.1.1 0000000006A14C70 UDP Snd 192.168.1.2     5449   Q [1001   D   NOERROR] PTR    (1)7(3)250(3)167(3)192(7)in-addr(4)arpa(0)
+10/24/2023 6:12:57 AM 00DC PACKET 10.1.1.1 0000000006A14C70 UDP Snd 192.168.1.2     5449   Q [1001   D   NOERROR] PTR    (1)7(3)250(3)167(3)192(7)in-addr(4)arpa(0)
 UDP question info at 0000000006A14C70
   Socket = 2688
   Remote addr 192.168.1.2, port 53
