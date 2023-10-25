@@ -147,4 +147,4 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
 * **Contributors** -  Kumar Varun, Logging Analytics Product Management - Kiran Palukuri, Logging Analytics Product Management - Vikram Reddy, Logging Analytics Development Team 
-* **Last Updated By/Date** - Oswaldo Osuna, Oct 24 2023
+* **Last Updated By/Date** - Oswaldo Osuna, Oct 25 2023
