@@ -15,38 +15,78 @@ In this lab, you will:
 * Create new labels, EFDs in a Log Source
 * Create alarms on new labels and verify
 
-## **Task 1:**  Navigate to Sources
+## **Task 1:**  Navigate to Parsers
 
 1. Click on the **Administration** option inside the drop-down menu to access to **Administration Overview**.
-   ![](./images/admin-access.png "UIdescription")
+![](./images/admin-access.png "UIdescription") 
 
-2. Click on the option **Sources** inside **Resources** sidebar menu at the left.
+2. Click on the option **Parsers** inside **Resources** sidebar menu at the left.
+   ![](./images/parsers-navigate-01.png "UIdescription")
+
+  Now you are in **Parsers**.
+   ![](./images/parsers-navigate-02.png "UIdescription")
+
+## **Task 2:**  Create Parser
+
+1. Click on **Create Parser** and select **Regex Type**.
+   ![](./images/parsers-create-01.png "UIdescription")
+
+2. Click on **Advanced**. Specify a **Name** and **Description (optional)**.
+   ![](./images/parsers-create-02.png "UIdescription")
+
+3. Download sample logs file for [Log Sample](./files/f5-firewall-logs.log)</br>
+   Add the **f5-firewall-logs.log** we downloaded to **Example log content**.
+   ![](./images/parsers-create-03.png "UIdescription")
+
+4. Specify the following regular expression at **Parser regular expression**: **{TIMEDATE}\s+(.+)**
+   ![](./images/parsers-create-04.png "UIdescription")
+
+5. Select **Message** for the second field.
+   ![](./images/parsers-create-05.png "UIdescription")
+
+7. Click on **Parser Test** and on **Run Test**.
+   ![](./images/parsers-create-06.png "UIdescription")
+
+   We verify that the fields are matching with the example logs we provided.
+   ![](./images/parsers-create-07.png "UIdescription")
+
+8. Click on **Create Parser**.
+   ![](./images/parsers-create-08.png "UIdescription")
+
+9. The parser is saved successfully.
+   ![](./images/parsers-create-09.png "UIdescription")
+
+## **Task 3**  Navigate to Sources
+
+1. Click on the option **Sources** inside **Resources** sidebar menu at the left.
    ![](./images/sources-access.png "UIdescription")
 
   Now you are in **Sources**.
    ![](./images/sources-page.png "UIdescription")
 
-## **Task 2:**  Create User Defined Source
+## **Task 4:**  Create User Defined Source
 
 1. Click on **Create Source**.
    ![](./images/source-create-button.png "UIdescription")
 
-2. Specify the **Name** and **Description (optional)**. Select **File** as **Source Type**. Select **Apache HTTP Server** at **Entity Types**.
+2. Specify the **Name** and **Description (optional)**. Select **File** as **Source Type**. Select **Network Firewall** at **Entity Types**.
    ![](./images/source-create-01.png "UIdescription")
 
-3. Mark the **Specific parser(s)** option. Then, select **Apache HTTP Access Log Format**.
+3. Mark the **Specific parser(s)** option. Then, select **F5 Firewall System Application**.
    ![](./images/source-create-02.png "UIdescription")
 
-## **Task 3:**  Add Extended Fields
+## **Task 5:**  Add Extended Fields
+
+   We are able to create **Extended Fields** derived from existing **Base Fields**. In this case, we will create an **Extended Field** for the **Message** field we created previously in order to get the **Source IP**.
 
 1. Click on **Extended Fields** and on **Add**.
    ![](./images/efd-create-01.png "UIdescription")
 
-2. Download sample logs file for [Log Sample](./files/log-sample.log)</br>
-  Select **Original Log Content** as **Base Field**. Set the Log Sample for **Example Base Field Content**. For **Extract Expression** set **source ip:?\s{Source IP:[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}}**.
+2. Download example base field content file for [Log Sample](./files/example-base-field-content.log)</br>
+  Select **Message** as **Base Field**. Set the downloaded file content for **Example Base Field Content**. For **Extract Expression** set **source ip:?\s{Source IP:[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}}**.
    ![](./images/efd-create-02.png "UIdescription")
 
-3. Click on **Test Definition** and see more details about test results.
+3. Click on **Test Definition** and see more details about test results to verify the match succeeded.
    ![](./images/efd-create-03.png "UIdescription")
 
 4. Click on **Add**.
@@ -60,31 +100,25 @@ In this lab, you will:
 1. Click on **Labels** and on **Add conditional label**.
    ![](./images/labels-create-01.png "UIdescription")
 
-2. Select **Original Log Content** as **Input Field** and **Contains** as **Operator**. Add **source ip** and **Request blocked** in **Condition Value**.
+2. Select **Source IP** as **Input Field** and **Not In** as **Operator**. Add the following IPv4 addresses to **Condition Value**: 192.168.1.101, 192.168.1.102, 192.168.1.103
    ![](./images/labels-create-02.png "UIdescription")
 
-3. Click on **Create Label**.
+3. Select **Security Problem** label.
    ![](./images/labels-create-03.png "UIdescription")
 
-4. Specify a **Label** and **Description (optional)**. Mark the **Use this label to indicate a problem** checkbox inside **Denotes Problem**. Then, select **High** for **Problem Priority**. Click on **Create**.
-   ![](./images/labels-create-04.png "UIdescription")
-
-  The label is created successfully.
-   ![](./images/labels-create-05.png "UIdescription")
-
 5. Click on **Add**.
-   ![](./images/labels-create-06.png "UIdescription")
+   ![](./images/labels-create-04.png "UIdescription")
    
   The conditional label is added successfully.
-   ![](./images/labels-create-07.png "UIdescription")
+   ![](./images/labels-create-05.png "UIdescription")
 
 ## **Task 5:**  Save User Defined Source
 
 1. Click on **Create Source**.
-   ![](./images/source-create-03.png "UIdescription")
+   ![](./images/source-save-01.png "UIdescription")
    
   The source is created successfully.
-   ![](./images/source-create-04.png "UIdescription")
+   ![](./images/source-save-02.png "UIdescription")
 
 ## **Task 6:**  Navigate to Log Explorer
 
@@ -183,4 +217,4 @@ In this lab, you will:
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
 * **Contributors** -  Kumar Varun, Logging Analytics Product Management - Kiran Palukuri, Logging Analytics Product Management - Vikram Reddy, Logging Analytics Development Team 
-* **Last Updated By/Date** - Oct 18 2023
+* **Last Updated By/Date** - Oswaldo Osuna, Oct 25 2023
