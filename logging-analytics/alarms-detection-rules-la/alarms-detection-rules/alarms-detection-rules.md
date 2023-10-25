@@ -37,7 +37,7 @@ For creating a detection rule, you need a log source and entity associated with 
 
 1. From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Detection Rules box** > **Create Detection Rule**.
 
-![detection-rules-navigation](images/v1.gif =1921x970) 
+![detection-rules-navigation](images/detection-rules-navigation.gif)
 
 2. Create detection rule dialog box opens. Click on **Ingest time detection rule**.
 
@@ -75,7 +75,7 @@ When the match specified in the log source is encountered in the log record whil
     - Select the **Compartment** of your alarms in the **Scope section**.
     - Click on the **Create Alarm**. The Create Alarm dialog box opens.
 
-![alarms-navigation](images/v2.gif =1921x970)
+![alarms-navigation](images/alarm-navigation.gif)
 
 2. Specify the **Alarm name**. Let's say you named it as **"Livelab_alarm"**.
 
