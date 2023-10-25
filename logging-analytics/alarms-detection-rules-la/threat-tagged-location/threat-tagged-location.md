@@ -25,73 +25,33 @@ In this lab, you will:
   Now you are in **Sources**.
    ![](./images/sources-page.png "UIdescription")
 
-## **Task 2:**  Create User Defined Source
-
-1. Click on **Create Source**.
-   ![](./images/source-create-button.png "UIdescription")
-
-2. Specify the **Name** and **Description (optional)**. Select **File** as **Source Type**. Set **OCI Compute Instance** and **Apache HTTP Server** as **Entity Types**.
-   ![](./images/source-create-01.png "UIdescription")
-
-3. Mark the **Specific parser(s)** option. Then, select **Apache HTTP Access Log Format**.
-   ![](./images/source-create-02.png "UIdescription")
-
-## **Task 3:**  Add Field Enrichment
+## **Task 2:**  Create Source from Oracle-defined and Add field enrichment
 
 Logging Analytics provides automatic threat intelligence enrichment for your logs that can help identify public IP addresses which could have some level of threat associated with them. Learning about the possible threats early can help separate and mitigate them.
 
 To enable the threat intelligence enrichment feature, Geolocation Field is needed.
 
+1. Search for **OCI Object Storage Access Logs** and click on **Duplicate**.
+   ![](./images/source-duplicate-01.png "UIdescription")
+
 1. Click on **Field Enrichment** and on **Add field enrichment**.
-   ![](./images/field-enrichment-create-01.png "UIdescription")
+   ![](./images/source-duplicate-02.png "UIdescription")
 
 2. Select **Geolocation** in **Function**. Then, Select **Host IP Address (Client)** in **IP Address Field** and mark **Threat Intelligence enrichment**. Finally, click on **Add field enrichment**.
-   ![](./images/field-enrichment-create-02.png "UIdescription")
+   ![](./images/source-duplicate-03.png "UIdescription")
 
   The field enrichment is added successfully.
-   ![](./images/field-enrichment-create-03.png "UIdescription")
+   ![](./images/source-duplicate-04.png "UIdescription")
 
-## **Task 4:**  Create Multi-conditional label
+## **Task 3:**  Save User Defined Source
 
-1. Click on **Labels**, then on **Add conditional label**.
-   ![](./images/conditional-label-create-01.png "UIdescription")
-
-2. Select **Original Log Content** as **Input Field** and **Contains** as **Operator**. Add **threat** and **error** in **Condition Value**.
-   ![](./images/conditional-label-create-02.png "UIdescription")
-
-3. Click on the **Add a condition** button to make the label multi-conditional.
-   ![](./images/conditional-label-create-03.png "UIdescription")
-
-4. Select **Match all of the following conditions (AND)** in the drop-down above. Add the new condition with **Log Group** as **Input Field**, **Equal** as **Operator** and **live-labs** as the **Condition Value**.
-   ![](./images/conditional-label-create-04.png "UIdescription")
-
-5. Click on **Show Condition Summary** to check the multi-condition is correct.
-   ![](./images/conditional-label-create-05.png "UIdescription")
-   ![](./images/conditional-label-create-06.png "UIdescription")
-
-6. Click on **Create Label**.
-   ![](./images/conditional-label-create-07.png "UIdescription")
-
-7. Specify a **Label** and **Description (optional)**. Mark the **Use this label to indicate a problem** checkbox inside **Denotes Problem**. Then, select **High** for **Problem Priority**. Click on **Create**.
-   ![](./images/conditional-label-create-08.png "UIdescription")
-
-  The label is created successfully.
-   ![](./images/conditional-label-create-09.png "UIdescription")
-
-8. Click on **Add**.
-   ![](./images/conditional-label-create-10.png "UIdescription")
-
-  The multi-conditional label is added successfully.
-   ![](./images/conditional-label-create-11.png "UIdescription")
-
-## **Task 5:**  Save User Defined Source
 1. Click on **Create Source**.
-   ![](./images/conditional-label-create-12.png "UIdescription")
+   ![](./images/source-save-01.png "UIdescription")
 
   The source is created successfully.
-   ![](./images/conditional-label-create-13.png "UIdescription")
+   ![](./images/source-save-02.png "UIdescription")
 
-## **Task 6:**  Navigate to Detection Rules
+## **Task 4:**  Navigate to Detection Rules
 
 1. Click on the option **Detection Rules** inside **Resources** sidebar menu at the left.
    ![](./images/detection-rules-access.png "UIdescription")
@@ -99,28 +59,66 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
   Now you are in **Detection Rules**.
    ![](./images/detection-rules.png "UIdescription")
 
-## **Task 7:**  Create Ingest time detection rule
+## **Task 5:**  Create Ingest time detection rule
 
 1. Click on **Create** inside **Detection Rules** page.
-   ![](./images/detection-rules-create.png "UIdescription")
+   ![](./images/detection-rules-create-01.png "UIdescription")
 
 2. Click on **Ingest time detection rule**.
-   ![](./images/ingest-time-option.png "UIdescription")
+   ![](./images/detection-rules-create-02.png "UIdescription")
 
-3. Specify the **Rule name**. Select the **Label** we created and **Monitoring** as **Target Service**.
-   ![](./images/ingest-time-create-01.png "UIdescription")
+3. Specify the **Rule name**. Select **Action Failed** for **Label** and **Copy of OCI Object Storage Access Logs** for **Filter by log source**.
+   ![](./images/detection-rules-create-03.png "UIdescription")
 
-4. Specify a **Metric Compartment**, **Metric Namespace** and **Metric Name**.
-   ![](./images/ingest-time-create-02.png "UIdescription")
-
-5. Click on **Create detection rule**.
-   ![](./images/ingest-time-create-03.png "UIdescription")
+4. Select **Monitoring** for **Target Service**. Specify a **Metric Compartment**, **Metric Namespace** and **Metric Name**. Click on **Create detection rule**.
+   ![](./images/detection-rules-create-04.png "UIdescription")
 
   The ingest time detection rule is saved successfully.
-   ![](./images/ingest-time-create-04.png "UIdescription")
+   ![](./images/detection-rules-create-05.png "UIdescription")
 
+## **Task 6:**  Navigate to Uploads
+
+1. Click on the option **Uploads** inside **Resources** sidebar menu at the left.
+   ![](./images/uploads-access.png "UIdescription")
+
+  Now you are in **Uploads**.
+   ![](./images/uploads-page.png "UIdescription")
+
+## **Task 7:**  Upload logs file
+
+1. Click on **Upload Files**.
+   ![](./images/upload-logs-01.png "UIdescription")
+
+2. Specify an **Upload Name** and **Log Group Compartment**. Select a **Log Group** or create a new one.
+   ![](./images/upload-logs-02.png "UIdescription")
+
+5. Download sample logs file for [Log Sample](./files/threat-tagged-location-logs.log)</br>
+   Click on **Select Files** and select the **threat-tagged-location-logs.log** file.
+   ![](./images/upload-logs-03.png "UIdescription")
+   ![](./images/upload-logs-04.png "UIdescription")
+
+6. Click on **Next**.
+   ![](./images/upload-logs-05.png "UIdescription")
+
+7. Click on **Set Properties**.
+   ![](./images/upload-logs-06.png "UIdescription")
+
+8. At **Source**, select **Copy of OCI Object Storage Access Logs** which is the source we created previously. Click on **Save Changes**.
+   ![](./images/upload-logs-07.png "UIdescription")
+
+9. Click on **Next**.
+   ![](./images/upload-logs-08.png "UIdescription")
+
+10. Click on **Upload**.
+   ![](./images/upload-logs-09.png "UIdescription")
+
+11. When the **Submission Status** is **Success**, click on **Close**.
+   ![](./images/upload-logs-10.png "UIdescription")
+
+   The logs file is uploaded successfully.
+   ![](./images/upload-logs-11.png "UIdescription")
 
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
 * **Contributors** -  Kumar Varun, Logging Analytics Product Management - Kiran Palukuri, Logging Analytics Product Management - Vikram Reddy, Logging Analytics Development Team 
-* **Last Updated By/Date** - Oct 12 2023
+* **Last Updated By/Date** - Oswaldo Osuna, Oct 24 2023

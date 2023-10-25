@@ -1,0 +1,176 @@
+
+10/24/2023 3:07:54 AM 03B4 EVENT  192.168.1.10 The DNS server has started.
+10/24/2023 6:16:44 AM 00DC PACKET 10.0.0.5  00000000016B80A0 UDP Rcv ::1             9ebb   Q [0001   D   NOERROR] SOA    (5)xyztu(4)labs(0)
+UDP question info at 00000000016B80A0
+  Socket = 336
+  Remote addr ::1, port 64329
+  Time Query=588068, Queued=0, Expire=0
+  Buf length = 0x0fa0 (4000)
+  Msg length = 0x001c (28)
+  Message:
+    XID       0x9ebb
+    Flags     0x0100
+      QR        0 (QUESTION)
+      OPCODE    0 (QUERY)
+      AA        0
+      TC        0
+      RD        1
+      RA        0
+      Z         0
+      CD        0
+      AD        0
+      RCODE     0 (NOERROR)
+    QCOUNT    1
+    ACOUNT    0
+    NSCOUNT   0
+    ARCOUNT   0
+    QUESTION SECTION:
+    Offset = 0x000c, RR count = 0
+    Name      "(5)xyztu(4)labs(0)"
+      QTYPE   SOA (6)
+      QCLASS  1
+    ANSWER SECTION:
+      empty
+    AUTHORITY SECTION:
+      empty
+    ADDITIONAL SECTION:
+      empty
+
+10/24/2023 6:16:44 AM 00DC PACKET 192.168.2.20  00000000016B80A0 UDP Snd ::1             9ebb R Q [8085 A DR  NOERROR] SOA    (5)xyztu(4)labs(0)
+UDP response info at 00000000016B80A0
+  Socket = 336
+  Remote addr ::1, port 64329
+  Time Query=588068, Queued=0, Expire=0
+  Buf length = 0x0200 (512)
+  Msg length = 0x0063 (99)
+  Message:
+    XID       0x9ebb
+    Flags     0x8580
+      QR        1 (RESPONSE)
+      OPCODE    0 (QUERY)
+      AA        1
+      TC        0
+      RD        1
+      RA        1
+      Z         0
+      CD        0
+      AD        0
+      RCODE     0 (NOERROR)
+    QCOUNT    1
+    ACOUNT    1
+    NSCOUNT   0
+    ARCOUNT   1
+    QUESTION SECTION:
+    Offset = 0x000c, RR count = 0
+    Name      "(5)xyztu(4)labs(0)"
+      QTYPE   SOA (6)
+      QCLASS  1
+    ANSWER SECTION:
+    Offset = 0x001c, RR count = 0
+    Name      "[C00C](5)xyztu(4)labs(0)"
+      TYPE   SOA  (6)
+      CLASS  1
+      TTL    3600
+      DLEN   43
+      DATA   
+		PrimaryServer: (7)win2kdc[C00C](5)xyztu(4)labs(0)
+		Administrator: (10)hostmaster[C00C](5)xyztu(4)labs(0)
+		SerialNo     = 35
+		Refresh      = 900
+		Retry        = 600
+		Expire       = 86400
+		MinimumTTL   = 3600
+    AUTHORITY SECTION:
+      empty
+    ADDITIONAL SECTION:
+    Offset = 0x0053, RR count = 0
+    Name      "[C028](7)win2kdc[C00C](5)xyztu(4)labs(0)"
+      TYPE   A  (1)
+      CLASS  1
+      TTL    3600
+      DLEN   4
+      DATA   192.168.1.12
+
+10/24/2023 6:12:57 AM 00DC PACKET 192.168.2.20 00000000014BCD70 UDP Rcv 192.168.1.2     0e78   Q [0001   D   NOERROR] PTR    (1)7(3)250(3)167(3)192(7)in-addr(4)arpa(0)
+UDP question info at 00000000014BCD70
+  Socket = 328
+  Remote addr 192.168.1.2, port 37325
+  Time Query=587842, Queued=0, Expire=0
+  Buf length = 0x0fa0 (4000)
+  Msg length = 0x002c (44)
+  Message:
+    XID       0x0e78
+    Flags     0x0100
+      QR        0 (QUESTION)
+      OPCODE    0 (QUERY)
+      AA        0
+      TC        0
+      RD        1
+      RA        0
+      Z         0
+      CD        0
+      AD        0
+      RCODE     0 (NOERROR)
+    QCOUNT    1
+    ACOUNT    0
+    NSCOUNT   0
+    ARCOUNT   0
+    QUESTION SECTION:
+    Offset = 0x000c, RR count = 0
+    Name      "(1)7(3)250(3)167(3)192(7)in-addr(4)arpa(0)"
+      QTYPE   PTR (12)
+      QCLASS  1
+    ANSWER SECTION:
+      empty
+    AUTHORITY SECTION:
+      empty
+    ADDITIONAL SECTION:
+      empty
+
+10/24/2023 6:12:57 AM 00DC PACKET 10.1.1.1 0000000006A14C70 UDP Snd 192.168.1.2     5449   Q [1001   D   NOERROR] PTR    (1)7(3)250(3)167(3)192(7)in-addr(4)arpa(0)
+UDP question info at 0000000006A14C70
+  Socket = 2688
+  Remote addr 192.168.1.2, port 53
+  Time Query=0, Queued=0, Expire=0
+  Buf length = 0x0fa0 (4000)
+  Msg length = 0x0037 (55)
+  Message:
+    XID       0x5449
+    Flags     0x0110
+      QR        0 (QUESTION)
+      OPCODE    0 (QUERY)
+      AA        0
+      TC        0
+      RD        1
+      RA        0
+      Z         0
+      CD        1
+      AD        0
+      RCODE     0 (NOERROR)
+    QCOUNT    1
+    ACOUNT    0
+    NSCOUNT   0
+    ARCOUNT   1
+    QUESTION SECTION:
+    Offset = 0x000c, RR count = 0
+    Name      "(1)7(3)250(3)167(3)192(7)in-addr(4)arpa(0)"
+      QTYPE   PTR (12)
+      QCLASS  1
+    ANSWER SECTION:
+      empty
+    AUTHORITY SECTION:
+      empty
+    ADDITIONAL SECTION:
+    Offset = 0x002c, RR count = 0
+    Name      "(0)"
+      TYPE   OPT  (41)
+      CLASS  4000
+      TTL    32768
+      DLEN   0
+      DATA   
+		Buffer Size  = 4000
+		Rcode Ext    = 0
+		Rcode Full   = 0
+		Version      = 0
+		Flags        = 80 DO
+
