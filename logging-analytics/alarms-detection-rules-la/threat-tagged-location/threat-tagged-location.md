@@ -118,6 +118,32 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
    The logs file is uploaded successfully.
    ![](./images/upload-logs-11.png "UIdescription")
 
+## **Task 8:**  Create alarm
+
+1. Navigate to **Detection Rules** (View **Task 4**).
+
+2. Click on **Sensitive Data Access from Threat Tagged Location**.
+   ![](./images/create-alarm-01.png "UIdescription")
+
+3. Click on **Create Alarm**.
+   ![](./images/create-alarm-02.png "UIdescription")
+
+4. Specify an **Alarm name** and **Alarm body (optional)**. Set **Critical** for **Alarm severity**.
+   ![](./images/create-alarm-03.png "UIdescription")
+
+5. Inside **Destination** click on **Create a topic**.
+   ![](./images/create-alarm-04.png "UIdescription")
+
+6. Specify a **Topic name** and **Topic description (optional)**. Select **Email** as **Subscription protocol** and specify a **Subscription Email**. Click on **Create topic and subscription**.
+   ![](./images/create-alarm-05.png "UIdescription")
+
+7. Click on **Save alarm**.
+   ![](./images/create-alarm-06.png "UIdescription")
+
+   The alarm is saved successfully.
+   ![](./images/create-alarm-07.png "UIdescription")
+
+
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
 * **Contributors** -  Kumar Varun, Logging Analytics Product Management - Kiran Palukuri, Logging Analytics Product Management - Vikram Reddy, Logging Analytics Development Team 
