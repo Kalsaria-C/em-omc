@@ -95,7 +95,7 @@ In this lab, you will:
 5. The extended field definition is added successfully.
    ![](./images/efd-create-05.png "UIdescription")
 
-## **Task 4:**  Add Labels
+## **Task 6:**  Add Labels
 
 1. Click on **Labels** and on **Add conditional label**.
    ![](./images/labels-create-01.png "UIdescription")
@@ -112,7 +112,7 @@ In this lab, you will:
   The conditional label is added successfully.
    ![](./images/labels-create-05.png "UIdescription")
 
-## **Task 5:**  Save User Defined Source
+## **Task 7:**  Save User Defined Source
 
 1. Click on **Create Source**.
    ![](./images/source-save-01.png "UIdescription")
@@ -120,7 +120,7 @@ In this lab, you will:
   The source is created successfully.
    ![](./images/source-save-02.png "UIdescription")
 
-## **Task 6:**  Navigate to Uploads
+## **Task 8:**  Navigate to Uploads
 
 1. Click on the option **Uploads** inside **Resources** sidebar menu at the left.
    ![](./images/uploads-access.png "UIdescription")
@@ -128,7 +128,7 @@ In this lab, you will:
   Now you are in **Uploads**.
    ![](./images/uploads-page.png "UIdescription")
 
-## **Task 7:**  Upload logs file
+## **Task 9:**  Upload logs file
 
 1. Click on **Upload Files**.
    ![](./images/upload-logs-01.png "UIdescription")
@@ -165,7 +165,7 @@ In this lab, you will:
    The logs file is uploaded successfully.
    ![](./images/upload-logs-12.png "UIdescription")
 
-## **Task 6:**  Navigate to Log Explorer
+## **Task 10:**  Navigate to Log Explorer
 
 1. Click on the **Log Explorer** option inside the drop-down menu.
    ![](./images/log-explorer-access.png "UIdescription")
@@ -173,27 +173,31 @@ In this lab, you will:
 2. Now you are in **Log Explorer**.
    ![](./images/log-explorer.png "UIdescription")
 
-## **Task 7:**  Create a new Log Search
+## **Task 11:**  Create a new Log Search
 
-1. For this lab, we are going to save a query using **eval** command to add new fields for custom logs. In this case, we want to add a new field that counts the number of errors for each host name (server).   
-  Type the following query in the text input: *** | eval err = 'Error ID' | stats count(err) as Errors by 'Host Name (Server)'**
-   ![](./images/log-search-query.png "UIdescription")
+1. For this lab, we are going to save a query using **extract** command to add a new field from an existing one. In this case, we want to add a new field derived from the **Message** to obtain the **Destination IP**.
+  Type the following query in the text input: **'Log Source' = 'Problem Labels for Custom Apps-Logs' | extract field = Message 'destination ip:?\s{Destination IP:[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}}' | timestats count as logrecords by 'Log Source'**
+   ![](./images/log-search-create-01.png "UIdescription")
+
+2. Open the **Time Range** drop-down and click on **Custom**.
+   ![](./images/log-search-create-02.png "UIdescription")
+
+3. Mark **Quick Select** and select **Last 90 Days**. Click on **Apply**.
+   ![](./images/log-search-create-03.png "UIdescription")
 
 3. Click on **Run** and see the results below.
-   ![](./images/query-results.png "UIdescription")
+   ![](./images/log-search-create-04.png "UIdescription")
 
-## **Task 8:**  Save the Log Search
+4. Click on **Save as...** option inside **Actions** drop-down menu.
+   ![](./images/log-search-create-05.png "UIdescription")
 
-1. Click on **Save as...** option inside **Actions** drop-down menu.
-   ![](./images/log-search-save-01.png "UIdescription")
-
-2. Select a **Saved Search Compartment**. Specify the **Search Name** and the **Search Description (optional)**. Then, click on **Save** button.
-   ![](./images/log-search-save-02.png "UIdescription")
+5. Select a **Saved Search Compartment**. Specify the **Search Name** and the **Search Description (optional)**. Then, click on **Save** button.
+   ![](./images/log-search-create-06.png "UIdescription")
 
   The log search is saved successfully.
-   ![](./images/log-search-save-03.png "UIdescription")
+   ![](./images/log-search-create-07.png "UIdescription")
 
-## **Task 9:**  Navigate to Detection Rules
+## **Task 13:**  Navigate to Detection Rules
 
 1. Click on the **Administration** option inside the drop-down menu to access to **Administration Overview**.
    ![](./images/admin-access.png "UIdescription")
@@ -204,59 +208,45 @@ In this lab, you will:
   Now you are in **Detection Rules**.
    ![](./images/detection-rules.png "UIdescription")
 
-## **Task 10:**  Create Scheduled search detection rule
+## **Task 14:**  Create Scheduled search detection rule
 
 1. Click on **Create** inside **Detection Rules** page to start creating a new detection rule.
-   ![](./images/detection-rules-create.png "UIdescription")
-
-  We will create a **Scheduled search** type detection rule.
-   ![](./images/scheduled-search-option.png "UIdescription")
-
-2. Specify a **Rule name** and **Saved search compartment**. Then, select the **Saved search** we created for the scheduled task.
    ![](./images/scheduled-search-create-01.png "UIdescription")
 
-3. Select **Monitoring** as **Target Service**. Specify a **Metric Compartment**, **Metric Namespace** and **Metric Name**. Finally, set the **Interval** to **1 Hours** and click on **Create detection rule**.
+  We will create a **Scheduled search** type detection rule.
    ![](./images/scheduled-search-create-02.png "UIdescription")
 
-  The detection rule is saved successfully.
+2. Specify a **Rule name** and **Saved search compartment**. Then, select **Problem Labels for Custom Apps-Logs** as **Saved search** which is the one we created previously.
    ![](./images/scheduled-search-create-03.png "UIdescription")
 
-## **Task 11:**  Navigate to Alarm Definitions
+3. Select **Monitoring** as **Target Service**. Specify a **Metric Compartment**, **Metric Namespace** and **Metric Name**. Finally, set the **Interval** to **30 Minutes** and click on **Create detection rule**.
+   ![](./images/scheduled-search-create-04.png "UIdescription")
 
-1. Click on the navigation menu.
-   ![](./images/alarms-create-01.png "UIdescription")
+  The detection rule is saved successfully.
+   ![](./images/scheduled-search-create-05.png "UIdescription")
 
-2. Click on **Observability and Management**. Then, click on **Alarm Definitions** inside **Monitoring**.
-   ![](./images/alarms-create-02.png "UIdescription")
+## **Task 15:**  Create Alarm
 
-## **Task 12:**  Create Alarm
+1. Click on **Problem Labels for Custom Apps-Logs** Scheduled search type.
+   ![](./images/scheduled-search-alarm-01.png "UIdescription")
 
-1. Click on **Create Alarm**.
-   ![](./images/alarms-create-03.png "UIdescription")
+2. Click on **Create Alarm**.
+   ![](./images/scheduled-search-alarm-02.png "UIdescription")
 
-2. Specify an **Alarm name** and select **Info** for **Alarm severity**. Specify an **Alarm body (optional)**.
-   ![](./images/alarms-create-04.png "UIdescription")
+3. Specify an **Alarm name** and **Alarm body (optional)**. Set **Critical** for **Alarm severity**.
+   ![](./images/scheduled-search-alarm-03.png "UIdescription")
 
-3. Select a **Compartment**. Then, select the **Metric namespace** and **Metric name** we created for the **Detection Rules**. Set the **Interval** for **30 minutes**. Finally, select **Count** for **Statistic**.
-   ![](./images/alarms-create-05.png "UIdescription")
+4. Inside **Destination** click on **Create a topic**.
+   ![](./images/scheduled-search-alarm-04.png "UIdescription")
 
-4. Select the **Operator**, **Value** and **Trigger delay minutes**.
-   ![](./images/alarms-create-06.png "UIdescription")
+5. Specify a **Topic name** and **Topic description (optional)**. Select **Email** as **Subscription protocol** and specify a **Subscription Email**. Click on **Create topic and subscription**.
+   ![](./images/scheduled-search-alarm-05.png "UIdescription")
 
-5. Click on **Create a topic**.
-   ![](./images/alarms-create-07.png "UIdescription")
+6. Click on **Save alarm**.
+   ![](./images/scheduled-search-alarm-06.png "UIdescription")
 
-6. Specify a **Topic name** and **Topic description (optional)**. Select **Email** for **Suscription Protocol** and specify your email in **Subscription Email**. Click on **Create topic and subscription**.
-   ![](./images/alarms-create-08.png "UIdescription")
-
-7. Click on **Save alarm**.
-   ![](./images/alarms-create-09.png "UIdescription")
-
-  The alarm is saved successfully.
-   ![](./images/alarms-create-10.png "UIdescription")
-
-8. We should receive an email as result for the subscription.
-   ![](./images/alarms-create-11.png "UIdescription")
+   The alarm is saved successfully.
+   ![](./images/scheduled-search-alarm-07.png "UIdescription")
 
 
 ## Acknowledgements
