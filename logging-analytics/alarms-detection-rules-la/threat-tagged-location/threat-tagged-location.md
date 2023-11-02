@@ -76,7 +76,30 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
   The ingest time detection rule is saved successfully.
    ![](./images/detection-rules-create-05.png "UIdescription")
 
-## **Task 6:**  Navigate to Uploads
+## **Task 6:**  Create alarm
+
+1. Click on **Sensitive Data Access from Threat Tagged Location** which is the **Detection Rule** we created.
+   ![](./images/create-alarm-01.png "UIdescription")
+
+2. Click on **Create Alarm**.
+   ![](./images/create-alarm-02.png "UIdescription")
+
+3. Specify an **Alarm name** and **Alarm body (optional)**. Set **Critical** for **Alarm severity**.
+   ![](./images/create-alarm-03.png "UIdescription")
+
+4. Inside **Destination** click on **Create a topic**.
+   ![](./images/create-alarm-04.png "UIdescription")
+
+5. Specify a **Topic name** and **Topic description (optional)**. Select **Email** as **Subscription protocol** and specify a **Subscription Email**. Click on **Create topic and subscription**.
+   ![](./images/create-alarm-05.png "UIdescription")
+
+6. Click on **Save alarm**.
+   ![](./images/create-alarm-06.png "UIdescription")
+
+   The alarm is saved successfully.
+   ![](./images/create-alarm-07.png "UIdescription")
+
+## **Task 7:**  Navigate to Uploads
 
 1. Click on the option **Uploads** inside **Resources** sidebar menu at the left.
    ![](./images/uploads-access.png "UIdescription")
@@ -84,7 +107,7 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
   Now you are in **Uploads**.
    ![](./images/uploads-page.png "UIdescription")
 
-## **Task 7:**  Upload logs file
+## **Task 8:**  Upload logs file
 
 1. Click on **Upload Files**.
    ![](./images/upload-logs-01.png "UIdescription")
@@ -93,7 +116,10 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
    ![](./images/upload-logs-02.png "UIdescription")
 
 5. Download sample logs file for [Log Sample](./files/threat-tagged-location-logs.log)</br>
-   Click on **Select Files** and select the **threat-tagged-location-logs.log** file.
+   Modify the file **threat-tagged-location-logs** so the date of each log is less than 1 hour before current UTC time.
+   ![](./images/modify-logs.png "UIdescription")
+
+6. Click on **Select Files** and select the **threat-tagged-location-logs.log** file.
    ![](./images/upload-logs-03.png "UIdescription")
    ![](./images/upload-logs-04.png "UIdescription")
 
@@ -118,33 +144,34 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
    The logs file is uploaded successfully.
    ![](./images/upload-logs-11.png "UIdescription")
 
-## **Task 8:**  Create alarm
+## **Task 8:**  See Detection Rules and Alarms results
 
-1. Navigate to **Detection Rules** (View **Task 4**).
+1. Navigate to Detection rules **(see Task 4)** and click on **Sensitive Data Access from Threat Tagged Location** which is the **Detection Rule** we created.
+   ![](./images/results-01.png "UIdescription")
 
-2. Click on **Sensitive Data Access from Threat Tagged Location**.
-   ![](./images/create-alarm-01.png "UIdescription")
+2. At **Results** we can see there has been a **Sensitive Data Access from Threat Tagged Location**.
+   ![](./images/results-02.png "UIdescription")
 
-3. Click on **Create Alarm**.
-   ![](./images/create-alarm-02.png "UIdescription")
+3. Click on **View In Metric Explorer**.
+   ![](./images/results-03.png "UIdescription")
 
-4. Specify an **Alarm name** and **Alarm body (optional)**. Set **Critical** for **Alarm severity**.
-   ![](./images/create-alarm-03.png "UIdescription")
+4. We can see the same result in the **Metrics Explorer** view.
+   ![](./images/results-04.png "UIdescription")
 
-5. Inside **Destination** click on **Create a topic**.
-   ![](./images/create-alarm-04.png "UIdescription")
+5. Click on the **Navigation menu**.
+   ![](./images/results-05.png "UIdescription")
 
-6. Specify a **Topic name** and **Topic description (optional)**. Select **Email** as **Subscription protocol** and specify a **Subscription Email**. Click on **Create topic and subscription**.
-   ![](./images/create-alarm-05.png "UIdescription")
+6. Click on **Observability and Management**. Then, click on **Alarm Definitions** inside **Monitoring**.
+   ![](./images/results-06.png "UIdescription")
 
-7. Click on **Save alarm**.
-   ![](./images/create-alarm-06.png "UIdescription")
+7. Click on **Sensitive Data Access from Threat Tagged Location**.
+   ![](./images/results-07.png "UIdescription")
 
-   The alarm is saved successfully.
-   ![](./images/create-alarm-07.png "UIdescription")
+8. We can see the alarm is **Firing**.
+   ![](./images/results-08.png "UIdescription")
 
 
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
 * **Contributors** -  Kumar Varun, Logging Analytics Product Management - Kiran Palukuri, Logging Analytics Product Management - Vikram Reddy, Logging Analytics Development Team 
-* **Last Updated By/Date** - Oswaldo Osuna, Oct 25 2023
+* **Last Updated By/Date** - Oswaldo Osuna, Nov 2 2023
