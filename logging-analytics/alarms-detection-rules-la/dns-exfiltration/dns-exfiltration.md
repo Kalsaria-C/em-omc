@@ -355,4 +355,4 @@ In this lab, you will:
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
 * **Contributors** -  Kumar Varun, Logging Analytics Product Management - Kiran Palukuri, Logging Analytics Product Management - Vikram Reddy, Logging Analytics Development Team 
-* **Last Updated By/Date** - Oswaldo Osuna, Oct 24 2023
+* **Last Updated By/Date** - Oswaldo Osuna, Nov 2 2023
