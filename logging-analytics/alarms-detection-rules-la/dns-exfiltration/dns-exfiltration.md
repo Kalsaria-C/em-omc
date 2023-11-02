@@ -285,7 +285,58 @@ In this lab, you will:
    The alarm is saved successfully.
    ![](./images/scheduled-search-alarm-07.png "UIdescription")
 
-8. Do the same process for the **DNS Exfiltration on Windows Systems** Ingest time type.
+8. Do the same process of **Create Alarm** for the **DNS Exfiltration on Windows Systems** Ingest time type.
+
+## **Task 18:**  Upload logs file and see the results of Ingest time Detection Rule
+
+1. Click on the option **Uploads** inside **Resources** sidebar menu at the left.
+   ![](./images/uploads-access.png "UIdescription")
+
+  Now you are in **Uploads**.
+   ![](./images/uploads-page.png "UIdescription")
+
+2. Click on the **Upload** we created for this live lab.
+   ![](./images/ingest-time-results-01.png "UIdescription")
+
+3. Modify the file **microsoft-dns-logs.log** so the date of each log is less than 12 hours before current UTC time.
+   ![](./images/ingest-time-results-02.png "UIdescription")
+
+4. Click on **Select Files** and open the logs file we modified.
+   ![](./images/ingest-time-results-03.png "UIdescription")
+   ![](./images/ingest-time-results-04.png "UIdescription")
+
+5. Click on **Next**.
+   ![](./images/ingest-time-results-05.png "UIdescription")
+
+6. Click on **Set Properties**.
+   ![](./images/ingest-time-results-06.png "UIdescription")
+
+7. At **Source**, select **DNS Exfiltration on Windows Systems** which is the source we created previously. Click on **Save Changes**.
+   ![](./images/ingest-time-results-07.png "UIdescription")
+
+8. Click on **Next**.
+   ![](./images/ingest-time-results-08.png "UIdescription")
+
+9. Click on **Upload**.
+   ![](./images/ingest-time-results-09.png "UIdescription")
+
+10. When the **Submission Status** is **Success**, click on **Close**.
+   ![](./images/ingest-time-results-10.png "UIdescription")
+
+   The logs file is uploaded successfully.
+
+11. Navigate to Detection Rules and select the **DNS Exfiltration on Windows Systems** ingest time type detection rule.
+   ![](./images/ingest-time-results-11.png "UIdescription")
+
+12. At **Results**, select **12 hours** for the **Quick Selects**. We can see there has been a DNS Exfiltration Attempt.
+   ![](./images/ingest-time-results-12.png "UIdescription")
+
+13. Click on **View In Metric Explorer**.
+   ![](./images/ingest-time-results-13.png "UIdescription")
+
+14. Select **12 hours** at **Quick selects**. We can see the same result in the **Metrics Explorer** view.
+   ![](./images/ingest-time-results-14.png "UIdescription")
+
 
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
