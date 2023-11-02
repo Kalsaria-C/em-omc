@@ -227,7 +227,21 @@ In this lab, you will:
 4. The detection rule is saved successfully.
    ![](./images/scheduled-search-create-05.png "UIdescription")
 
-## **Task 14:**  Navigate to Labels
+## **Task 14:**  See the results of Scheduled search detection rule
+
+1. Click on **DNS Exfiltration on Windows Systems** scheduled search type detection rule.
+   ![](./images/scheduled-search-results-01.png "UIdescription")
+
+2. At **Results**, we can see there has been a DNS Exfiltration Attempt (change the **Quick Selects** if needed).
+   ![](./images/scheduled-search-results-02.png "UIdescription")
+
+3. Click on **View In Metric Explorer**.
+   ![](./images/scheduled-search-results-03.png "UIdescription")
+
+4. We can see the same result in the **Metrics Explorer** view.
+   ![](./images/scheduled-search-results-04.png "UIdescription")
+
+## **Task 15:**  Navigate to Labels
 
 1. Click on the option **Labels** inside **Resources** sidebar menu at the left.
    ![](./images/labels-access.png "UIdescription")
@@ -235,7 +249,7 @@ In this lab, you will:
 2. Click on **Create** inside **Labels** page to start creating a new label.
    ![](./images/labels-create.png "UIdescription")
 
-## **Task 15:**  Create new Label
+## **Task 16:**  Create new Label
 
 1. Specify the **Label** and **Description (optional)**.
    ![](./images/label-create-01.png "UIdescription")
@@ -243,7 +257,7 @@ In this lab, you will:
 2. Mark the **Use this label to indicate a problem** checkbox inside **Denotes Problem**. Then, select **High** for **Problem Priority**. Click on **Create**.
    ![](./images/label-create-02.png "UIdescription")
 
-## **Task 16:**  Create Ingest time detection rule
+## **Task 17:**  Create Ingest time detection rule
 
 1. Click on **Create** inside **Detection Rules** page.
    ![](./images/scheduled-search-create-01.png "UIdescription")
@@ -260,7 +274,7 @@ In this lab, you will:
    The detection rule is saved successfully.
    ![](./images/ingest-time-create-03.png "UIdescription")
 
-## **Task 17:**  Create alarm for Detection Rules
+## **Task 18:**  Create alarm for Detection Rules
 
 1. Navigate to **Detection Rules**.
 
@@ -287,7 +301,7 @@ In this lab, you will:
 
 8. Do the same process of **Create Alarm** for the **DNS Exfiltration on Windows Systems** Ingest time type.
 
-## **Task 18:**  Upload logs file and see the results of Ingest time Detection Rule
+## **Task 19:**  Upload logs file and see the results of Ingest time Detection Rule
 
 1. Click on the option **Uploads** inside **Resources** sidebar menu at the left.
    ![](./images/uploads-access.png "UIdescription")
