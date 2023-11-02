@@ -351,6 +351,17 @@ In this lab, you will:
 14. Select **12 hours** at **Quick selects**. We can see the same result in the **Metrics Explorer** view.
    ![](./images/ingest-time-results-14.png "UIdescription")
 
+## **Task 20:**  See the Alarms results
+
+1. Navigate to **Alarms**.
+
+2. At **Alarm Definitions** click on the alarms we created.
+   ![](./images/alarm-results-01.png "UIdescription")
+
+3. We can see both alarms are **Firing**.
+   ![](./images/alarm-results-02.png "UIdescription")
+   ![](./images/alarm-results-03.png "UIdescription")
+
 
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
