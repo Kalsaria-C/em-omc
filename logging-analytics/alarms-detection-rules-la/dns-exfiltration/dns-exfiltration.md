@@ -7,7 +7,7 @@ In this lab, you'll learn how to use problem labels and scheduled tasks together
 Log Name: Microsoft-Windows-DNS-Client/Operational
 Event IDs: 3000 (Query), 3001 (Response)
 
-Estimated Lab Time: 15 minutes
+Estimated Lab Time: 25 minutes
 
 
 ### Objectives
@@ -342,7 +342,7 @@ In this lab, you will:
 11. Navigate to Detection Rules and select the **DNS Exfiltration on Windows Systems** ingest time type detection rule.
    ![](./images/ingest-time-results-11.png "UIdescription")
 
-12. At **Results**, select **12 hours** for the **Quick Selects**. We can see there has been a DNS Exfiltration Attempt.
+12. At **Results**, select **12 hours** for the **Quick Selects**. We can see there has been a **DNS Exfiltration Attempt**.
    ![](./images/ingest-time-results-12.png "UIdescription")
 
 13. Click on **View In Metric Explorer**.
