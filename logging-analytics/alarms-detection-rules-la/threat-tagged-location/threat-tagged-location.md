@@ -25,23 +25,29 @@ In this lab, you will:
   Now you are in **Sources**.
    ![](./images/sources-page.png "UIdescription")
 
-## **Task 2:**  Create Source from Oracle-defined and Add field enrichment
+## **Task 2:**  Create Source and add field enrichment
 
 Logging Analytics provides automatic threat intelligence enrichment for your logs that can help identify public IP addresses which could have some level of threat associated with them. Learning about the possible threats early can help separate and mitigate them.
 
 To enable the threat intelligence enrichment feature, Geolocation Field is needed.
 
-1. Search for **OCI Object Storage Access Logs** and click on **Duplicate**.
-   ![](./images/source-duplicate-01.png "UIdescription")
+1. Click on **Create Source**.
+   ![](./images/source-create-01.png "UIdescription")
 
-1. Click on **Field Enrichment** and on **Add field enrichment**.
-   ![](./images/source-duplicate-02.png "UIdescription")
+2. Specify the **Name** and **Description (optional)**. Select **File** as **Source Type** and **OCI Object Storage Bucket** at **Entity Types**.
+   ![](./images/source-create-02.png "UIdescription")
 
-2. Select **Geolocation** in **Function**. Then, Select **Host IP Address (Client)** in **IP Address Field** and mark **Threat Intelligence enrichment**. Finally, click on **Add field enrichment**.
-   ![](./images/source-duplicate-03.png "UIdescription")
+3. Mark the **Specific parser(s)** option. Then, select **OCI Object Storage Access Log Format**.
+   ![](./images/source-create-03.png "UIdescription")
+
+4. Click on **Field Enrichment** and on **Add field enrichment**.
+   ![](./images/source-create-04.png "UIdescription")
+
+5. Select **Geolocation** in **Function**. Then, Select **Host IP Address (Client)** in **IP Address Field** and mark **Threat Intelligence enrichment**. Finally, click on **Add field enrichment**.
+   ![](./images/source-create-05.png "UIdescription")
 
   The field enrichment is added successfully.
-   ![](./images/source-duplicate-04.png "UIdescription")
+   ![](./images/source-create-06.png "UIdescription")
 
 ## **Task 3:**  Save User Defined Source
 
@@ -61,13 +67,13 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
 
 ## **Task 5:**  Create Ingest time detection rule
 
-1. Click on **Create** inside **Detection Rules** page.
+1. Click on **Create rule** inside **Detection Rules** page.
    ![](./images/detection-rules-create-01.png "UIdescription")
 
 2. Click on **Ingest time detection rule**.
    ![](./images/detection-rules-create-02.png "UIdescription")
 
-3. Specify the **Rule name**. Select **Action Failed** for **Label** and **Copy of OCI Object Storage Access Logs** for **Filter by log source**.
+3. Specify the **Rule name**. Select **Sensitive Data Access from Threat Tagged Location** for **Label** and **Sensitive Data Access from Threat Tagged Location** for **Filter by log source**.
    ![](./images/detection-rules-create-03.png "UIdescription")
 
 4. Select **Monitoring** for **Target Service**. Specify a **Metric Compartment**, **Metric Namespace** and **Metric Name**. Click on **Create detection rule**.
@@ -144,7 +150,7 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
    The logs file is uploaded successfully.
    ![](./images/upload-logs-11.png "UIdescription")
 
-## **Task 8:**  See Detection Rules and Alarms results
+## **Task 9:**  See Detection Rules and Alarms results
 
 1. Navigate to Detection rules **(see Task 4)** and click on **Sensitive Data Access from Threat Tagged Location** which is the **Detection Rule** we created.
    ![](./images/results-01.png "UIdescription")
@@ -174,4 +180,4 @@ To enable the threat intelligence enrichment feature, Geolocation Field is neede
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
 * **Contributors** -  Kumar Varun, Logging Analytics Product Management - Kiran Palukuri, Logging Analytics Product Management - Vikram Reddy, Logging Analytics Development Team 
-* **Last Updated By/Date** - Oswaldo Osuna, Nov 2 2023
+* **Last Updated By/Date** - Oswaldo Osuna, Nov 3 2023
