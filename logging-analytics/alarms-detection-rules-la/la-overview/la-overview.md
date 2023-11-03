@@ -242,6 +242,6 @@ For further reading please refer to the resources.
 [Upload Logs on Demand] (https://docs.oracle.com/en-us/iaas/logging-analytics/doc/upload-logs-demand.html)
 
 ## Acknowledgements
-* **Author** - Vikram Reddy , OCI Logging Analytics
-* **Contributors** -  Vikram Reddy, Santhosh Kumar Vuda , OCI Logging Analytics
-* **Last Updated By/Date** - Vikram Reddy, Aug, 2023
+* **Author** - Chintan Kalsaria , OCI Logging Analytics
+* **Contributors** -  Chintan Kalsaria, Santhosh Kumar Vuda , OCI Logging Analytics
+* **Last Updated By/Date** - Chintan Kalsaria, Aug, 2023
