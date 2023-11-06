@@ -67,13 +67,13 @@ In this lab, you will:
 ## **Task 4:**  Create User Defined Source
 
 1. Click on **Create Source**.
-   ![](./images/source-create-button.png "UIdescription")
-
-2. Specify the **Name** and **Description (optional)**. Select **File** as **Source Type**. Select **Network Firewall** at **Entity Types**.
    ![](./images/source-create-01.png "UIdescription")
 
-3. Mark the **Specific parser(s)** option. Then, select **F5 Firewall System Application**.
+2. Specify the **Name** and **Description (optional)**. Select **File** as **Source Type**. Select **Network Firewall** at **Entity Types**.
    ![](./images/source-create-02.png "UIdescription")
+
+3. Mark the **Specific parser(s)** option. Then, select **F5 Firewall System Application**.
+   ![](./images/source-create-03.png "UIdescription")
 
 ## **Task 5:**  Add Extended Fields
 
@@ -197,7 +197,7 @@ In this lab, you will:
   The log search is saved successfully.
    ![](./images/log-search-create-07.png "UIdescription")
 
-## **Task 13:**  Navigate to Detection Rules
+## **Task 12:**  Navigate to Detection Rules
 
 1. Click on the **Administration** option inside the drop-down menu to access to **Administration Overview**.
    ![](./images/admin-access.png "UIdescription")
@@ -208,7 +208,7 @@ In this lab, you will:
   Now you are in **Detection Rules**.
    ![](./images/detection-rules.png "UIdescription")
 
-## **Task 14:**  Create Scheduled search detection rule
+## **Task 13:**  Create Scheduled search detection rule
 
 1. Click on **Create** inside **Detection Rules** page to start creating a new detection rule.
    ![](./images/scheduled-search-create-01.png "UIdescription")
@@ -225,7 +225,7 @@ In this lab, you will:
   The detection rule is saved successfully.
    ![](./images/scheduled-search-create-05.png "UIdescription")
 
-## **Task 15:**  Create Alarm
+## **Task 14:**  Create Alarm
 
 1. Click on **Problem Labels for Custom Apps-Logs** Scheduled search type.
    ![](./images/scheduled-search-alarm-01.png "UIdescription")
@@ -248,8 +248,34 @@ In this lab, you will:
    The alarm is saved successfully.
    ![](./images/scheduled-search-alarm-07.png "UIdescription")
 
+## **Task 15:**  See Detection Rules and Alarms results
+
+1. Navigate to Detection rules **(see Task 12)** and click on **Problem Labels for Custom Apps-Logs** which is the **Detection Rule** we created.
+   ![](./images/results-01.png "UIdescription")
+
+2. At **Results** we can see there has been a **Security Problem**.
+   ![](./images/results-02.png "UIdescription")
+
+3. Click on **View In Metric Explorer**.
+   ![](./images/results-03.png "UIdescription")
+
+4. We can see the same result in the **Metrics Explorer** view.
+   ![](./images/results-04.png "UIdescription")
+
+5. Click on the **Navigation menu**.
+   ![](./images/results-05.png "UIdescription")
+
+6. Click on **Observability and Management**. Then, click on **Alarm Definitions** inside **Monitoring**.
+   ![](./images/results-06.png "UIdescription")
+
+7. Click on **Problem Labels for Custom Apps-Logs**.
+   ![](./images/results-07.png "UIdescription")
+
+8. We can see the alarm is **Firing**.
+   ![](./images/results-08.png "UIdescription")
+
 
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
 * **Contributors** -  Kumar Varun, Logging Analytics Product Management - Kiran Palukuri, Logging Analytics Product Management - Vikram Reddy, Logging Analytics Development Team 
-* **Last Updated By/Date** - Oswaldo Osuna, Oct 25 2023
+* **Last Updated By/Date** - Oswaldo Osuna, Nov 6 2023
