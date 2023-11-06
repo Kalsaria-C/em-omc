@@ -140,7 +140,10 @@ In this lab, you will:
    ![](./images/upload-logs-03.png "UIdescription")
 
 4. Download sample logs file for [Log Sample](./files/f5-firewall-logs.log)</br>
-   Click on **Select Files** and select the **f5-firewall-logs.log** file.
+   Tweak the file **f5-firewall-logs.log** so the date of the log is less than 1 hour before current UTC time.
+   ![](./images/tweak-logs-01.png "UIdescription")
+
+5. Click on **Select Files** and select the **f5-firewall-logs.log** file.
    ![](./images/upload-logs-04.png "UIdescription")
    ![](./images/upload-logs-05.png "UIdescription")
 
