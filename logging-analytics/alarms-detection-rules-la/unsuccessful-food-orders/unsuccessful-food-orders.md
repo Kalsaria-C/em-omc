@@ -16,6 +16,10 @@ In this lab you will:
 * Visualize parsed data in explorer.
 * Create alarms for more than 30% unsuccessful orders in 15 mins
 
+### Prerequisites
+
+abc
+
 ## Task 1: Understand Parsers
 
 A Parser takes raw configuration data and parses it into a nested attribute structure. Each parser consists of a base parser and parser parameters. Some parsers also contain post-parsing rules. A base parser essentially is a category of parser capable of parsing data of a particular format. Parser parameters provide a way to tailor the base format to accommodate variations in data formatting.
@@ -35,7 +39,7 @@ In this task you will learn how to create a Regex single-line parser.
 
 1. From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Parsers box** > **Create Parser**.
 
-![parser-navigation](images/parser-navigation.gif)
+    ![parser-navigation](images/parser-navigation.gif)
 
 2. Create Parser page opens. Click on **Create Parser**. Dropdown list of four types of parser will appear. Click on **Regex type** to create a Regex Parser.
 
@@ -85,7 +89,7 @@ qwertyuiop
 
 qwertyuiop
 
-You may now proceed to the [next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Learn More
 
