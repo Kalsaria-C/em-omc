@@ -107,6 +107,8 @@ In this lab, you will:
 
 3. Select a **Compartment**. Then, select the **Metric namespace** and **Metric name** we created for the **Detection Rules**. Set the **Interval** for **30 minutes**. Finally, select **Count** for **Statistic**.
 
+## **Task 9:**  See Detection Rules and Alarms results
+
 
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team

@@ -90,26 +90,20 @@ In this lab, you will:
 
 ## **Task 5:**  Add Labels
 
-1. Click on **Labels** and on **Add conditional field**.
+1. Click on **Labels** and on **Add conditional label**.
    ![](./images/sources-create-04.png "UIdescription")
 
 2. Select **Destination IP** as **Input Field** and **Not In** as **Operator**. Add the following IPv4 addresses to **Condition Value**: 192.168.1.10, 10.0.0.5, 192.168.2.20, 10.1.1.1
    ![](./images/sources-create-05.png "UIdescription")
 
-3. Click on **Create New Field**.
+3. Click on **Create Label**.
    ![](./images/sources-create-06.png "UIdescription")
 
-4. Specify a **Name**, **Data Type** and **Description (optional)**. Click on **Create**.
+4. Specify a **Label** and **Description (optional)**. Check **Detonates Problem** and select **High** as **Problem Priority**.
    ![](./images/sources-create-07.png "UIdescription")
 
-   The field is added successfully.
+5. Click on **Create**.
    ![](./images/sources-create-08.png "UIdescription")
-
-5. Specify an **Output Value**.
-   ![](./images/sources-create-09.png "UIdescription")
-
-6. Click on **Add**.
-   ![](./images/sources-create-10.png "UIdescription")
 
 ## **Task 6:**  Save User Defined Source
 
@@ -366,4 +360,4 @@ In this lab, you will:
 ## Acknowledgements
 * **Author** - Oswaldo Osuna, Logging Analytics Development Team
 * **Contributors** -  Kumar Varun, Logging Analytics Product Management - Kiran Palukuri, Logging Analytics Product Management - Vikram Reddy, Logging Analytics Development Team 
-* **Last Updated By/Date** - Oswaldo Osuna, Nov 2 2023
+* **Last Updated By/Date** - Oswaldo Osuna, Nov 9 2023
