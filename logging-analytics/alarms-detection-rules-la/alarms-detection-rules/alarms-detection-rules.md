@@ -4,7 +4,7 @@
 
 In this lab, you will understand the concept of Alarms and Detection rules in Logging Analytics.
 
-Estimated Time: 40 minutes.
+Estimated Time: 30 minutes.
 
 ### Objectives
 
@@ -17,7 +17,9 @@ In this lab you will:
 
 ### Prerequisites
 
-abc
+This lab assumes you have:
+
+* An Oracle Cloud Infrastructure account.
 
 ## Task 1:  Understanding Detection Rules
 
@@ -34,6 +36,10 @@ There are two types of Detection rules:
 2. **Ingest time detection rule:** Rule applied at time of log ingestion, and sends the result of rule to Monitoring service. There are many ways to ingest logs like, on demand upload, using service collectors, using historic object collection, etc.
 
 ## Task 3: Create Detection Rules
+
+TODO:Policy add
+TODO:See if there is another method to go to that option
+TODO:Confluence page update karo
 
 In this task you will learn how to create a Ingest time detection rule.
 
@@ -184,5 +190,5 @@ For further reading please refer to the resources.
 ## Acknowledgements
 
 * **Author** - Chintan Kalsaria, OCI Logging Analytics
-* **Contributors** -  Kiran Palukuri, Santhosh Kumar Vuda, Venkataramana Manikyam, OCI Logging Analytics
-* **Last Updated By/Date** - Chintan Kalsaria, Oct, 2023
+* **Contributors** -  Chintan Kalsaria, Kiran Palukuri, Ashish Gor, Kumar Varun, OCI Logging Analytics
+* **Last Updated By/Date** - Chintan Kalsaria, Nov, 2023
