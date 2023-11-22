@@ -43,12 +43,9 @@ The login activity records can be found in the Audit logs of your OCI tenancy (O
 
 Follow these steps to monitor the failed login attempts:
 
-1. Step 1
+1. Navigate to the logs explorer (Follow the instructions on [Lab 1: Logging Analytics Overview](?lab=la-overview#Task1:NavigatingtoLogExplorer) for more information).
 
-  Navigate to the logs explorer (Follow the instructions on [1. Logging Analytics Overview](?lab=la-overview#Task1:NavigatingtoLogExplorer) for more information).
-2. Step 2 (Optional)
-
-  To see your logs in the query explorer. A log set should be set, *Jump to step 3* if you see a figure like bellow:
+2. (Optional) To see your logs in the query explorer. A log set should be set, *Jump to step 3* if you see a figure like bellow:
   ![Figure 2: State of log set when already set](images/log-set-inited-in-log-explorer.png)
 
   To set the log set to '\*' and see your logs:
@@ -59,13 +56,13 @@ Follow these steps to monitor the failed login attempts:
     1. Click on the log set icon
     2. Insert '\*' in the **"Log Set"** input & hit the enter from your keyboard. A tag with '\*' will appear inside the input
     3. Click on **"apply"**
-3. Step 3
 
-  To query the result, Copy and Run the query bellow in the query input.
+3. To query the result, Copy and Run the query bellow in the query input.
 
     ```MQL
     <copy>'Log Source' = 'OCI Audit Logs' and Event = interactivelogin and Status = '400' and Message = 'InteractiveLogin failed' | distinct 'Client Host City', 'User Name'</copy>
     ```
+
     **Explanation:**
 
       This query selects the **distinct regions** and **usernames** from 'OCI Audit Logs' log source's logs that have:
@@ -73,9 +70,8 @@ Follow these steps to monitor the failed login attempts:
       * An *"InteractiveLogin"* Event
       * a status of *400* (Meaning the operation failed with Bad Request status)
       * *'InteractiveLogin failed'* Message to be sure to only catch logs where the login failed.
-4. Step 4
 
-  To save the search:
+4. To save the search:
   ![Figure 4: Open the Saved Search save panel](images/open-saved-search-save-panel.png)
   ![Figure 5: Save the "Log Explorer" Search](images/save-search-from-log-explorer.png)
 
@@ -87,37 +83,31 @@ Follow these steps to monitor the failed login attempts:
     5. Feel free to add a **description** to your saved search
     6. Hit the **"save"** button
 
-Now our saved search is ready to be used to create Detection Rules
+Now our saved search is ready to be used to create Detection Rules.
 
 ## Task 3: Create the Scheduled Detection rule
 
-1. Step 1
-
-  To create a scheduled rule from the saved search, click on **"Actions"** and select "Create Detection Rule".
+1. To create a scheduled rule from the saved search, click on **"Actions"** and select "Create Detection Rule".
 
   ![Figure 6: Open the Detection Rule's creation Panel](images/open-detection-rule-creation-panel.png)
-2. Step 2
 
-  Fill the required fields then hit the save button.
+2. Fill the required fields then hit the save button.
 
   ![Figure 7: Create a Detection Rule from the Saved Search](images/create-detection-rule-from-saved-search.png)
 
   **Explanation:**
 
   Fill the Detection Rule's fields:
-
     1. **Rule name:** The name of your Detection Rule.
     2. **Metric Compartment:** Your metrics compartment.
     3. **Metric Namespace:** A friendly name for your metrics Namespace (We will use "" for the rest of the live lab).
     4. **Metric Name:** A friendly name for your Metric (We will use "" for the rest of the live lab).
     5. **Interval:** The interval after which the Detection Rule should be re-run, We will set it to 5 min in this live lab.
-
-  Hit the "Save" button when done
+    6. Hit the "Save" button when done
 
   **P.S:** The metric namespace and metric name will be used to create the alarms in a later Task in this live lab.
-3. Step 3
 
-  To create an alarm from a scheduled Detection Rule with a new metric, an event should be triggered first, The fastest way to achieve this is by signing in to your tenancy with a wrong password.
+3. To create an alarm from a scheduled Detection Rule with a new metric, an event should be triggered first, The fastest way to achieve this is by signing in to your tenancy with a wrong password.
 
   The results should appear in the Detection Rule's Page under the Results histogram. You can change the time range for the detection rule, the statistic and the interval.
 
@@ -131,9 +121,7 @@ Now our saved search is ready to be used to create Detection Rules
 
 Alarms let you generate an alert and notify the desired recipients when a predefined threshold is reached. Alarms are handled by a separate service OCI "Monitoring" service.
 
-1. Step 1
-
-  Alarms can be made via several ways. For this specific use case, the recommended way is to create it from the Detection Rule page:
+1. Alarms can be made via several ways. For this specific use case, the recommended way is to create it from the Detection Rule page:
 
   ![Figure 9: Open the Alarm creation page from a detection rule](images/open-alarm-creation-page-from-dr-page.png)
 
@@ -144,6 +132,7 @@ Alarms let you generate an alert and notify the desired recipients when a predef
   ![Figure 10: Fill the define section field of the alarm](images/create-alarm-definition-section.png)
   ![Figure 11: Fill the trigger condition section of the alarm](images/create-alarm-trigger-condition-section.png)
   ![Figure 12: Fill the notification section then save](images/create-alarm-notfication-section-and-save.png)
+
   **Explanation:**
     1. Fill the alarm name, severity and body.
     2. Click on "Switch to Advanced Mode".
@@ -156,15 +145,13 @@ Alarms let you generate an alert and notify the desired recipients when a predef
     4. Choose a valid statistic & interval. In this lab, we will select *count* as a statistic & *5 minutes* as the interval
     5. Set a valid interval where the state should be sustained before the alarm triggers.
     6. Select the Destination of your notification, create a new one if you do not have one already set by clicking on "Create a topic" button.
-2. Step 2
 
-  Because it is impractical to attempt sign in with a wrong password from multiple geographic regions, to verify the alarm, create and use a sample log file by:
+2. Because it is impractical to attempt sign in with a wrong password from multiple geographic regions, to verify the alarm, create and use a sample log file by:
 
   ![Figure 13: Copy the logs to VS Code](images/sample-audit-logs.png)
 
   **Explanation:**
     1. Copy these logs in your text editor (Preferably VS Code).
-
       ```json
       <copy>
         {
@@ -207,16 +194,12 @@ Alarms let you generate an alert and notify the desired recipients when a predef
           217.128.212.236
           17.241.30.58
         ```
-
     3. Duplicate this sample log enough times to trigger the alarm (in this tutorial the alarm is triggered after 5 times, meaning we will duplicate our logs 5 times in the file), Pay attention to the date and the Ip address.
-
     4. Edit the time field to a valid datetime in the upcoming 3-5 minutes.
 
-    5. Duplicate your final logs another time and increment the time in the newly duplicated logs by 1 minute.
+2. Duplicate your final logs another time and increment the time in the newly duplicated logs by 1 minute.
 
-3. Step 3
-
-  By now, you should have a file with logs triggering the alarm.
+3. By now, you should have a file with logs triggering the alarm.
 
   When the logs ready, Upload them into your "OCI Audit Logs" source:
     1. Go back to **"Administration"** > **"Sources"**.
@@ -232,6 +215,8 @@ Alarms let you generate an alert and notify the desired recipients when a predef
     8. Click on "Close" and wait a little while for the file to be processed then for its logs to show of in the services (Log Explorer, Detection Rule, etc...).
 
   When the logs are ready, your alarm should be triggered and you should receive a notification in your topic.
+
+You may now **proceed to the next lab**.
 
 ## Learn More
 
