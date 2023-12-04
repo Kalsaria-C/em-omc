@@ -67,7 +67,7 @@ Duration: 10 minutes
 
 3. Specify an **Upload Name** and **Log Group Compartment**.
 
-4. Click on **Create Log Group** or use and existing one.
+4. Select a **Log Group** or create a new one.
 
 5. If you decided to create a **Log Group** specify a **Name** and **Description (optional)** and click on **Create**.
 
@@ -81,14 +81,14 @@ Duration: 10 minutes
 
 9. Click on **Next**.
 
-10. Click on **Set Properties**.
+10. Then click on **Set Properties**.
 
 11. At **Source**, select **DNS Exfiltration on Windows Systems** which is the source we created previously and click on **Save Changes**.
    ![](./images/upload-logs-03.png "UIdescription")
 
 12. Click on **Next**.
 
-13. Click on **Upload**.
+13. Then click on **Upload**.
 
 14. When the **Submission Status** is **Success**, click on **Close**.
 
