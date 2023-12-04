@@ -1,0 +1,260 @@
+{
+  "data": {
+    "availabilityDomain": "AD1",
+    "compartmentId": "ocid1.tenancy.uniqueId",
+    "compartmentName": "<your-tenancy>",
+    "eventName": "InteractiveLogin",
+    "identity": {
+      "ipAddress": "17.241.30.58",
+      "principalId": "ocid1.user.oc1.uniqueId",
+      "principalName": "livelabsuser",
+      "tenantId": "ocid1.tenancy.uniqueId",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "message": "InteractiveLogin failed",
+    "response": {
+      "payload": {
+        "login_input": "tenant: <your-tenancy>, user: livelabsuser",
+        "login_result": "PASSWORD_INVALID"
+      },
+      "responseTime": "2023-11-13T10:25:30.589Z",
+      "status": "400"
+    }
+  },
+  "time": "2023-11-14T15:26:30.589Z",
+  "type": "com.oraclecloud.IdentitySignOn.InteractiveLogin"
+}
+{
+  "data": {
+    "availabilityDomain": "AD1",
+    "compartmentId": "ocid1.tenancy.uniqueId",
+    "compartmentName": "<your-tenancy>",
+    "eventName": "InteractiveLogin",
+    "identity": {
+      "ipAddress": "217.128.212.236",
+      "principalId": "ocid1.user.oc1.uniqueId",
+      "principalName": "livelabsuser",
+      "tenantId": "ocid1.tenancy.uniqueId",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "message": "InteractiveLogin failed",
+    "response": {
+      "payload": {
+        "login_input": "tenant: <your-tenancy>, user: livelabsuser",
+        "login_result": "PASSWORD_INVALID"
+      },
+      "responseTime": "2023-11-13T10:25:30.589Z",
+      "status": "400"
+    }
+  },
+  "time": "2023-11-14T15:26:30.589Z",
+  "type": "com.oraclecloud.IdentitySignOn.InteractiveLogin"
+}
+{
+  "data": {
+    "availabilityDomain": "AD1",
+    "compartmentId": "ocid1.tenancy.uniqueId",
+    "compartmentName": "<your-tenancy>",
+    "eventName": "InteractiveLogin",
+    "identity": {
+      "ipAddress": "40.39.48.34",
+      "principalId": "ocid1.user.oc1.uniqueId",
+      "principalName": "livelabsuser",
+      "tenantId": "ocid1.tenancy.uniqueId",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "message": "InteractiveLogin failed",
+    "response": {
+      "payload": {
+        "login_input": "tenant: <your-tenancy>, user: livelabsuser",
+        "login_result": "PASSWORD_INVALID"
+      },
+      "responseTime": "2023-11-13T10:25:30.589Z",
+      "status": "400"
+    }
+  },
+  "time": "2023-11-14T15:26:30.589Z",
+  "type": "com.oraclecloud.IdentitySignOn.InteractiveLogin"
+}
+{
+  "data": {
+    "availabilityDomain": "AD1",
+    "compartmentId": "ocid1.tenancy.uniqueId",
+    "compartmentName": "<your-tenancy>",
+    "eventName": "InteractiveLogin",
+    "identity": {
+      "ipAddress": "196.220.230.205",
+      "principalId": "ocid1.user.oc1.uniqueId",
+      "principalName": "livelabsuser",
+      "tenantId": "ocid1.tenancy.uniqueId",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "message": "InteractiveLogin failed",
+    "response": {
+      "payload": {
+        "login_input": "tenant: <your-tenancy>, user: livelabsuser",
+        "login_result": "PASSWORD_INVALID"
+      },
+      "responseTime": "2023-11-13T10:25:30.589Z",
+      "status": "400"
+    }
+  },
+  "time": "2023-11-14T15:26:30.589Z",
+  "type": "com.oraclecloud.IdentitySignOn.InteractiveLogin"
+}
+{
+  "data": {
+    "availabilityDomain": "AD1",
+    "compartmentId": "ocid1.tenancy.uniqueId",
+    "compartmentName": "<your-tenancy>",
+    "eventName": "InteractiveLogin",
+    "identity": {
+      "ipAddress": "22.60.240.244",
+      "principalId": "ocid1.user.oc1.uniqueId",
+      "principalName": "livelabsuser",
+      "tenantId": "ocid1.tenancy.uniqueId",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "message": "InteractiveLogin failed",
+    "response": {
+      "payload": {
+        "login_input": "tenant: <your-tenancy>, user: livelabsuser",
+        "login_result": "PASSWORD_INVALID"
+      },
+      "responseTime": "2023-11-13T10:25:30.589Z",
+      "status": "400"
+    }
+  },
+  "time": "2023-11-14T15:26:30.589Z",
+  "type": "com.oraclecloud.IdentitySignOn.InteractiveLogin"
+}
+{
+  "data": {
+    "availabilityDomain": "AD1",
+    "compartmentId": "ocid1.tenancy.uniqueId",
+    "compartmentName": "<your-tenancy>",
+    "eventName": "InteractiveLogin",
+    "identity": {
+      "ipAddress": "17.241.30.58",
+      "principalId": "ocid1.user.oc1.uniqueId",
+      "principalName": "livelabsuser",
+      "tenantId": "ocid1.tenancy.uniqueId",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "message": "InteractiveLogin failed",
+    "response": {
+      "payload": {
+        "login_input": "tenant: <your-tenancy>, user: livelabsuser",
+        "login_result": "PASSWORD_INVALID"
+      },
+      "responseTime": "2023-11-13T10:25:30.589Z",
+      "status": "400"
+    }
+  },
+  "time": "2023-11-14T15:27:30.589Z",
+  "type": "com.oraclecloud.IdentitySignOn.InteractiveLogin"
+}
+{
+  "data": {
+    "availabilityDomain": "AD1",
+    "compartmentId": "ocid1.tenancy.uniqueId",
+    "compartmentName": "<your-tenancy>",
+    "eventName": "InteractiveLogin",
+    "identity": {
+      "ipAddress": "217.128.212.236",
+      "principalId": "ocid1.user.oc1.uniqueId",
+      "principalName": "livelabsuser",
+      "tenantId": "ocid1.tenancy.uniqueId",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "message": "InteractiveLogin failed",
+    "response": {
+      "payload": {
+        "login_input": "tenant: <your-tenancy>, user: livelabsuser",
+        "login_result": "PASSWORD_INVALID"
+      },
+      "responseTime": "2023-11-13T10:25:30.589Z",
+      "status": "400"
+    }
+  },
+  "time": "2023-11-14T15:27:30.589Z",
+  "type": "com.oraclecloud.IdentitySignOn.InteractiveLogin"
+}
+{
+  "data": {
+    "availabilityDomain": "AD1",
+    "compartmentId": "ocid1.tenancy.uniqueId",
+    "compartmentName": "<your-tenancy>",
+    "eventName": "InteractiveLogin",
+    "identity": {
+      "ipAddress": "40.39.48.34",
+      "principalId": "ocid1.user.oc1.uniqueId",
+      "principalName": "livelabsuser",
+      "tenantId": "ocid1.tenancy.uniqueId",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "message": "InteractiveLogin failed",
+    "response": {
+      "payload": {
+        "login_input": "tenant: <your-tenancy>, user: livelabsuser",
+        "login_result": "PASSWORD_INVALID"
+      },
+      "responseTime": "2023-11-13T10:25:30.589Z",
+      "status": "400"
+    }
+  },
+  "time": "2023-11-14T15:27:30.589Z",
+  "type": "com.oraclecloud.IdentitySignOn.InteractiveLogin"
+}
+{
+  "data": {
+    "availabilityDomain": "AD1",
+    "compartmentId": "ocid1.tenancy.uniqueId",
+    "compartmentName": "<your-tenancy>",
+    "eventName": "InteractiveLogin",
+    "identity": {
+      "ipAddress": "196.220.230.205",
+      "principalId": "ocid1.user.oc1.uniqueId",
+      "principalName": "livelabsuser",
+      "tenantId": "ocid1.tenancy.uniqueId",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "message": "InteractiveLogin failed",
+    "response": {
+      "payload": {
+        "login_input": "tenant: <your-tenancy>, user: livelabsuser",
+        "login_result": "PASSWORD_INVALID"
+      },
+      "responseTime": "2023-11-13T10:25:30.589Z",
+      "status": "400"
+    }
+  },
+  "time": "2023-11-14T15:27:30.589Z",
+  "type": "com.oraclecloud.IdentitySignOn.InteractiveLogin"
+}
+{
+  "data": {
+    "availabilityDomain": "AD1",
+    "compartmentId": "ocid1.tenancy.uniqueId",
+    "compartmentName": "<your-tenancy>",
+    "eventName": "InteractiveLogin",
+    "identity": {
+      "ipAddress": "22.60.240.244",
+      "principalId": "ocid1.user.oc1.uniqueId",
+      "principalName": "livelabsuser",
+      "tenantId": "ocid1.tenancy.uniqueId",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0"
+    },
+    "message": "InteractiveLogin failed",
+    "response": {
+      "payload": {
+        "login_input": "tenant: <your-tenancy>, user: livelabsuser",
+        "login_result": "PASSWORD_INVALID"
+      },
+      "responseTime": "2023-11-13T10:25:30.589Z",
+      "status": "400"
+    }
+  },
+  "time": "2023-11-14T15:27:30.589Z",
+  "type": "com.oraclecloud.IdentitySignOn.InteractiveLogin"
+}

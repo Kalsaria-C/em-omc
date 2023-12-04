@@ -24,17 +24,17 @@
         },
         {
 			"title": "Lab 3: Oracle Database Abnormal Termination",
-			"description": "",
-			"filename": "../../create-oracle-database-abnormal-termination-detection-rules/create-oracle-database-abnormal-termination-detection-rules.md"
+			"description": "Step-by-step guide to create an 'Abnormal Termination' Detection Rule & alarms from it",
+			"filename": "../../oracle-database-abnormal-termination/oracle-database-abnormal-termination.md"
 		},
         {
 			"title": "Lab 4: Sensitive Configuration and Privilege Escalation",
-			"description": "",
+			"description": "Step-by-step guide to create a custom label and conditionally attach it to logs & alarms from it",
 			"filename": "../../sensitive-configuration-and-privilege-escalation/sensitive-configuration-and-privilege-escalation.md"
 		},
 		{
 			"title": "Lab 5: Suspicious Activity and Data Exfiltration",
-			"description": "",
+			"description": "Step-by-step guide to create a Saved Search and attach it to a Scheduled Detection Rule & alarms from it",
 			"filename": "../../suspicious-activity-and-data-exfiltration/suspicious-activity-and-data-exfiltration.md"
 		},
         {

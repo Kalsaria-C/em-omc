@@ -8,31 +8,23 @@ Estimated Time: 5 minutes
 
 ### Objectives
 
-In this lab, you will familiarize with:
+In this lab, you will:
 
-* Navigating to Log Explorer
-* User interfaces of Log Explorer
-* Discovering & enabling OCI Service Logs in bulk
-* Collecting new logs (log sources) for existing entities
+* Learn to navigate to Log Explorer
+* Familiarize with user interfaces of Log Explorer
+* Discover & enable OCI Service Logs in bulk
+* Collect new logs (log sources) for existing entities
 
 ### Prerequisites
 
-abc
+This lab assumes you have:
+
+* An Oracle Cloud Infrastructure account
 
 ## Task 1:  Navigating to Log Explorer
 
-To navigate to Log Explorer, follow one of the below two methods.
-
-1. From Navigation Menu ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Log Explorer**.
+From Navigation Menu ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Log Explorer**.
 ![log-explorer-navigation](./images/log-explorer-navigation.gif)
-
-2. You can also copy-paste the following link in your browser's address bar to navigate to the Log Explorer.
-
-    ```link
-         <copy>
-            https://cloud.oracle.com/loganalytics/explorer?region=us-phoenix-1
-         </copy>
-    ```
 
 ## Task 2:  User interfaces of Log Explorer
 
@@ -57,13 +49,13 @@ Here are the main parts of the user interface that will be used throughout this 
 
 The Add Data Page lists the different mechanisms through which the user can ingest data to Logging Analytics.
 
-1. Monitor OCI core infrastructure : Allows user setting up data ingestion using Service Connector.
+1. **Monitor OCI core infrastructure:** Allows user setting up data ingestion using Service Connector.
 
-2. Monitor apps and on-premises infrastructure : Allows user setting up data ingestion using Management Agent.
+2. **Monitor apps and on-premises infrastructure:** Allows user setting up data ingestion using Management Agent.
 
-3. Advanced collection methods : Allows user to upload the data from there computer desktop. This mechanism will be used if user wants to ingest log files without continuously collecting them using the Service Connector or  Management Agent.
+3. **Advanced collection methods:** Allows user to upload the data from there computer desktop. This mechanism will be used if user wants to ingest log files without continuously collecting them using the Service Connector or Management Agent.
 
-There are three ways to navigate to the **Add Data** page.
+There are two ways to navigate to the **Add Data** page.
 
 ### **Option 1 : Using Compass icon**
 
@@ -85,19 +77,6 @@ There are three ways to navigate to the **Add Data** page.
 ![add-data-via-administration](./images/add-data-via-administration.png)
 
 3. Add Data page will be displayed.
-![add-data-page](./images/add-data-page.png)
-
-### **Option 3 : Direct Link**
-
-1. You can also copy-paste the following link in your browser's address bar to navigate to the Add Data page.
-
-    ```link
-    <copy>
-         https://cloud.oracle.com/loganalytics/add_data?region=us-phoenix-1
-    </copy>
-    ```
-
-2. Add Data page will be displayed.
 ![add-data-page](./images/add-data-page.png)
 
 ## (Reading Exercise Only) Task 4: Ingesting logs using Service Connector
@@ -148,11 +127,11 @@ This task will walk you through the steps for setting up Log collection with Man
 
 1. Required entities have been created, entity properties have been set, and entity has been mapped with an agent which has access to the entity's logs.
 
-2. Users can select a specific entity type (database)
+2. Users can select a specific entity type (database).
 
 3. Each Log Source has one or more target entity-types. This information is used to identify and configure which logs can be collected for an entity.
 
-The following gif shows the steps for setting up Log collection with Management Agent.
+The following GIF shows the steps for setting up Log collection with Management Agent.
 
 ![management-agent-log-configuration](./images/management-agent-log-configuration.gif)
 
@@ -174,7 +153,8 @@ The following gif shows the steps for setting up Log collection with Management 
 5. Upload files page will be displayed.
 ![upload-files-page](./images/upload-files-page.png)
 
-6. In the Upload Files Page, perform the following actions
+6. In the Upload Files Page, perform the following actions:
+
     * **Upload Name** - Specify any text value.
 
     * **Log Group Compartment** - Select your user's Log Group Compartment from the dropdown.
@@ -233,6 +213,6 @@ For further reading please refer to the resources.
 
 ## Acknowledgements
 
-* **Author** - Chintan Kalsaria , OCI Logging Analytics
-* **Contributors** -  Chintan Kalsaria, Santhosh Kumar Vuda, OCI Logging Analytics
+* **Author** - Chintan Kalsaria, OCI Logging Analytics
+* **Contributors** -  Chintan Kalsaria, Kiran Palukuri, Ashish Gor, Kumar Varun, OCI Logging Analytics
 * **Last Updated By/Date** - Chintan Kalsaria, Nov, 2023
