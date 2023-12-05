@@ -215,4 +215,4 @@ For further reading please refer to the resources.
 
 * **Author** - Chintan Kalsaria, OCI Logging Analytics
 * **Contributors** -  Chintan Kalsaria, Kiran Palukuri, Ashish Gor, Kumar Varun, OCI Logging Analytics
-* **Last Updated By/Date** - Chintan Kalsaria, Nov, 2023
+* **Last Updated By/Date** - Chintan Kalsaria, Nov 2023

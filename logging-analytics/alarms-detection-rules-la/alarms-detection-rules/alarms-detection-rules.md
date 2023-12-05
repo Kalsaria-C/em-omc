@@ -35,11 +35,24 @@ There are two types of Detection rules:
 
 2. **Ingest time detection rule:** Rule applied at time of log ingestion, and sends the result of rule to Monitoring service. There are many ways to ingest logs like, on demand upload, using service collectors, using historic object collection, etc.
 
-## Task 3: Create Detection Rules
+## Task 3: Check the Policies
 
-TODO:Policy add
-TODO:See if there is another method to go to that option
-TODO:Confluence page update karo
+To create and manage Detection Rules and use them in the Monitoring Service, the correct policies need to be set:
+
+  ```
+    <copy>Policies allow group &lt;group name&gt; to manage loganalytics-ingesttime-rule in tenancy
+    allow service loganalytics to use metrics in tenancy</copy>
+  ```
+
+Replace the group name with whatever group fills your needs, be sure that your user is part of that group.
+
+To set the policies go to **"Identity & Security"** > **"Identity"** > **"Policies"**
+
+![go-to-policies-tab](images/go-to-policies-tab.png)
+
+Here you can create a new policy or edit an existing one to contain the needed policies.
+
+## Task 4: Create Detection Rules
 
 In this task you will learn how to create a Ingest time detection rule.
 
@@ -74,13 +87,26 @@ For creating a detection rule, you need a log source and entity associated with 
 
 When the match specified in the log source is encountered in the log record while ingesting, a metric value is posted to OCI Monitoring service. You can get alerts from OCI Monitoring service by configuring an alarm on that metric.
 
-## Task 4: Create Alarms and Notifications
+## Task 5: Create Alarms and Notifications
 
-1. From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Status**.
-    * Here, all the alarms fired by the events in Logging Analytics are consolidated. The table displays the alarm name, its severity, the time when it was triggered, and whether it is suppressed or not.
-    * Select the **Compartment** of your alarms in the **Scope section**.
-    * Click on the **Create Alarm**. The Create Alarm dialog box opens.
+1. There are 2 two ways to navigate to **Create Alarm Page**:
+
+### **Option 1:**
+
+From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Status**.
+
+* Here, all the alarms fired by the events in Logging Analytics are consolidated. The table displays the alarm name, its severity, the time when it was triggered, and whether it is suppressed or not.
+* Select the **Compartment** of your alarms in the **Scope section**.
+* Click on the **Create Alarm**. The Create Alarm dialog box opens.
 ![alarms-navigation](images/alarm-navigation.gif)
+
+### **Option 2:**
+
+* After creating a Detection rule, you will land up on detection rules page, where you will able to see all the detection rules. Click on the detection rule which you made just now i.e. **Livelab\_detection\_rule**.
+![detection-rule-page](images/detection-rule-page.png)
+
+* Click on **Create Alarm** button as seen in figure. The Create Alarm dialog box opens.
+![create-alarm-button](images/create-alarm-button.png)
 
 2. Specify the **Alarm name**. Let's say you named it as **"Livelab_alarm"**.
 
