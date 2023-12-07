@@ -23,72 +23,77 @@
             "filename": "../../create-label/create-label.md"
         },
         {
-            "title": "Lab 3: Create a Source",
+            "title": "Lab 3: Create a Parser",
+            "description": "Step-by-step guide to create a Parser",
+            "filename": "../../create-parser/create-parser.md"
+        },
+        {
+            "title": "Lab 4: Create a Source",
             "description": "Step-by-step guide to create a source",
             "filename": "../../create-source/create-source.md"
         },
         {
-            "title": "Lab 4: Upload a File",
+            "title": "Lab 5: Upload a File",
             "description": "Step-by-step guide to upload a log file from local desktop to OCI console.",
             "filename": "../../upload-log-file/upload-log-file.md"
         },
         {
-            "title": "Lab 5: Create and Trigger a Ingest Time Detection Rule",
+            "title": "Lab 6: Create and Trigger a Ingest Time Detection Rule",
             "description": "Step-by-step guide to create and trigger a ingest time detection rule",
             "filename": "../../create-and-trigger-ingest-time-detection-rule/create-and-trigger-ingest-time-detection-rule.md"
         },
         {
-            "title": "Lab 6: Create a Scheduled Search Detection Rule",
+            "title": "Lab 7: Create a Scheduled Search Detection Rule",
             "description": "Step-by-step guide to create a scheduled search detection rule",
             "filename": "../../create-scheduled-search-detection-rule/create-scheduled-search-detection-rule.md"
         },
         {
-            "title": "Lab 7: Create and Verify an Alarm",
+            "title": "Lab 8: Create and Verify an Alarm",
             "description": "Step-by-step guide to create and verify an Alarm",
             "filename": "../../create-and-verify-alarm/create-and-verify-alarm.md"
         },
         {
-			"title": "Lab 8: Oracle Database Abnormal Termination",
+			"title": "Lab 9: Oracle Database Abnormal Termination",
 			"description": "Step-by-step guide to create an 'Abnormal Termination' Detection Rule & alarms from it",
 			"filename": "../../oracle-database-abnormal-termination/oracle-database-abnormal-termination.md"
 		},
         {
-			"title": "Lab 9: Sensitive Configuration and Privilege Escalation",
+			"title": "Lab 10: Sensitive Configuration and Privilege Escalation",
 			"description": "Step-by-step guide to create a custom label and conditionally attach it to logs & alarms from it",
 			"filename": "../../sensitive-configuration-and-privilege-escalation/sensitive-configuration-and-privilege-escalation.md"
 		},
 		{
-			"title": "Lab 10: Suspicious Activity and Data Exfiltration",
+			"title": "Lab 12: Suspicious Activity and Data Exfiltration",
 			"description": "Step-by-step guide to create a Saved Search and attach it to a Scheduled Detection Rule & alarms from it",
 			"filename": "../../suspicious-activity-and-data-exfiltration/suspicious-activity-and-data-exfiltration.md"
 		},
         {
-			"title": "Lab 11: Container Image Pulled Manually",
+			"title": "Lab 12: Container Image Pulled Manually",
 			"description": "",
 			"filename": "../../container-image-pulled-manually/container-image-pulled-manually.md"
 		},
         {
-            "title": "Lab 12: DNS Exfiltration on Windows Systems",
+            "title": "Lab 13: DNS Exfiltration on Windows Systems",
             "description": "This lab uses labels and SST to identify DNS exfiltration attempts.",
             "filename": "../../dns-exfiltration/dns-exfiltration.md"
         },
         {
-            "title": "Lab 13: Sensitive Data Access from Threat Tagged Location",
+            "title": "Lab 14: Sensitive Data Access from Threat Tagged Location",
             "description": "This lab explains how to create multi-conditional labels, and OOTB Threat score enrichment.",
             "filename": "../../threat-tagged-location/threat-tagged-location.md"
         },
         {
-            "title": "Lab 14: Problem Labels for Custom Apps-Logs",
+            "title": "Lab 15: Problem Labels for Custom Apps-Logs",
             "description": "This lab explains how to create problem labels, EFDs, and new-fields using eval/extract for a cusom log.",
             "filename": "../../problem-labels/problem-labels.md"
         },
         {
-            "title": "Lab 15: Unsuccessful Food Orders",
+            "title": "Lab 16: Unsuccessful Food Orders",
             "description": "This lab explains the guided regex parser creation flow to create single and multi-parser",
             "filename": "../../unsuccessful-food-orders/unsuccessful-food-orders.md"
         },
         {
-            "title": "Lab 16: Logs from DB Tables",
+            "title": "Lab 17: Logs from DB Tables",
             "description": "This lab explains how to create a DB table log-source.",
             "filename": "../../logs-db/logs-db.md"
         },
