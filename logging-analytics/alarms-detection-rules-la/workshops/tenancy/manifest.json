@@ -63,7 +63,7 @@
 			"filename": "../../sensitive-configuration-and-privilege-escalation/sensitive-configuration-and-privilege-escalation.md"
 		},
 		{
-			"title": "Lab 12: Suspicious Activity and Data Exfiltration",
+			"title": "Lab 11: Suspicious Activity and Data Exfiltration",
 			"description": "Step-by-step guide to create a Saved Search and attach it to a Scheduled Detection Rule & alarms from it",
 			"filename": "../../suspicious-activity-and-data-exfiltration/suspicious-activity-and-data-exfiltration.md"
 		},
