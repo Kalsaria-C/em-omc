@@ -205,7 +205,7 @@ You will be creating two detection rules, one in which you will classify and lab
 
 18. A **python script** is attached with this lab. Download it, run it. A file named **logrecords\_for\_livelab.txt** will be created at the location, where this script is executed. These file will contains 1000 random log records, generated in interval of your current UTC time and 2 hours before your current UTC time.
 
-    > **NOTE :** Alarm only works if the logs are not more than 2 hours older.
+    >**NOTE :** Alarm only works if the logs are not more than 2 hours older.
 
 19. Refer to **Step 7 of Task:3**, for uploading the local file to console. Once the file is uploaded and processed, you will see **Processing Status** as Successful, as shown in below image.
     ![file-uploaded](images/file-uploaded.png)

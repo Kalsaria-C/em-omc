@@ -72,13 +72,10 @@ If you don't find an Oracle-defined source that suits your requirement, then you
     * Windows source type: Specify an event service channel name. The channel name must match with the name of the Windows event so that the agent can form the association to pick up logs.
     * Database source type: Specify SQL Statements and click Configure. Map the SQL table columns to the fields available in the menu. To create a new field for mapping, click the Add icon icon.
     * REST API source type: Click Add log endpoint to provide a single log endpoint URL or Add log list endpoint for multiple logs to provide a log list endpoint URL for multiple logs from which the logs can be collected periodically based on the time configuration in the UI.
-    * File and ODL source types: Use the Include and Exclude tab.
-
-9. Rest all the fields are Optional and not required in this Lab.
+    * File and ODL source types: Use the Include Patterns, Exclude Patterns, Data Filters, Field Enrichment, Labels tab.
 
 10. Click on **Create Source**.
-
-![create-source-page](images/create-source-page.png)
+    ![create-source-page](images/create-source-page.png)
 
 You may now proceed to the **proceed to the next lab**.
 

@@ -1,4 +1,4 @@
-# Alarms and Detection Rules
+# Create and Trigger Ingest Time Detection Rule
 
 ## Introduction
 
@@ -31,7 +31,6 @@ Let's say you want to detect whenever you have an authentication error in your l
 ## Task 2: Check the Policies
 
 To create and manage Detection Rules and use them in the Monitoring Service, the correct policies need to be set:
-
   ```
     <copy>Policies allow group &lt;group name&gt; to manage loganalytics-ingesttime-rule in tenancy
     allow service loganalytics to use metrics in tenancy</copy>
@@ -78,117 +77,91 @@ For creating a detection rule, you need a log source and entity associated with 
 
 12. Click **Create detection rule**.
 
-When the match specified in the log source is encountered in the log record while ingesting, a metric value is posted to OCI Monitoring service. You can get alerts from OCI Monitoring service by configuring an alarm on that metric, which is demonstrated in further lab.
+When the match specified in the log source is encountered in the log record while ingesting, a metric value is posted to OCI Monitoring service. You can get alerts from OCI Monitoring service by configuring an alarm on that metric, which is demonstrated in further lab. 
 
-## Task 5: Create Alarms and Notifications
+> **Note** : **It is required to trigger the Ingest Time Detection rule one time, to post the metric and register the Metric Namespace in the system.**
 
-1. There are 2 two ways to navigate to **Create Alarm Page**:
+## Task 5: Create a Source
 
-### **Option 1:**
+1. You will have to create a source by referring to [Lab 4: Create a Source](?lab=create-source).
 
-From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Status**.
+2. Details for the source are mentioned below:
+    * **Name:** Livelab_source
+    * **Description:** Source to detect AuthError_Livelabs
+    * **Source Type:** File
+    * **Entity Types:** Select any entity types. For example, Host(Linux)
+    * **Parser:** livelab\_mushop\_api\_logs (Created in [Lab 3: Create a Parser](?lab=create-parser))
 
-* Here, all the alarms fired by the events in Logging Analytics are consolidated. The table displays the alarm name, its severity, the time when it was triggered, and whether it is suppressed or not.
-* Select the **Compartment** of your alarms in the **Scope section**.
-* Click on the **Create Alarm**. The Create Alarm dialog box opens.
-![alarms-navigation](images/alarm-navigation.gif)
+3. You have made above detection rule to detect the **AuthError_Livelabs** label, so you will to add a condition. This condition will help to attach the log record with label after getting parsed by parser.
 
-### **Option 2:**
+4. Click on **Labels**. Now, click on **Add conditional label**.
+![create-source](images/create-source.png)
 
-* After creating a Detection rule, you will land up on detection rules page, where you will able to see all the detection rules. Click on the detection rule which you made just now i.e. **Livelab\_detection\_rule**.
-![detection-rule-page](images/detection-rule-page.png)
+5. In the Conditions section:
+    * Select the log field on which you want to apply the condition from the Input Field list. Select **Status** from dropdown list.
+    * Select the operator from the Operator list. Select **Contains** or **Equals**. Both can be used in the given use case.
+    * In the Condition Value field, specify the value of the condition to be matched for applying the label. For failed APIs, values of Status can be **401, 400, 404, 406, 408** which we extracted using parsers from log records.
+    * Under Actions, select from the already available Oracle-defined or user created labels. If required, you can create a new label by clicking **Create Label**. You can refer to [Lab 2: Create a Label](?lab=create-label) to create a label. You will select **AuthError_Livelabs**, as you have made a detection rule to detect it.
+    * Click on **Add**.
+![create-condition](images/create-condition.png)
 
-* Click on **Create Alarm** button as seen in figure. The Create Alarm dialog box opens.
-![create-alarm-button](images/create-alarm-button.png)
+6. Click on **Create Source**.
+![create-source-1](images/create-source-1.png)
 
-2. Specify the **Alarm name**. Let's say you named it as **"Livelab_alarm"**.
+## Task 6: Upload a File
 
-3. For **Alarm severity**, select the perceived type of response required when the alarm is in the firing state. There are 4 options for it
-    * Critical (by default)
-    * Error
-    * Warning
-    * Info
+1. Upload some log records from desktop to the console, so that it will get parsed, label will get attached to it as per the condition and it will get detected in the detection rule. You can refer to [Lab 5: Upload a File](?lab=upload-file) to upload a file.
 
-4. (Optional) For **Alarm body**, enter the human-readable content of the notification.
-We recommend providing guidance to operators for resolving the alarm condition. Consider adding links to standard runbook practices. Example: "High CPU usage alert. Follow runbook instructions for resolution."
+2. You will use log records on which the **livelab\_mushop\_api\_logs** parser is created.
 
-5. (Optional) In the **Tags (optional)** area, enter one or more tags for the alarm.
-If you have permissions to create a resource, then you also have permissions to apply free-form tags to that resource. To apply a defined tag, you must have permissions to use the tag namespace. For more information about tagging, see Resource Tags. If you're not sure whether to apply tags, skip this option or ask an administrator. You can apply tags later.
-![alarm-info-1](images/alarm-info-1.png)
+3. Copy the below python script, and save it in a file.
+    ```
+    <copy>
+    import random
+    from datetime import datetime, timedelta
 
-6. In the **Metric description** area, enter values to specify the metric to evaluate for the alarm.
+    current_time = datetime.utcnow()
+    method = ["POST", "GET"]
+    username = ["livelabuser01", "Naman", "Jacob", "Riya", "livelabuser02"]
+    client_ip = ["::ffff:10.244.0.104", "::ffff:10.244.0.257", "::ffff:10.244.0.158", "::ffff:10.244.0.007", "::ffff:10.244.0.257"]
+    req_code = ["401", "200", "201", "304", "400", "404", "406", "409", "500", "503"]
+    content_length = random.randint(10,1000)
 
-    1. **Compartment:** Select the compartment  that contains the resources that emit the metrics evaluated by the alarm. The selected compartment is also the storage location of the alarm. By default, the first accessible compartment is selected.
-    2. **Metric namespace:** Select the service or application that emits the metrics for the resources that you want to monitor. The Metric namespace list shows metric namespaces for the selected compartment. Let's say you selected **"livelabmetricnamespace"**, which you created while creating a detection rule.
-    3. (Optional) **Resource group:** Select the group that the metric belongs to. A resource group is a custom string provided with a custom metric, and is not applicable to service metrics.
-    4. **Metric name:** Select the name of the metric that you want to evaluate for the alarm. Let;s say you selected **"Livelab_metricname"**, which you created while creating detection rule.
-    5. **Interval:** Select the aggregation window, or the frequency at which data points are aggregated. You can create a custom interval if needed.
-    6. **Statistic**: Select the function to use to aggregate the data points.
-        * Mean - The value of Sum divided by Count during the specified time period.
-        * Rate - The per-interval average rate of change.
-        * Sum - All values added together.
-        * Max - The highest value observed during the specified time period.
-        * Min - The lowest value observed during the specified time period.
-        * Count - The number of observations received in the specified time period.
-        * P50 - The value of the 50th percentile.
-        * P90 - The value of the 90th percentile.
-        * P95 - The value of the 95th percentile.
-        * P99 - The value of the 99th percentile.
-Let's say you have select **sum** statistic, which will tell count of Livelab_label in logs.
+    for i in range(1000): # 1000 random logs generated
+        random_var_user_and_ip = random.randint(0,len(username)-1)
+        # Generate a random number of seconds between 0 and 7200 (120 minutes)
+        random_seconds = random.randint(0, 120*60)
+        # Calculate the end time by subtracting random seconds from current time
+        end_time_in_seconds = current_time - timedelta(seconds=random_seconds)
+        # Random 1000 log records of 2 hours before current UTC time.
+        end_time_in_proper_format = end_time_in_seconds.strftime('%d/%b/%Y:%T')
+        log = client_ip[random_var_user_and_ip] + " - " + username[random_var_user_and_ip] + " [" + end_time_in_proper_format + " +0000] " + '"' + method[random.randint(0,len(method)-1)] + " /api/orders HTTP/1.1" + '" ' + req_code[random.randint(0,len(req_code)-1)] + " " + str(content_length) + ' "-" ' + '"python-requests/2.25.1"' + "\n"
+        with open('livelab_logs.txt', 'a') as f:
+            f.write(log)
+        f.close()
+    </copy>
+    ```
 
-7. In the **Metric dimensions** area, specify optional filters to narrow the metric data that's evaluated.
-    * **Dimension value:** Select the value to use for the specified dimension.
-    * **Additional dimension:** Add another name-value pair for a dimension, as needed.
-    * **Aggregate metric streams:** Select this check box to return the combined value of all metric streams for the selected statistic.
-Let's say we give dimension name as **"label"**, which is having DImension value as **"Livelab_label"**.
-![alarm-info-2](images/alarm-info-2.png)
+4. Run the python file in any desired IDE or terminal. A file named **livelab\_logs.txt** will be created at the location where python script is executed. This file will contains 1000 random log records, generated in interval of your current UTC time and 2 hours before your current UTC time.
 
-8. In the **Trigger rule** area, specify the condition that must be satisfied for the alarm to be in the firing state.
+5. Upload the file into console, by referring to [Lab 5: Upload a File](?lab=upload-file).
 
-    * **Operator:** Select the operator to use in the condition threshold.
-    * **Value:** Enter the value to use for the condition threshold. For the between and outside operators, enter both values for the range.
-    * **Trigger delay minutes:** Enter the number of minutes that the condition must be maintained before the alarm is in the firing state.
-    Let's say, you have selected operator as **"greater than or equal"**, value as **"1"**, and trigger delay minutes as **"1"**. So, the alarm will be triggered when the count of "Livelab_label" is greater than or equal to 1 with delay of 1 minute.
-![alarm-info-3](images/alarm-info-3.png)
+6. Select **Livelab_source** which was created in **Task: 5**. Click on **Upload**.
+![upload-file](images/upload-file.png)
 
-9. In the **Destination area** under **Define alarm notifications**, select the provider of the destination to use for alarm notifications.
-    1. **Destination service:** Select one of the following values:
-        * **Notifications:** Send alarm notifications to a topic. Each subscription in the topic receives an alarm message.
-        * **Streaming:** Send alarm messages to a stream.
-        Let's say you want to send Notifications.
-    2. **Compartment:** Select the compartment that contains the resources that emit the metrics evaluated by the alarm. The selected compartment is also the storage location of the alarm. By default, the first accessible compartment is selected.
-        * Stream (for Streaming only): The stream to use for alarm notifications.
-        * Topic (for Notifications only): The topic to use for notifications. If there are no topics, you can create it.
-    3. To create a new topic (and a new subscription) in the selected compartment, click **Create a topic** and then enter the following values:
-        * **Topic name:** A user-friendly name for the topic. For example, enter: "Operations Team" for a topic used to notify operations staff of firing alarms. Avoid entering confidential information.
-        * **Topic description:** Description of the new topic.
-        * **Subscription protocol:** Medium of communication to use for the new topic. Select the type of subscription that you want to create, then enter values in the associated fields. For details about each subscription type, click the links.
-            1. Email: Enter an email address.
-            2. Function: Select the compartment and application that contain the function that you want, and then select the function.
-            3. HTTPS (Custom URL): Enter the URL that you want to use as the endpoint.
-            4. PagerDuty: Enter the integration key portion of the URL for the PagerDuty subscription.
-            5. Slack: Enter the Slack endpoint, including the webhook token.
-            6. SMS: Select the country for the phone number, and then enter the phone number.
-![alarm-info-4](images/alarm-info-4.png)
+## Task 7: Trigger a Ingest Time Detection rule
 
-10. For **Message grouping**, select one of the following options.
-    * **Group notifications across metric streams:** Collectively track metric status across all metric streams. Send a message when metric status across all metric streams changes.
-    * **Split notifications per metric stream:** Individually track metric status by metric stream. Send a message when metric status for each metric stream changes.
+1. From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration**.
 
-11. For **Message Format**, select an option for the appearance of messages that you receive from this alarm (for Notifications only).
-    * **Send formatted messages:** Simplified, user-friendly layout. To view supported subscription protocols and message types for formatted messages (options other than Raw), see Friendly formatting.
-    * **Send Pretty JSON messages (raw text with line breaks):** JSON with new lines and indents.
-    * **Send raw messages:** Raw JSON blob.
+2. Click on **Detection Rule box** on **Administration Overview** page.
+![detection-rule-box](images/detection-rule-box.png)
 
-12. (Optional) If you want to receive notifications at regular intervals when the alarm is firing, select **Repeat notification?** and then select **Notification frequency** to wait before resending the notification.
-(Optional) To suppress evaluations and notifications for a specified length of time, select **Suppress notifications**. This option is useful for avoiding alarm notifications during system maintenance periods. Specify a start time, end time, and an optional description.
+3. Click on **Livelab\_detection\_rule**.
 
-13. (Optional) To save the alarm without starting to evaluate metric data, clear the **Enable this alarm?** check box.
-![alarm-info-5](images/alarm-info-5.png)
+4. In the **Results** section, a graph will be shown. You can change the timeframe from **Quick Selects**, to Last 6 hours. You can also select a different **Statistic**.
+![trigger-detection-rule](images/trigger-detection-rule.png)
 
-14. Click **Save alarm**.
-
-The **Alarm Definitions** page lists the new alarm. If the alarm is enabled, then Monitoring begins evaluating the configured metric, sending alarm messages when the metric data satisfies the trigger rule.
+5. Hence, your labels are detected in ingest time detection rule.
 
 You may now proceed to the **proceed to the next lab**.
 
@@ -202,4 +175,4 @@ For further reading please refer to the resources.
 
 * **Author** - Chintan Kalsaria, OCI Logging Analytics
 * **Contributors** -  Chintan Kalsaria, Kiran Palukuri, Ashish Gor, Kumar Varun, OCI Logging Analytics
-* **Last Updated By/Date** - Chintan Kalsaria, Nov, 2023
+* **Last Updated By/Date** - Chintan Kalsaria, Dec, 2023
