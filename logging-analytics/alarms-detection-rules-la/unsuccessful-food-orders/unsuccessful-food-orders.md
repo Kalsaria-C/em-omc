@@ -22,104 +22,13 @@ This lab assumes you have:
 
 * An Oracle Cloud Infrastructure account.
 
-## Task 1: Understand Parsers
+## Task 1: Create Labels
 
-A Parser takes raw configuration data and parses it into a nested attribute structure. Each parser consists of a base parser and parser parameters. Some parsers also contain post-parsing rules. A base parser essentially is a category of parser capable of parsing data of a particular format. Parser parameters provide a way to tailor the base format to accommodate variations in data formatting.
+## Task 2: Create Detection Rules
 
-Oracle Logging Analytics offers hundreds of Oracle-defined sources and parsers that you can directly use without creating custom ones. To collect logs of a format which doesn't have an Oracle-defined source or parser, you can create custom source or parser.
+## Task 3: Create an Alarm
 
-There are four varieties of base parser:
-
-1. Regex
-2. JSON
-3. XML
-4. Delimited
-
-## Task 2:  Create single-line parser
-
-In this task you will learn how to create a single-line parser.
-
-For creating a single-line parser, we need a sample log record(s), which we wanted to parse. By creating a parser, you define how to extract log entries from a log file and also how to extract fields from a log entry. Click on **Create Parser** button.
-
-1. You can navigate to **Parser page** as mentioned in [Lab 7: Task 1](?lab=dns-exfiltration#Task1:NavigatetoParsers). Click on **Create Parser** button.
-
-2. A dropdown will appear, showing four types of parsers available. As per our type of sample log you can select any. In this lab you will create a **Regex Type** parser. Click on **Regex Type**.
-![parser-dialog-box](images/parser-dialog-box.png)
-
-3. The **Create Parsers Page** page is displayed. In case of Regex Type, the Create Parser page opens in the **Guided** mode, by default. Continue in this mode if you want Logging Analytics to generate the regular expression to parse the logs after you select the fields. If you want to write regular expression for parsing, then switch to **Advanced** mode. You will go for **Guided** mode, as it is very easy method to create Parser, you don't need knowledge of regular expression.
-
-4. This is the first step of parser creation.
-
-    * In the **Name** field, enter the parser name. For example, enter **livelab\_mushop\_api\_logs**.
-    * (Optional) Provide a suitable **description** to the parser for easy identification.
-    * In the **Example Log Content field**, paste the contents from a log file that you want to parse, such as the following:
-        ```
-        <copy>::ffff:10.244.1.225 - livelab_user [06/Nov/2023:03:22:17 +0000] "POST /api/orders HTTP/1.1" 401 70 "-" "python-requests/2.25.1"
-        ::ffff:10.244.1.42 - livelab_user [06/Nov/2023:21:00:35 +0000] "POST /api/orders HTTP/1.1" 503 86 "-" "python-requests/2.25.1"
-        ::ffff:10.244.1.42 - livelab_user [06/Nov/2023:08:25:16 +0000] "POST /api/orders HTTP/1.1" 500 120 "-" "python-requests/2.25.1"
-        ::ffff:10.244.0.104 - livelab_user [06/Nov/2023:02:51:18 +0000] "GET /api/orders HTTP/1.1" 200 719 "-" "python-requests/2.25.1"</copy>
-        ```
-    * This is a single-line log entry, as each record is of single line, as shown in the figure below.
-        ![create-parser-page-1](images/create-parser-page-1.png)
-
-    * Click on **Next** to go to second step of parser creation.
-
-5. Select one of the log records, you want to extract the field from.
-    ![create-parser-page-2](images/create-parser-page-2.png)
-    Click on **Next** to go to third step of parser creation.
-
-6. Select the exact content for the value of each field. For example select the **::ffff:10.244.0.14"** content from the shown log record, a dialog of **Extract field** will appear. Here you can see the text you want to extract as a field, there is option if you don't want to extract it as field, you can select the **as literal text** option. From the Field dropdown, select the existing **Field Name**, here it is **Host IP Address (Client)**. You can also create a custom field, if it is not present in the dropdown. The **Regular expression** for the selected text will be auto generated. Mark the **Optional field** button if you want to make the field as optional. Click on **Extract field** option to map the selected text to field.
-    ![create-parser-page-3.1](images/create-parser-page-3.1.png)
-
-7. Selected text has been mapped to the field, you can see the **Parser Test**, where **Host IP Address (Client)** has been extracted out of all the log records which were pasted in Step 4. **Parser expression** will also be auto generated. **Match Status** will show if we are successful in extracting the field from all the log records. Click on **Next** to select another content to log record to be extracted out.
-    ![create-parser-page-3.2](images/create-parser-page-3.2.png)
-
-8. Repeat the Step 7, by selecting other content of log i.e. **livelabuser01**. After clicking on **Next**, you will see other column of **User Name** field has been added to the table showing extracted user names from the log records. You will also see the **Parse expression** has been modified now.
-    ![create-parser-page-3.3](images/create-parser-page-3.3.png)
-
-9. Similarly, repeat the Step 7, until you extracted all the field from selected log record, you will see all the extracted field in the table, with its extracted value from the log records. Verify by observing all the extracted fields, if they seems fine. Click on **Next**.
-    ![create-parser-page-3.4](images/create-parser-page-3.4.png)
-
-10. This is the last step of parser creation. Verify the **Parser expression**, field name, parser regular expression, data type, description of each field and other fields. If you want to change something, you can go to **Previous** step, or else click on **Create Parser** to create parser.
-    ![create-parser-page-4](images/create-parser-page-4.png)
-
-## Task 3: Visualize parsed data in explorer
-
-In this task, you will learn, how to visualize the parsed data in explorer. You will use the same logs that were used in **Task 2**.
-
-For, viewing the logs in log explorer, you will need a log source, which will be mapped with the parser you have made in **Task 2**. Sources define the location of your entity's logs and how to enrich the log entries. To start continuous log collection through the OCI management agents, a source needs to be associated with one or more entities.
-
-1. You can navigate to **Sources page** as mentioned in [Lab 7: Task 3](?lab=dns-exfiltration#Task3:NavigatetoSources). Click on **Create Source** button.
-
-2. A **Create User Defined Source** page will appear. Fill the details:
-    * **Name:** Enter the name of the source for example, **Livelab API Mushop Log Source**.
-    * (Optional)**Description:** Add a short description to describe the source.
-    * **Source Type:**  Oracle Log Analytics supports six log source types:
-        * File, Oracle Diagnostic Logging (ODL), Syslog Listener, Database, REST API, Microsoft Windows.
-        * **File** is use for collecting most types of logs, such as Database, Application, and Infrastructure logs, you will use this.
-    * **Entity Type:** Click the Entity Type field and select the type of entity for this log source. Later, when you associate this source to an entity to enable log collection through the management agent, only entities of this type will be available for association. A source can have one or more entity types. Here entity types does not matter as you will be uploading the log file directly from the desktop as seen in **Task: 2**.
-    * **Parser:** You have made a parser in **Task: 2**, select **Specific parser(s)** button and select the user defined parser which was created earlier i.e. **livelab\_mushop\_api\_logs**.
-    * Rest all the fields are Optional and not required in this Lab.
-    * Click on **Create Source**.
-    ![create-source-page](images/create-source-page.png)
-
-4. Source **Livelab API Mushop Log Source** is created with parser **livelab\_mushop\_api\_logs**. Now, you need to get logs in from this log source. There are various ways to ingest logs in source as discussed in [Lab 1: Task 3](?lab=la-overview#(ReadingExerciseOnly)Task3:NavigatingtotheAddDataPage).
-
-5. Copy the log records provided in **Task 2**, paste it in a text file and save it in your local computer with .txt extension.
-
-6. Refer to [Lab 1: Task 6](?lab=la-overview#(ReadingExerciseOnly)Task6:Uploadlogfilesfromyourcomputerdesktop) for uploading the locally saved log file to the log source. While uploading:
-    * Select existing **Log Group** in your compartment, if you don't have any, you can create it easily by clicking on **Create Log Source**.
-    * Make sure to select the Log Source as **Livelab API Mushop Log Source**, which was created in Step 3.
-
-7. Last step, is to click on **View In Log Explorer**, on the page which comes in the last step of [Lab 1: Task 6](?lab=la-overview#(ReadingExerciseOnly)Task6:Uploadlogfilesfromyourcomputerdesktop).
-
-8. Log explorer will appear, showing all four parsed logs. To have more understanding about Log Explorer, you can refer to [Lab 1: Task 2](?lab=la-overview#Task2:UserinterfacesofLogExplorer).
-    ![log-explorer-1](images/log-explorer-1.png)
-
-9. Click on the **Arrow** circled in the above image, to view all the fields extracted out from log record by parser.
-    ![log-explorer-2](images/log-explorer-2.png)
-
-## Task 4: Create alarms for more than 30% failed APIs in 15 mins
+## Task 4: Verify an Alarm
 
 In this task, you will create an alarm for real life based application. The API logs which we are using will be classified into **Livelab Passed API** and **Livelab Failed API**. In each 15 minutes interval if there are more than 30% of Livelab Failed APIs, an alarm will be triggered.
 

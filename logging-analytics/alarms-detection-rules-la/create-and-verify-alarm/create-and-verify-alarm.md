@@ -141,7 +141,7 @@ The **Alarm Definitions** page lists the new alarm. If the alarm is enabled, the
 
 ## Task 3: Verify an Alarm
 
-To verify the alarm, you need to upload log records, which will be parsed by parser, attaching label to the log record which satisfies the condition. Detection rule will detect the label and post the data into metric. Alarm will be triggered when the metric data satisies the trigger rule.
+To verify the alarm, you need to upload log records, which will be parsed by parser, attaching label to the log record which satisfies the condition. Detection rule will detect the label and post the data into metric. Alarm will be triggered when the metric data satisfies the trigger rule.
 
 1. Refer to [Lab 6: Task 6](?lab=create-and-trigger-ingest-time-detection-rule#Task6:UploadaFile) to upload a file in the console. Make sure to run the python script again, instead of using any old log records.
 
