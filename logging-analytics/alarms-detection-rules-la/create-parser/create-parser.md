@@ -52,12 +52,14 @@ Regex parser can be of 2 types:
     * In the **Name** field, enter the parser name. For example, enter **livelab\_mushop\_api\_logs**.
     * (Optional) Provide a suitable **description** to the parser for easy identification.
     * In the **Example Log Content field**, paste the contents from a log file that you want to parse, such as the following:
-        ```
+
+        ```text
         <copy>::ffff:10.244.1.225 - livelab_user [06/Nov/2023:03:22:17 +0000] "POST /api/orders HTTP/1.1" 401 70 "-" "python-requests/2.25.1"
         ::ffff:10.244.1.42 - livelab_user [06/Nov/2023:21:00:35 +0000] "POST /api/orders HTTP/1.1" 503 86 "-" "python-requests/2.25.1"
         ::ffff:10.244.1.42 - livelab_user [06/Nov/2023:08:25:16 +0000] "POST /api/orders HTTP/1.1" 500 120 "-" "python-requests/2.25.1"
         ::ffff:10.244.0.104 - livelab_user [06/Nov/2023:02:51:18 +0000] "GET /api/orders HTTP/1.1" 200 719 "-" "python-requests/2.25.1"</copy>
         ```
+
     * This is a single-line log entry, as each record is of single line, as shown in the figure below.
         ![create-parser-page-1](images/create-parser-page-1.png)
 

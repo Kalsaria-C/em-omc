@@ -43,7 +43,7 @@ Here are the main parts of the user interface that will be used throughout this 
 
 6. **Main panel**, where the visualization output appears above the results of the query.
 
-## (Reading Exercise Only) Task 3: Navigating to the Add Data Page
+## Task 3: Navigating to the Add Data Page
 
 > **Note** : **No action is needed from the user as this is only reading exercise.**
 
@@ -79,7 +79,7 @@ There are two ways to navigate to the **Add Data** page.
 3. Add Data page will be displayed.
 ![add-data-page](./images/add-data-page.png)
 
-## (Reading Exercise Only) Task 4: Ingesting logs using Service Connector
+## Task 4: Ingesting logs using Service Connector
 
 > **Note** : **No action is needed from the user as this is only reading exercise.**
 
@@ -119,7 +119,7 @@ The following setup is already done for this **Workshop**, no further action req
       * Log Explorer will display all the logs ingested using the **Service Connector Flow** in previous steps of this task.
       ![sc-take-me-to-log-explorer](./images/sc-take-me-to-log-explorer.png)
 
-## (Reading Exercise Only) Task 5: Ingesting logs using Management Agent
+## Task 5: Ingesting logs using Management Agent
 
 > **Note** : **No action is needed from the user as this is only reading exercise.**
 
@@ -135,7 +135,7 @@ The following GIF shows the steps for setting up Log collection with Management 
 
 ![management-agent-log-configuration](./images/management-agent-log-configuration.gif)
 
-## (Reading Exercise Only) Task 6: Upload log files from your computer desktop
+## Task 6: Upload log files from your computer desktop
 
 > **Note** : **No action is needed from the user as this is only reading exercise.**
 

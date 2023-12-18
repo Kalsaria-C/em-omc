@@ -31,8 +31,9 @@ Let's say you want to detect whenever you have an authentication error in your l
 ## Task 2: Check the Policies
 
 To create and manage Detection Rules and use them in the Monitoring Service, the correct policies need to be set:
-  ```
-    <copy>Policies allow group &lt;group name&gt; to manage loganalytics-ingesttime-rule in tenancy
+
+  ```text
+    <copy>allow group &lt;group name&gt; to manage loganalytics-ingesttime-rule in tenancy
     allow service loganalytics to use metrics in tenancy</copy>
   ```
 
@@ -44,7 +45,7 @@ To set the policies go to **"Identity & Security"** > **"Identity"** > **"Polici
 
 Here you can create a new policy or edit an existing one to contain the needed policies.
 
-## Task 4: Create Ingest Time Detection Rule
+## Task 3: Create Ingest Time Detection Rule
 
 In this task you will learn how to create a Ingest time detection rule.
 
@@ -58,7 +59,7 @@ For creating a detection rule, you need a log source and entity associated with 
 
 3. Specify a **Rule name** for the ingest time detection rule.Let say, you named it as **Livelabs\_detection\_rule**. Verify the **Rule compartment** as it is read-only.
 
-4. In the **Select a label** section, from the dropdown, select the Label which must be detected in the log records. You can select a predefined label or can create a custom label. Let's say you have selected a custom label named **AuthError_Livelabs** which has a specific condition on which it will get associated to logs if that condition matches with any log record. You can refer to [Lab 2: Create a Label](?create-label) to create custom labels.
+4. In the **Select a label** section, from the dropdown, select the Label which must be detected in the log records. You can select a predefined label or can create a custom label. Let's say you have selected a custom label named **AuthError_Livelabs** which has a specific condition on which it will get associated to logs if that condition matches with any log record. You can refer to [Lab 2: Create a Label](?lab=create-label) to create custom labels.
 
 5. (Optional) You can specify the **Entity Type** and **Log Source** to use for filtering the log records.
 
@@ -81,7 +82,7 @@ When the match specified in the log source is encountered in the log record whil
 
 > **Note** : **It is required to trigger the Ingest Time Detection rule one time, to post the metric and register the Metric Namespace in the system.**
 
-## Task 5: Create a Source
+## Task 4: Create a Source
 
 1. You will have to create a source by referring to [Lab 4: Create a Source](?lab=create-source).
 
@@ -108,48 +109,50 @@ When the match specified in the log source is encountered in the log record whil
 6. Click on **Create Source**.
 ![create-source-1](images/create-source-1.png)
 
-## Task 6: Upload a File
+## Task 5: Upload a File
 
-1. Upload some log records from desktop to the console, so that it will get parsed, label will get attached to it as per the condition and it will get detected in the detection rule. You can refer to [Lab 5: Upload a File](?lab=upload-file) to upload a file.
+1. Upload some log records from desktop to the console, so that it will get parsed, label will get attached to it as per the condition and it will get detected in the detection rule.
 
 2. You will use log records on which the **livelab\_mushop\_api\_logs** parser is created.
 
-3. Copy the below python script, and save it in a file.
-    ```
+3. Navigate to **OCI Cloud Shell**, as shown in image.
+![oci-cloud-shell](images/oci-cloud-shell.png)
+
+4. Run the following commands in **OCI Cloud Shell**.
+
+    ```script
     <copy>
-    import random
-    from datetime import datetime, timedelta
-
-    current_time = datetime.utcnow()
-    method = ["POST", "GET"]
-    username = ["livelabuser01", "Naman", "Jacob", "Riya", "livelabuser02"]
-    client_ip = ["::ffff:10.244.0.104", "::ffff:10.244.0.257", "::ffff:10.244.0.158", "::ffff:10.244.0.007", "::ffff:10.244.0.257"]
-    req_code = ["401", "200", "201", "304", "400", "404", "406", "409", "500", "503"]
-    content_length = random.randint(10,1000)
-
-    for i in range(1000): # 1000 random logs generated
-        random_var_user_and_ip = random.randint(0,len(username)-1)
-        # Generate a random number of seconds between 0 and 7200 (120 minutes)
-        random_seconds = random.randint(0, 120*60)
-        # Calculate the end time by subtracting random seconds from current time
-        end_time_in_seconds = current_time - timedelta(seconds=random_seconds)
-        # Random 1000 log records of 2 hours before current UTC time.
-        end_time_in_proper_format = end_time_in_seconds.strftime('%d/%b/%Y:%T')
-        log = client_ip[random_var_user_and_ip] + " - " + username[random_var_user_and_ip] + " [" + end_time_in_proper_format + " +0000] " + '"' + method[random.randint(0,len(method)-1)] + " /api/orders HTTP/1.1" + '" ' + req_code[random.randint(0,len(req_code)-1)] + " " + str(content_length) + ' "-" ' + '"python-requests/2.25.1"' + "\n"
-        with open('livelab_logs.txt', 'a') as f:
-            f.write(log)
-        f.close()
+    mkdir Livelab_Lab_06
+    cd Livelab_Lab_06
+    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/api-logs-generator.py)
     </copy>
     ```
 
-4. Run the python file in any desired IDE or terminal. A file named **livelab\_logs.txt** will be created at the location where python script is executed. This file will contains 1000 random log records, generated in interval of your current UTC time and 2 hours before your current UTC time.
+5. A file named **livelab\_logs.txt** will be created at the location where python script is executed. This file will contains 1000 random log records, generated in interval of your current UTC time and 2 hours before your current UTC time.
 
-5. Upload the file into console, by referring to [Lab 5: Upload a File](?lab=upload-file).
+6. Run the following command in **OCI Cloud Shell**,
 
-6. Select **Livelab_source** which was created in **Task: 5**. Click on **Upload**.
-![upload-file](images/upload-file.png)
+    ```text
+    <copy>
+    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-helper.py) -f ~/Livelab_Lab_06/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
+    </copy>
+    ```
 
-## Task 7: Trigger a Ingest Time Detection rule
+    where,
+    * -f : file location
+    * -s : file name (Give any name)
+    * -l : source to be associated with the uploaded file (Livelab_source was created in **Task: 5**)
+    * -n : name of upload (Give any name)
+
+7. Script will ask for index of a list of compartments where to upload file, make sure the source, log group is in same compartment.
+
+8. Script will ask for index of log group present in the compartment, if there are no log groups, it will ask to create a new log group, type **"y"**.
+
+9. If you entered **"y"**, then, repeat the **Step 5 and Step 6**, you will see a log group named **Live Labs Log Group** created, give its index 0.
+
+10. The file will get uploaded.
+
+## Task 6: Trigger a Ingest Time Detection rule
 
 1. From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration**.
 

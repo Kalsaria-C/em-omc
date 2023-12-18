@@ -139,26 +139,67 @@ Let's say we give dimension name as **"label"**, which is having Dimension value
 
 The **Alarm Definitions** page lists the new alarm. If the alarm is enabled, then Monitoring begins evaluating the configured metric, sending alarm messages when the metric data satisfies the trigger rule.
 
-## Task 3: Verify an Alarm
+## Task 3: Upload a File
 
 To verify the alarm, you need to upload log records, which will be parsed by parser, attaching label to the log record which satisfies the condition. Detection rule will detect the label and post the data into metric. Alarm will be triggered when the metric data satisfies the trigger rule.
 
-1. Refer to [Lab 6: Task 6](?lab=create-and-trigger-ingest-time-detection-rule#Task6:UploadaFile) to upload a file in the console. Make sure to run the python script again, instead of using any old log records.
+1. Upload some log records from desktop to the console, so that it will get parsed, label will get attached to it as per the condition and it will get detected in the detection rule.
 
-2. From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Definitions**.
+2. You will use log records on which the **livelab\_mushop\_api\_logs** parser is created.
+
+3. Navigate to **OCI Cloud Shell**, as shown in image.
+![oci-cloud-shell](images/oci-cloud-shell.png)
+
+4. Run the following commands in **OCI Cloud Shell**.
+
+    ```script
+    <copy>
+    mkdir Livelab_Lab_08
+    cd Livelab_Lab_08
+    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/api-logs-generator.py)
+    </copy>
+    ```
+
+5. A file named **livelab\_logs.txt** will be created at the location where python script is executed. This file will contains 1000 random log records, generated in interval of your current UTC time and 2 hours before your current UTC time.
+
+6. Run the following command in **OCI Cloud Shell**,
+
+    ```text
+    <copy>
+    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-helper.py) -f ~/Livelab_Lab_08/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
+    </copy>
+    ```
+
+    where,
+    * -f : file location
+    * -s : file name (Give any name)
+    * -l : source to be associated with the uploaded file (Livelab_source was created in **Task: 5**)
+    * -n : name of upload (Give any name)
+
+7. Script will ask for index of a list of compartments where to upload file, make sure the source, log group is in same compartment.
+
+8. Script will ask for index of log group present in the compartment, if there are no log groups, it will ask to create a new log group, type **"y"**.
+
+9. If you entered **"y"**, then, repeat the **Step 5 and Step 6**, you will see a log group named **Live Labs Log Group** created, give its index 0.
+
+10. The file will get uploaded.
+
+## Task 4: Verify an Alarm
+
+1. From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Definitions**.
 ![alarm-def-navigation](images/alarm-def-navigation.png)
 
-3. Click on **Livelab\_alarm**.
+2. Click on **Livelab\_alarm**.
 
-4. All the information regarding the alarm will be shown there. You can change **Quick select** based on the requirement. Graph will be shown, showing the details. You can hover on graph know in details. Click on **Show Data Table** to see the timestamp and value clearly.
+3. All the information regarding the alarm will be shown there. You can change **Quick select** based on the requirement. Graph will be shown, showing the details. You can hover on graph know in details. Click on **Show Data Table** to see the timestamp and value clearly.
 ![result-1](images/result-1.png)
 
-5. Details of logs can be seen from last two hour. Your threshold value was 30. Value of **AuthError_Livelabs** label can be seen in every 15 minutes from 12:15:00 UTC to 14:00:00 UTC. Initially alarm was in **Ok** state, then at 13:57:00 UTC, the alarm when into firing state. After one minute of delay, it was got reset and changed to **Ok** state, it means it is ready to get triggered. 
+4. Details of logs can be seen from last two hour. Your threshold value was 30. Value of **AuthError_Livelabs** label can be seen in every 15 minutes from 12:15:00 UTC to 14:00:00 UTC. Initially alarm was in **Ok** state, then at 13:57:00 UTC, the alarm when into firing state. After one minute of delay, it was got reset and changed to **Ok** state, it means it is ready to get triggered. 
 ![result-2](images/result-2.png)
 
     The alarm gets triggered only one time despite, the value crossing above 30 two times. It happened because you uploaded 1000 logs at a single time. It will work perfectly if any live source is connected for log collection.
 
-6. Hence, alarm is verified.
+5. Hence, alarm is verified.
 
 You may now proceed to the **proceed to the next lab**.
 

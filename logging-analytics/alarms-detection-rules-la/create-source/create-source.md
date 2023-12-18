@@ -37,7 +37,7 @@ If you don't find an Oracle-defined source that suits your requirement, then you
 
 3. **Name:** Enter the name of the source. For example, **Livelab API Mushop Log Source**.
 
-4. (Optional)**Description:** Add a short description to describe the source.
+4. (Optional) **Description:** Add a short description to describe the source.
 
 5. **Source Type:**  Oracle Log Analytics supports six log source types:
     * **File:** Use this type for collecting most types of logs, such as Database, Application, and Infrastructure logs.
@@ -55,7 +55,7 @@ If you don't find an Oracle-defined source that suits your requirement, then you
     * If you selected the source type Database, then the entity type is limited to the eligible database types.
     * If you selected Windows Event System source type, then the default entity type Host (Windows) is automatically selected, and cannot be changed.
 
-    When you are uploading the log file directly from the desktop as seen in [Lab 5: Upload a File](?lab=upload-file), entity types does not matter. For example, **OCI API Gateway**.
+    When you are uploading the log file directly from the desktop, entity types does not matter. For example, **OCI API Gateway**.
 
 7. **Parser:**
     * You can select multiple file parsers for the log files. This is particularly helpful when a log file has entries with different syntax and can’t be parsed by a single parser.
@@ -74,7 +74,7 @@ If you don't find an Oracle-defined source that suits your requirement, then you
     * REST API source type: Click Add log endpoint to provide a single log endpoint URL or Add log list endpoint for multiple logs to provide a log list endpoint URL for multiple logs from which the logs can be collected periodically based on the time configuration in the UI.
     * File and ODL source types: Use the Include Patterns, Exclude Patterns, Data Filters, Field Enrichment, Labels tab.
 
-10. Click on **Create Source**.
+9. Click on **Create Source**.
     ![create-source-page](images/create-source-page.png)
 
 You may now proceed to the **proceed to the next lab**.
