@@ -33,9 +33,9 @@
             "filename": "../../create-source/create-source.md"
         },
         {
-            "title": "Lab 5: Upload a File",
+            "title": "Lab 5: Upload a Log File from Computer Desktop",
             "description": "Step-by-step guide to upload a log file from local desktop to OCI console.",
-            "filename": "../../upload-log-file/upload-log-file.md"
+            "filename": "../../upload-log-file-from-computer-desktop/upload-log-file-from-computer-desktop.md"
         },
         {
             "title": "Lab 6: Create and Trigger a Ingest Time Detection Rule",

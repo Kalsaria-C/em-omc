@@ -19,6 +19,7 @@ In this lab you will:
 This lab assumes you have:
 
 * An Oracle Cloud Infrastructure account.
+* Basic understanding of Labels, Sources, Parsers, Detection Rule of Logging Analytics.
 
 ## Task 1: Understand a Logging Analytics Alarm
 
@@ -34,43 +35,45 @@ The detected events can emit metrics to the Monitoring service. Managing alarms 
 
     ### **Option 1:**
 
-    From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Status**.
+    From **Navigation Menu** ![Navigation menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Status**.
 
     * Here, all the alarms fired by the events in Logging Analytics are consolidated. The table displays the alarm name, its severity, the time when it was triggered, and whether it is suppressed or not.
     * Select the **Compartment** of your alarms in the **Scope section**.
     * Click on the **Create Alarm**. The Create Alarm dialog box opens.
-    ![alarms-navigation](images/alarm-navigation.gif)
+    ![Navigate to alarm](images/alarm-navigation.gif)
 
     ### **Option 2:**
 
-    * After creating a Detection rule, you will land up on detection rules page, where you will able to see all the detection rules. Click on the desired detection rule. You can refer to [Lab 6: Create and Trigger a Ingest Time Detection Rule](?lab=create-and-trigger-ingest-time-detection-rule) or [Lab 7: Create a Scheduled Search Detection Rule](?lab=create-scheduled-search-detection-rule). For example, select **Livelab\_detection\_rule**, made in [Lab 6: Create and Trigger a Ingest Time Detection Rule](?lab=create-and-trigger-ingest-time-detection-rule).
+    * After creating a detection rule, you will land on detection rules page, where you will able to see all the detection rules. Click on the desired detection rule. You can refer to [Create and Trigger a Ingest Time Detection Rule](?lab=create-and-trigger-ingest-time-detection-rule#Task3:CreateIngestTimeDetectionRule) or [Create a Scheduled Search Detection Rule](?lab=create-scheduled-search-detection-rule).
+
+    * For example, select **Livelab\_detection\_rule**, made in [Create and Trigger a Ingest Time Detection Rule](?lab=create-and-trigger-ingest-time-detection-rule#Task3:CreateIngestTimeDetectionRule).
     ![detection-rule-page](images/detection-rule-page.png)
 
-2. Click on **Create Alarm** button as seen in figure. The Create Alarm dialog box opens.
-![create-alarm-button](images/create-alarm-button.png)
+2. Click on the **Create Alarm** button, as seen in the figure. The Create Alarm dialog box opens.
+![Create alarm button](images/create-alarm-button.png)
 
 3. Specify the **Alarm name**. For example, **"Livelab_alarm"**.
 
-4. For **Alarm severity**, select the perceived type of response required when the alarm is in the firing state. There are 4 options for it
+4. For **Alarm severity**, select the perceived type of response required when the alarm is in the firing state. There are four options for it:
     * Critical (by default)
     * Error
     * Warning
     * Info
 
 5. (Optional) For **Alarm body**, enter the human-readable content of the notification.
-It is recommended to provide guidance to operators for resolving the alarm condition. Consider adding links to standard runbook practices. Example: "High CPU usage alert. Follow runbook instructions for resolution."
+It is recommended to guide operators in resolving the alarm condition.
 
 6. (Optional) In the **Tags (optional)** area, enter one or more tags for the alarm.
-If you have permissions to create a resource, then you also have permissions to apply free-form tags to that resource. To apply a defined tag, you must have permissions to use the tag namespace. For more information about tagging, see Resource Tags. If you're not sure whether to apply tags, skip this option or ask an administrator. You can apply tags later.
-![alarm-info-1](images/alarm-info-1.png)
+If you have permission to create a resource, you can also apply free-form tags to that resource. To apply a defined tag, you must have permission to use the tag namespace. If you're unsure whether to apply tags, skip this option or ask an administrator. You can apply tags later.
+![Define alarm and tags](images/define-alarm-and-tags.png)
 
 7. In the **Metric description** area, enter values to specify the metric to evaluate for the alarm.
 
-    1. **Compartment:** Select the compartment  that contains the resources that emit the metrics evaluated by the alarm. The selected compartment is also the storage location of the alarm. By default, the first accessible compartment is selected.
-    2. **Metric namespace:** Select the service or application that emits the metrics for the resources that you want to monitor. The Metric namespace list shows metric namespaces for the selected compartment. Let's say you selected **"livelabmetricnamespace"**, which you created while creating a detection rule.
-    3. (Optional) **Resource group:** Select the group that the metric belongs to. A resource group is a custom string provided with a custom metric, and is not applicable to service metrics.
-    4. **Metric name:** Select the name of the metric that you want to evaluate for the alarm. Let;s say you selected **"Livelab_metricname"**, which you created while creating detection rule.
-    5. **Interval:** Select the aggregation window, or the frequency at which data points are aggregated. You can create a custom interval if needed. For example, 15 minutes.
+    1. **Compartment:** Select the compartment containing the resources that emit the metrics evaluated by the alarm. The selected compartment is also the storage location of the alarm. By default, the first accessible compartment is selected.
+    2. **Metric namespace:** Select the service or application that emits the metrics for the resources you want to monitor. The Metric namespace list shows metric namespaces for the selected compartment. You selected **"**livelabmetricnamespace"**, which you created while creating a detection rule.
+    3. (Optional) **Resource group:** Select the group that the metric belongs to. A resource group is a custom string provided with a custom metric and does not apply to service metrics.
+    4. **Metric name:** Select the name of the metric that you want to evaluate for the alarm. You selected **"**Livelab_metricname"**, which you created while creating the detection rule.
+    5. **Interval:** Select the aggregation window or the frequency at which data points are aggregated. You can create a custom interval, for example, 15 minutes if needed.
     6. **Statistic**: Select the function to use to aggregate the data points.
         * Mean - The value of Sum divided by Count during the specified time period.
         * Rate - The per-interval average rate of change.
@@ -82,58 +85,59 @@ If you have permissions to create a resource, then you also have permissions to 
         * P90 - The value of the 90th percentile.
         * P95 - The value of the 95th percentile.
         * P99 - The value of the 99th percentile.
-For example, select **count** statistic, which will tell count of Livelab_label in logs.
 
-![alarm-info-2](images/alarm-info-2.png)
+    For example, select **count** statistic, which will tell the count of Livelab_label in logs.
+
+    ![Metric description](images/metric-description.png)
 
 8. In the **Metric dimensions** area, specify optional filters to narrow the metric data that's evaluated.
     * **Dimension value:** Select the value to use for the specified dimension.
     * **Additional dimension:** Add another name-value pair for a dimension, as needed.
     * **Aggregate metric streams:** Select this check box to return the combined value of all metric streams for the selected statistic.
-Let's say we give dimension name as **"label"**, which is having Dimension value as **"AuthError_Livelabs"**.
+Let's say we provide dimension name as **"label"**, which has Dimension value as **"AuthError_Livelabs"**.
 ![metric-dimension](images/metric-dimension.png)
 
 9. In the **Trigger rule** area, specify the condition that must be satisfied for the alarm to be in the firing state.
     * **Operator:** Select the operator to use in the condition threshold.
     * **Value:** Enter the value to use for the condition threshold. For the between and outside operators, enter both values for the range.
-    * **Trigger delay minutes:** Enter the number of minutes that the condition must be maintained before the alarm is in the firing state.
-    Let's say, you have selected operator as **"greater than or equal"**, value as **"30"**, and trigger delay minutes as **"1"**. So, the alarm will be triggered when the count of "AuthError_Livelabs" is greater than or equal to 30 with delay of 1 minute.
-![alarm-info-3](images/alarm-info-3.png)
+    * **Trigger delay minutes:** Enter the number of minutes the condition must be maintained before the alarm is in the firing state.
+    Let's say, you have selected operator as **"greater than or equal"**, value as **"30"**, and trigger delay minutes as **"1"**. So, the alarm will be triggered when the count of "AuthError_Livelabs" is greater than or equal to 30 with a delay of 1 minute.
+![Trigger rule](images/trigger-rule.png)
 
 10. In the **Destination area** under **Define alarm notifications**, select the provider of the destination to use for alarm notifications.
     1. **Destination service:** Select one of the following values:
         * **Notifications:** Send alarm notifications to a topic. Each subscription in the topic receives an alarm message.
         * **Streaming:** Send alarm messages to a stream.
         Let's say you want to send Notifications.
-    2. **Compartment:** Select the compartment that contains the resources that emit the metrics evaluated by the alarm. The selected compartment is also the storage location of the alarm. By default, the first accessible compartment is selected.
+    2. **Compartment:** Select the compartment containing the resources that emit the metrics evaluated by the alarm. The selected compartment is also the storage location of the alarm. By default, the first accessible compartment is selected.
         * Stream (for Streaming only): The stream to use for alarm notifications.
-        * Topic (for Notifications only): The topic to use for notifications. If there are no topics, you can create it. For example, **Topic_Livelab**.
+        * Topic (for Notifications only): The topic to use for notifications. You can create topics if there are no topics—for example, **Topic_Livelab**.
     3. To create a new topic (and a new subscription) in the selected compartment, click **Create a topic** and then enter the following values:
-        * **Topic name:** A user-friendly name for the topic. For example, enter: "Operations Team" for a topic used to notify operations staff of firing alarms. Avoid entering confidential information.
+        * **Topic name:** A user-friendly name for the topic.
         * **Topic description:** Description of the new topic.
         * **Subscription protocol:** Medium of communication to use for the new topic. Select the type of subscription that you want to create, then enter values in the associated fields. For details about each subscription type, click the links.
             1. Email: Enter an email address.
-            2. Function: Select the compartment and application that contain the function that you want, and then select the function.
-            3. HTTPS (Custom URL): Enter the URL that you want to use as the endpoint.
+            2. Function: Select the compartment and application containing the function that you want, and then select the function.
+            3. HTTPS (Custom URL): Enter the URL you want to use as the endpoint.
             4. PagerDuty: Enter the integration key portion of the URL for the PagerDuty subscription.
             5. Slack: Enter the Slack endpoint, including the webhook token.
             6. SMS: Select the country for the phone number, and then enter the phone number.
-![alarm-info-4](images/alarm-info-4.png)
+![Define alarm notifications](images/define-alarm-notifications.png)
 
 11. For **Message grouping**, select one of the following options.
     * **Group notifications across metric streams:** Collectively track metric status across all metric streams. Send a message when metric status across all metric streams changes.
     * **Split notifications per metric stream:** Individually track metric status by metric stream. Send a message when metric status for each metric stream changes.
 
-12. For **Message Format**, select an option for the appearance of messages that you receive from this alarm (for Notifications only).
+12. For **Message Format**, select an option for the appearance of messages you receive from this alarm (for Notifications only).
     * **Send formatted messages:** Simplified, user-friendly layout. To view supported subscription protocols and message types for formatted messages (options other than Raw), see Friendly formatting.
     * **Send Pretty JSON messages (raw text with line breaks):** JSON with new lines and indents.
     * **Send raw messages:** Raw JSON blob.
 
 13. (Optional) If you want to receive notifications at regular intervals when the alarm is firing, select **Repeat notification?** and then select **Notification frequency** to wait before resending the notification.
-(Optional) To suppress evaluations and notifications for a specified length of time, select **Suppress notifications**. This option is useful for avoiding alarm notifications during system maintenance periods. Specify a start time, end time, and an optional description.
+(Optional) To suppress evaluations and notifications for a specified length of time, select **Suppress notifications**. This option helps avoid alarm notifications during system maintenance periods. Specify a start time, end time, and an optional description.
 
 14. (Optional) To save the alarm without starting to evaluate metric data, clear the **Enable this alarm?** check box.
-![alarm-info-5](images/alarm-info-5.png)
+![Message and notification](images/message-and-notification.png)
 
 15. Click **Save alarm**.
 
@@ -141,13 +145,13 @@ The **Alarm Definitions** page lists the new alarm. If the alarm is enabled, the
 
 ## Task 3: Upload a File
 
-To verify the alarm, you need to upload log records, which will be parsed by parser, attaching label to the log record which satisfies the condition. Detection rule will detect the label and post the data into metric. Alarm will be triggered when the metric data satisfies the trigger rule.
+To verify the alarm, you need to upload log records, which will be parsed by the parser, attaching a label to the log record that satisfies the condition. The detection rule will detect the label and post the data into metric. The alarm will be triggered when the metric data meets the trigger rule.
 
-1. Upload some log records from desktop to the console, so that it will get parsed, label will get attached to it as per the condition and it will get detected in the detection rule.
+1. Upload some log records to the console so that it will get parsed, the label will get attached to it as per the condition, and it will get detected in the detection rule.
 
 2. You will use log records on which the **livelab\_mushop\_api\_logs** parser is created.
 
-3. Navigate to **OCI Cloud Shell**, as shown in image.
+3. Navigate to **OCI Cloud Shell**, as shown in the image.
 ![oci-cloud-shell](images/oci-cloud-shell.png)
 
 4. Run the following commands in **OCI Cloud Shell**.
@@ -160,7 +164,7 @@ To verify the alarm, you need to upload log records, which will be parsed by par
     </copy>
     ```
 
-5. A file named **livelab\_logs.txt** will be created at the location where python script is executed. This file will contains 1000 random log records, generated in interval of your current UTC time and 2 hours before your current UTC time.
+5. A file named **livelab\_logs.txt** is created at the location where python script is executed. This file will contain 1000 random log records, generated in intervals of your current UTC and 2 hours before your current UTC.
 
 6. Run the following command in **OCI Cloud Shell**,
 
@@ -176,11 +180,11 @@ To verify the alarm, you need to upload log records, which will be parsed by par
     * -l : source to be associated with the uploaded file (Livelab_source was created in **Task: 5**)
     * -n : name of upload (Give any name)
 
-7. Script will ask for index of a list of compartments where to upload file, make sure the source, log group is in same compartment.
+7. Script will ask for an index of compartment where to upload file. Make sure the source and log group are in the same compartment.
 
-8. Script will ask for index of log group present in the compartment, if there are no log groups, it will ask to create a new log group, type **"y"**.
+8. Script will ask for an index of the log group present in the compartment. If there are no log groups, it will ask to create a new log group, enter **"y"**.
 
-9. If you entered **"y"**, then, repeat the **Step 5 and Step 6**, you will see a log group named **Live Labs Log Group** created, give its index 0.
+9. If you entered **"y"**, repeat the **Step 5 and Step 6**, and you will see a log group named **Live Labs Log Group** created, provide the index 0 in OCI Shell.
 
 10. The file will get uploaded.
 
@@ -191,34 +195,32 @@ To verify the alarm, you need to upload log records, which will be parsed by par
 
 2. Click on **Livelab\_alarm**.
 
-3. All the information regarding the alarm will be shown there. You can change **Quick select** based on the requirement. Graph will be shown, showing the details. You can hover on graph know in details. Click on **Show Data Table** to see the timestamp and value clearly.
-![result-1](images/result-1.png)
+3. All the information regarding the alarm will be shown there. You can change **Quick select** based on the requirement. The graph will show the details. You can hover over the graph know in details. Click on **Show Data Table** to see the timestamp and value.
+![Triggered alarm graph](images/triggered-alarm-graph.png)
 
-4. Details of logs can be seen from last two hour. Your threshold value was 30. Value of **AuthError_Livelabs** label can be seen in every 15 minutes from 12:15:00 UTC to 14:00:00 UTC. Initially alarm was in **Ok** state, then at 13:57:00 UTC, the alarm when into firing state. After one minute of delay, it was got reset and changed to **Ok** state, it means it is ready to get triggered. 
-![result-2](images/result-2.png)
+4. Details of logs can be seen from the last two hours. Your threshold value was 30. The value of **AuthError_Livelabs** label can be seen every 15 minutes from 12:15:00 UTC to 14:00:00 UTC. Initially, the alarm was in **Ok** state, then at 13:57:00 UTC, the alarm went into firing state. After one minute of delay, it was reset and changed to **Ok** state, which means it is ready to get triggered.
+![Triggered alarm table](images/triggered-alarm-table.png)
 
-    The alarm gets triggered only one time despite, the value crossing above 30 two times. It happened because you uploaded 1000 logs at a single time. It will work perfectly if any live source is connected for log collection.
-
-5. Hence, alarm is verified.
+5. Hence, the alarm is verified.
 
 You may now proceed to the **proceed to the next lab**.
 
 ## Learn More
 
-For further reading please refer to the resources.
+For further reading please refer to the resources:
 
-[Updating an Alarm] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/Tasks/update-alarm.htm#top>)
+* [Updating an Alarm] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/Tasks/update-alarm.htm#top>)
 
-[Viewing an Alarm Metric Chart] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/Tasks/create-edit-alarm-chart.htm#top>)
+* [Viewing an Alarm Metric Chart] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/Tasks/create-edit-alarm-chart.htm#top>)
 
-[Example Alarm Messages] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/alarm-message-examples.htm>)
+* [Example Alarm Messages] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/alarm-message-examples.htm>)
 
-[Best Practices for Your Alarms] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/Concepts/alarmsbestpractices.htm>)
+* [Best Practices for Your Alarms] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/Concepts/alarmsbestpractices.htm>)
 
-[Suppressing an Alarm] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/Tasks/add-alarm-suppression.htm>)
+* [Suppressing an Alarm] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/Tasks/add-alarm-suppression.htm>)
 
 ## Acknowledgements
 
 * **Author** - Chintan Kalsaria, OCI Logging Analytics
 * **Contributors** -  Chintan Kalsaria, Kiran Palukuri, Ashish Gor, Kumar Varun, OCI Logging Analytics
-* **Last Updated By/Date** - Chintan Kalsaria, Nov, 2023
+* **Last Updated By/Date** - Chintan Kalsaria, Jan 2024

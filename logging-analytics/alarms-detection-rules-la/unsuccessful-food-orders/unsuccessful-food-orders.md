@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will understand the concept of Parsers in Logging Analytics.
+In this lab, you will create an alarm for a real-life application. The API logs used in this lab will be classified into **Livelab Passed API** and **Livelab Failed API**. An alarm will be triggered at 15-minute intervals if more than 30% of Livelab Failed APIs exist.
 
 Estimated Time: 30 minutes.
 
@@ -10,71 +10,68 @@ Estimated Time: 30 minutes.
 
 In this lab you will:
 
-* Create alarms for more than 30% unsuccessful orders in 15 mins
-* Verify the alarm
+* Create Alarms for more than 30% unsuccessful orders in 15 mins
+* Verify the Alarm
 
 ### Prerequisites
 
 This lab assumes you have:
 
 * An Oracle Cloud Infrastructure account.
-
-In this lab, you will create an alarm for real life based application. The API logs which we are using will be classified into **Livelab Passed API** and **Livelab Failed API**. In each 15 minutes interval if there are more than 30% of Livelab Failed APIs, an alarm will be triggered.
+* Basic understanding of Labels, Sources, Parsers, Detection Rule and Alarms of Logging Analytics.
 
 ## Task 1: Create Labels
 
-You will be creating two labels, one label as **Livelab Passed API** and other as **Livelab Failed API**, using these two labels, you will create a detection rule for each, from the two detection rule, you will create an alarm.
+1. From **Navigation Menu** ![Navigation menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Sources box**.
+![Navigate to administration](images/administration-navigation.png)
+![Navigate to sources](images/sources-navigation.png)
 
-1. From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Sources box**.
-    ![administration-navigation](images/administration-navigation.png)
-    ![sources-navigation](images/sources-navigation.png)
-
-2. Search for **Livelab API Mushop Log Source**, which was created in [Lab 4: Create a Source](?lab=create-source). Click on it.
+2. Search for **Livelab API Mushop Log Source**, created in [Create a Source](?lab=create-source#Task2:CreateaSource). Click on it.
 
 3. Click on **Edit** button.
-    ![edit-source](images/edit-source.png)
+![Edit source](images/edit-source.png)
 
-4. Click on **Labels**, to add label. Cick on **Add conditional label**.
-    ![labels](images/labels.png)
+4. Click on **Labels**, to add a label. Click on **Add conditional label**.
+![Labels](images/labels.png)
 
-5. You will create label for Failed API. In the Conditions section:
-    * Select the log field on which you want to apply the condition from the Input Field list. Select **Status** from dropdown list.
-    * Select the operator from the Operator list. Select **Contains** or **Equals**. Both can be used in the given usecase.
-    * In the Condition Value field, specify the value of the condition to be matched for applying the label. For failed APIs, values of Status can be **401, 400, 404, 406, 408** which we extracted using parsers from log records.
-    * Under Actions, select from the already available Oracle-defined or user created labels. If required, you can create a new label by clicking **Create Label**.
-    ![add-label-1](images/add-label-1.png)
+5. You will create a label for Failed API. In the Conditions section:
+    * Select the log field to apply the condition from the Input Field list. Select **Status** from the dropdown list.
+    * Select the operator from the Operator list. Select **Contains** or **Equals**. Both can be used in the given use case.
+    * In the Condition Value field, specify the value of the condition to be matched for applying the label. For failed APIs, values of Status can be **401, 400, 404, 406, 408**, which we extracted using parsers from log records.
+    * Under Actions, select from the already available Oracle-defined or user-created labels. If required, you can create a new label by clicking **Create Label**.
+![Add conditional label](images/add-conditional-label.png)
 
 6. **Create Label** dialog box will appear. Fill in the details:
-    * **Label Name:** Enter the label name. For example, **Livelab Failed API**.
+    * **Label Name:** Enter the label name—for example, **Livelab Failed API**.
     * (Optional) **Description:**  Enter the details about the label.
-    * Labels can be marked as being a problem with a priority to make those log entries more prominent in the Log Explorer. To assign priority to the label. Under Livelab Failed API select **Yes** check box.
-    * In the Problem Priority field, click the down arrow and select a priority. For example, select **Medium**.
+    * Labels can be marked as a problem with a priority to make those log entries more prominent in the Log Explorer. To assign priority to the label, under Livelab Failed API, select **Yes** check box.
+    * In the Problem Priority field, click the down arrow and select a priority. For example, choose **Medium**.
     * A log entry will be assigned a problem priority based on the labels that get attached to the log entry. In this case, if Livelab Failed API has a problem priority of Medium, any log entry that matches a condition such that it gets the Livelab Failed API label would have a problem priority of Medium.
-    * In the **Related Terms** field, enter the terms that are related to the log entry.
+    * In the **Related Terms** field, enter the related terms into the log entry.
     * Click on **Create**.
-![add-label-2](images/add-label-2.png)
+![Create a failed API label](images/create-failed-label.png)
 
-7. Similarly, add another label, named **Livelab API Passed**. Uncheck the **Use this label to indicate a problem**, as are not having any problem for passed APIs. For adding condition:
-    * If the **Status** does not contain or not equal to **401, 400, 404, 406, 408**, the log record can be labelled as passed.
-    * Select **Status** from dropdown list in Input Field List. Select **Not Contain** operator. Add **401** as condition value.
-    * **Not Contain** operator only allows for one value, so add more conditions by clicking on the Add Condition icon, marked as 2 in below image.
+7. Similarly, add another label named **Livelab API Passed**. Uncheck the **Use this label to indicate a problem**, as there are no problems for passed APIs. For adding condition:
+    * If the **Status** does not contain or is not equal to **401, 400, 404, 406, 408**, the log record can be labeled as passed.
+    * Select **Status** from the dropdown list in the Input Field List. Select **Not Contain** operator. Add **401** as the condition value.
+    * **Not Contain** operator only allows for one value, so add more conditions by clicking the Add Condition icon, marked as 2 in the image below.
     * Select the logical operation to apply on the multiple conditions. Select **AND**.
-    * Similarly add other 4 conditions where Status does not contain **406,409,400,404**.
+    * Similarly, add other four conditions where Status does not contain **406,409,400,404**.
     * Click on **Add**.
 ![add-label-3](images/add-label-3.png)
 
-8. In the **Edit Source**, you will be able to see the two condition with its associated label. Click on **Save Changes**.
-    ![labels-added](images/labels-added.png)
+8. In the **Edit Source**, you will be able to see the two conditions with their associated label. Click on **Save Changes**.
+![labels-added](images/labels-added.png)
 
 ## Task 2: Create Detection Rules
 
-Create two ingest time detection rules, as discussed in [Lab 6](?lab=create-and-trigger-ingest-time-detection-rule).
+Create two ingest time detection rules, as discussed in [Create and Trigger a Ingest Time Detection Rule](?lab=create-and-trigger-ingest-time-detection-rule#Task3:CreateIngestTimeDetectionRule).
 
 1. One rule for detecting **Livelab API Passed** label. Fields to be filled in Create detection rule page:
     * **Rule name:** Livelab Detect Passed API.
     * **Metric Namespace:** livelabmetricnamespace.
     * **Metric Name:** livelab_name.
-    ![detection-rule-1](images/detection-rule-1.png)
+![detection-rule-1](images/detection-rule-1.png)
     * Click on **Create detection rule**.
 
 2. Other rule for detecting **Livelab Detect Failed API**. Fields to be filled in Create detection rule page:
@@ -84,42 +81,42 @@ Create two ingest time detection rules, as discussed in [Lab 6](?lab=create-and-
 ![detection-rule-2](images/detection-rule-2.png)
     * Click on **Create detection rule**.
 
-3. Make sure that Metric Namespace and Metric Name remains same throughout the task, or else results may not appear.
+3. Make sure that Metric Namespace and Metric Name remains the same throughout the task, or else results may not appear.
 
 ## Task 3: Create an Alarm
 
-1. Navigate to **Create Alarm page** as discussed in Option 1 of [Lab 8: Task 2](?lab=create-and-verify-alarm#Task2:CreateanAlarm)
+1. Navigate to **Create Alarm page** as discussed in Option 1 of [Create an Verify an Alarm](?lab=create-and-verify-alarm#Task2:CreateanAlarm).
 
-2. Provide alarm name as **Livelab Failed APIs more than 30%**. Click on **Switch to Advanced Mode**, as a complex query will be required which will be using two labels from detection rule to create this alarm.
-    ![alarm-adv-mode](images/alarm-adv-mode.png)
+2. Provide alarm name as **Livelab Failed APIs more than 30%**. Click on **Switch to Advanced Mode**, as a complex query will be required, using two labels from the detection rule to create this alarm.
+![alarm-adv-mode](images/alarm-adv-mode.png)
 
-3. Make sure that the compartment and Metric Name is same as given for detection rules. Inside query editor, paste this query:
+3. Make sure that the compartment and metric name are the same as given for detection rules. Inside the query editor, paste this query:
 
     ```text
     <copy>livelab_name[15m]{label = "Livelab API Failed"}.grouping().sum() / (livelab_name[15m]{label = "Livelab API Passed"}.grouping().sum() + livelab_name[15m]{label = "Livelab API Failed"}.grouping().sum()) > 0.3</copy>
     ```
 
-    This query  is the condition, when the alarm will trigger. Query implies, if the total no of log records with failed labels divide by total no of log records (failed labels and passed labels) is greater than 0.3 i.e. more than 30%, then the alarm will trigger.
+    This query is the condition when the alarm will trigger. Query implies if the total no of log records with failed labels divided by the total no of log records (failed labels and passed labels) is greater than 0.3 i.e. more than 30%, then the alarm will trigger.
 
     ![alarm-query](images/alarm-query.png)
 
-    Currently, there is not data uploaded after creating alarm, so you see the graph is empty. You can have a table view by clicking on **Show Data Table**.
+    Currently, no data is uploaded after creating the alarm, so the graph is empty. You can have a table view by clicking on **Show Data Table**.
 
-4. Now, **Define alarm notification**, select the **Destination service**, **compartment** and **Topic**, if there are no existing topic, you can create a new one just by clicking on **Create a topic**. For more information regarding these options, you can refer [Lab 8: Task 2](?lab=create-and-verify-alarm#Task2:CreateanAlarm)
-    ![alarm-end](images/alarm-end.png)
+4. Now, **Define alarm notification** and select the **Destination service**, **compartment**, and **Topic**. If there are no existing topics, you can create a new one by clicking on **Create a topic**. For more information regarding these options, you can refer [Create an Verify an Alarm](?lab=create-and-verify-alarm#Task2:CreateanAlarm).
+![alarm-end](images/alarm-end.png)
 
 5. Click on **Save alarm**. **Alarm Definitions page** will show up, providing the details of alarm, with a **Ok** mark.
-    ![alarm-before-triggering](images/alarm-before-triggering.png)
+![alarm-before-triggering](images/alarm-before-triggering.png)
 
 6. Now, your alarm is ready. To test it, you will have to give some log records.
 
 ## Task 4: Upload a File
 
-1. Upload some log records from desktop to the console, so that it will get parsed, label will get attached to it as per the condition and it will get detected in the detection rule.
+1. Upload some log records from the desktop to the console so that they will get parsed, the label will get attached to it as per the condition, and get detected in the detection rule.
 
 2. You will use log records on which the **livelab\_mushop\_api\_logs** parser is created.
 
-3. Navigate to **OCI Cloud Shell**, as shown in image.
+3. Navigate to **OCI Cloud Shell**, as shown in the image.
 ![oci-cloud-shell](images/oci-cloud-shell.png)
 
 4. Run the following commands in **OCI Cloud Shell**.
@@ -132,7 +129,7 @@ Create two ingest time detection rules, as discussed in [Lab 6](?lab=create-and-
     </copy>
     ```
 
-5. A file named **livelab\_logs.txt** will be created at the location where python script is executed. This file will contains 1000 random log records, generated in interval of your current UTC time and 2 hours before your current UTC time.
+5. A file named **livelab\_logs.txt** is created at the location where python script is executed. This file contains 1000 random log records, generated in intervals of your current UTC and 2 hours before your current UTC.
 
     >**NOTE :** Alarm only works if the logs are not more than 2 hours older.
 
@@ -150,17 +147,17 @@ Create two ingest time detection rules, as discussed in [Lab 6](?lab=create-and-
     * -l : source to be associated with the uploaded file (Livelab_source was created in **Task: 5**)
     * -n : name of upload (Can give any name)
 
-7. Script will ask for index of a list of compartments where to upload file, make sure the source, log group is in same compartment.
+7. Script will ask for an index of compartment where to upload file. Make sure the source and log group are in the same compartment.
 
-8. Script will ask for index of log group present in the compartment, if there are no log groups, it will ask to create a new log group, type **"y"**.
+8. Script will ask for an index of the log group present in the compartment. If there are no log groups, it will ask to create a new log group, enter **"y"**.
 
-9. If you entered **"y"**, then, repeat the **Step 5 and Step 6**, you will see a log group named **Live Labs Log Group** created, give its index 0.
+9. If you entered **"y"**, repeat the **Step 5 and Step 6**, and you will see a log group named **Live Labs Log Group** created, provide the index 0 in OCI Shell.
 
 10. The file will get uploaded.
 
 ## Task 5: Verify an Alarm
 
-1. As the file is processed, the log records will also be parsed with the provided parser. All logs will be labelled as **Livelab Failed API** or **Livelab Passed API**. The alarm will check all the logs in interval of 15mins, runs it query, and will be triggered as soon as the queries satisfies.
+1. The log records will also be parsed with the provided parser as the file is processed. All logs will be labelled as **Livelab Failed API** or **Livelab Passed API**. The alarm will check all the logs in interval of 15mins, runs it query, and be triggered as soon as the queries satisfy.
 
 2. Open **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Definitions** > **Livelab Failed APIs more than 30%** alarm. You will notice, the alarm has changed its state from **Ok** to **Firing**. A graph can be seen under **Alarm data** as shown in image. Click on **Show Data Table**
     ![alarm-triggered-graph](images/alarm-triggered-graph.png)
@@ -174,20 +171,20 @@ You may now **proceed to the next lab**.
 
 ## Learn More
 
-For further reading please refer to the resources.
+For further reading please refer to the resources:
 
-[Create a Parser] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/create-parser.html>)
+* [Create a Parser] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/create-parser.html>)
 
-[How to use a RegEx Parser Builder?] (<https://www.youtube.com/watch?v=EoBJkaq9Png>)
+* [How to use a RegEx Parser Builder?] (<https://www.youtube.com/watch?v=EoBJkaq9Png>)
 
-[Create a Source] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/create-log-source.html>)
+* [Create a Source] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/create-log-source.html>)
 
-[Upload Logs on Demand] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/upload-logs-demand.html>)
+* [Upload Logs on Demand] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/upload-logs-demand.html>)
 
-[Managing Alarms] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/Tasks/managingalarms.htm>)
+* [Managing Alarms] (<https://docs.oracle.com/en-us/iaas/Content/Monitoring/Tasks/managingalarms.htm>)
 
 ## Acknowledgements
 
 * **Author** - Chintan Kalsaria, OCI Logging Analytics
 * **Contributors** -  Chintan Kalsaria, Kiran Palukuri, Ashish Gor, Kumar Varun, OCI Logging Analytics
-* **Last Updated By/Date** - Chintan Kalsaria, Dec, 2023
+* **Last Updated By/Date** - Chintan Kalsaria, Jan 2024
