@@ -147,6 +147,8 @@ Create two ingest time detection rules, as discussed in [Create and Trigger a In
     * -l : source to be associated with the uploaded file (Livelab_source was created in **Task: 5**)
     * -n : name of upload (Can give any name)
 
+    >**NOTE :** Make sure to have correct parameters f, s, l and n.
+
 7. Script will ask for an index of compartment where to upload file. Make sure the source and log group are in the same compartment.
 
 8. Script will ask for an index of the log group present in the compartment. If there are no log groups, it will ask to create a new log group, enter **"y"**.
