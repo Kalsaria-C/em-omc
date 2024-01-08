@@ -10,8 +10,8 @@ Estimated Time: 30 minutes.
 
 In this lab you will:
 
-* Create Alarms for more than 30% unsuccessful orders in 15 mins
-* Verify the Alarm
+* Create Alarms for more than 30% unsuccessful orders in 15 mins.
+* Verify the Alarm.
 
 ### Prerequisites
 
@@ -137,7 +137,7 @@ Create two ingest time detection rules, as discussed in [Create and Trigger a In
 
     ```text
     <copy>
-    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-helper.py) -f ~/Livelab_Lab_16/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
+    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-logs-file-to-oci.py) -f ~/Livelab_Lab_16/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
     </copy>
     ```
 

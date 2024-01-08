@@ -132,7 +132,7 @@ When the match specified in the log source is encountered in the log record whil
 
     ```text
     <copy>
-    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-helper.py) -f ~/Livelab_Lab_06/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
+    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-logs-file-to-oci.py) -f ~/Livelab_Lab_06/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
     </copy>
     ```
 

@@ -160,7 +160,7 @@ To verify the alarm, you need to upload log records, which will be parsed by the
     <copy>
     mkdir Livelab_Lab_08
     cd Livelab_Lab_08
-    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/api-logs-generator.py)
+    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-logs-file-to-oci.py)
     </copy>
     ```
 
