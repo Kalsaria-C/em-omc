@@ -49,8 +49,9 @@ Let's say you want to detect whenever you have an authentication error in your l
 
 You need a log source and associated entity to create a detection rule. You also need a specific parser corresponding to the type of logs that will be collected and parsed. You also need a label associated with particular content of log records so you can create a detection rule on that specific label.
 
-1. From **Navigation Menu** ![Navigation menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Detection Rules box** > **Create Detection Rule**.
-![Navigate to detection rules](images/detection-rules-navigation.gif)
+1. From **Navigation Menu** ![Navigation menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Detection Rules box** > **Create rule**.
+![Navigate to administration overview](images/navigate-administration-overview.png)
+![Administration overview](images/administration-overview.png)
 
 2. Create detection rule dialog box opens. Click on **Ingest time detection rule**.
 ![Create detection rule dialog box](images/create-detection-rule-dialog-box.png)

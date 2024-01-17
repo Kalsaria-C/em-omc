@@ -71,44 +71,48 @@ Create two ingest time detection rules, as discussed in [Create and Trigger a In
     * **Rule name:** Livelab Detect Passed API.
     * **Metric Namespace:** livelabmetricnamespace.
     * **Metric Name:** livelab_name.
-![detection-rule-1](images/detection-rule-1.png)
+![Passed APIs detection rule](images/passed-apis-detection-rule.png)
     * Click on **Create detection rule**.
 
 2. Other rule for detecting **Livelab Detect Failed API**. Fields to be filled in Create detection rule page:
     * **Rule name:** Livelab Detect Failed API.
     * **Metric Namespace:** livelabmetricnamespace.
     * **Metric Name:** livelab_name.
-![detection-rule-2](images/detection-rule-2.png)
+![Failed APIs detection rule](images/failed-apis-detection-rule.png)
     * Click on **Create detection rule**.
 
-3. Make sure that Metric Namespace and Metric Name remains the same throughout the task, or else results may not appear.
+>**NOTE :** Make sure that Metric Namespace and Metric Name remains the same throughout the task, or else results may not appear.
 
 ## Task 3: Create an Alarm
 
-1. Navigate to **Create Alarm page** as discussed in Option 1 of [Create an Verify an Alarm](?lab=create-and-verify-alarm#Task2:CreateanAlarm).
+1. Navigate to **Create Alarm page** as discussed in [Create an Verify an Alarm](?lab=create-and-verify-alarm#Task2:CreateanAlarm) using any of the detection rule made above.
 
 2. Provide alarm name as **Livelab Failed APIs more than 30%**. Click on **Switch to Advanced Mode**, as a complex query will be required, using two labels from the detection rule to create this alarm.
-![alarm-adv-mode](images/alarm-adv-mode.png)
+![Alarm advanced mode](images/alarm-adv-mode.png)
 
 3. Make sure that the compartment and metric name are the same as given for detection rules. Inside the query editor, paste this query:
 
     ```text
-    <copy>livelab_name[15m]{label = "Livelab API Failed"}.grouping().sum() / (livelab_name[15m]{label = "Livelab API Passed"}.grouping().sum() + livelab_name[15m]{label = "Livelab API Failed"}.grouping().sum()) > 0.3</copy>
+    <copy>livelab_name[15m]{rule_ocid = "<Detection rule ocid detecting Livelab API Failed label>"}.grouping().sum() / (livelab_name[15m]{rule_ocid = "<Detection rule ocid detecting Livelab API Passed label>"}.grouping().sum() + livelab_name[15m]{rule_ocid = "<Detection rule ocid detecting Livelab API Failed label>"}.grouping().sum()) > 0.3</copy>
     ```
+
+    Copy the value of ocids of respective detection rule and replace it in above query. The value of ocid can be found in the **Detection Rule** created.
+
+4. From **Navigation Menu** > **Observability & Management** > **Logging Analytics** > **Administration** > **Detection Rules box** > **Center of box** > **Respective Detection rule** > **Copy the OCID**.
+
+    ![Detection rule ocid](images/detection-rule-ocid.png)
 
     This query is the condition when the alarm will trigger. Query implies if the total no of log records with failed labels divided by the total no of log records (failed labels and passed labels) is greater than 0.3 i.e. more than 30%, then the alarm will trigger.
 
-    ![alarm-query](images/alarm-query.png)
+    ![Alarm query](images/alarm-query.png)
 
-    Currently, no data is uploaded after creating the alarm, so the graph is empty. You can have a table view by clicking on **Show Data Table**.
+5. Now, **Define alarm notification** and select the **Destination service**, **compartment**, and **Topic**. If there are no existing topics, you can create a new one by clicking on **Create a topic**. For more information regarding these options, you can refer [Create an Verify an Alarm](?lab=create-and-verify-alarm#Task2:CreateanAlarm).
+![Alarm end](images/alarm-end.png)
 
-4. Now, **Define alarm notification** and select the **Destination service**, **compartment**, and **Topic**. If there are no existing topics, you can create a new one by clicking on **Create a topic**. For more information regarding these options, you can refer [Create an Verify an Alarm](?lab=create-and-verify-alarm#Task2:CreateanAlarm).
-![alarm-end](images/alarm-end.png)
+6. Click on **Save alarm**. **Alarm Definitions page** will show up, providing the details of alarm, with a **Ok** mark.
+![Alarm before triggering](images/alarm-before-triggering.png)
 
-5. Click on **Save alarm**. **Alarm Definitions page** will show up, providing the details of alarm, with a **Ok** mark.
-![alarm-before-triggering](images/alarm-before-triggering.png)
-
-6. Now, your alarm is ready. To test it, you will have to give some log records.
+7. Now, your alarm is ready. To test it, you will have to give some log records.
 
 ## Task 4: Upload a File
 
@@ -117,7 +121,7 @@ Create two ingest time detection rules, as discussed in [Create and Trigger a In
 2. You will use log records on which the **livelab\_mushop\_api\_logs** parser is created.
 
 3. Navigate to **OCI Cloud Shell**, as shown in the image.
-![oci-cloud-shell](images/oci-cloud-shell.png)
+![OCI cloud shell](images/oci-cloud-shell.png)
 
 4. Run the following commands in **OCI Cloud Shell**.
 
@@ -161,11 +165,19 @@ Create two ingest time detection rules, as discussed in [Create and Trigger a In
 
 1. The log records will also be parsed with the provided parser as the file is processed. All logs will be labelled as **Livelab Failed API** or **Livelab Passed API**. The alarm will check all the logs in interval of 15mins, runs it query, and be triggered as soon as the queries satisfy.
 
-2. Open **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Definitions** > **Livelab Failed APIs more than 30%** alarm. You will notice, the alarm has changed its state from **Ok** to **Firing**. A graph can be seen under **Alarm data** as shown in image. Click on **Show Data Table**
-    ![alarm-triggered-graph](images/alarm-triggered-graph.png)
+2. From **Navigation Menu** ![Navigation menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Alarms box**.
+    ![Alarms information](images/alarms-info.png)
 
-3. From data table, you can clearly observe, the alarm has been triggered 5 times, in interval of 15 minutes, in last hour. Click on **Quick selects** dropdown, and change time to **Last 6 hours**. By observing the table, it can be observed that for the uploaded logs, the alarm triggered 9 times, and sent a notification to selected destination.
-    ![alarm-triggered-table](images/alarm-triggered-table.png)
+    >**NOTE :** Wait for 1-2 minutes, to trigger an alarm after uploading the file, keep on refreshing the page.
+
+3. **Firing alarm** page will appear. It will show all fired alarms of Logging Analytics. Click on **Livelab Failed APIs more than 30%** alarm.
+    ![Firing alarm information](images/firing-alarm-info.png)
+
+4. The alarm has changed its state from **Ok** to **Firing**. A graph can be seen under **Alarm data** as shown in image. Click on **Show Data Table**
+    ![Fired alarm](images/fired-alarm.png)
+
+5. Click on **Quick selects** dropdown, and change time to **Last 6 hours**. From data table, you can clearly observe, the alarm has been triggered 8 times, in interval of 15 minutes, in last 6 hours and sent a notification to selected destination.
+    ![Alarm triggered table](images/alarm-triggered-table.png)
 
     You can also observe, that the alarm was initially in **Ok** state, then it went to **Firing** state, after some time, it will go to **Reset** state, waiting to go to **Firing** state again.
 

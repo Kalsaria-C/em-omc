@@ -31,43 +31,34 @@ The detected events can emit metrics to the Monitoring service. Managing alarms 
 
 ## Task 2: Create an Alarm
 
-1. There are 2 two ways to navigate to **Create Alarm Page**:
+1. Navigate to **Create Alarm Page**:
 
-    ### **Option 1:**
+    * From **Navigation Menu** ![Navigation menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Detection Rules box** > **Center of box**.
+    ![Navigate to administration overview](images/navigate-administration-overview.png)
+    ![Navigate to detection rules](images/navigate-detection-rule.png)
 
-    From **Navigation Menu** ![Navigation menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Status**.
+    * For example, select **Livelab\_detection\_rule**, made in [How do I create and trigger an ingest time detection rule in Logging Analytics?](?lab=sprint-create-and-trigger-ingest-time-detection-rule).
+        ![detection-rule-page](images/detection-rule-page.png)
 
-    * Here, all the alarms fired by the events in Logging Analytics are consolidated. The table displays the alarm name, its severity, the time when it was triggered, and whether it is suppressed or not.
-    * Select the **Compartment** of your alarms in the **Scope section**.
-    * Click on the **Create Alarm**. The Create Alarm dialog box opens.
-    ![Navigate to alarm](images/alarm-navigation.gif)
+    * Click on the **Create Alarm** button, as seen in the figure. The Create Alarm dialog box opens.
+    ![Create alarm button](images/create-alarm-button.png)
 
-    ### **Option 2:**
+2. Specify the **Alarm name**. For example, **"Livelab_alarm"**.
 
-    * After creating a detection rule, you will land on detection rules page, where you will able to see all the detection rules. Click on the desired detection rule. You can refer to [Create and Trigger a Ingest Time Detection Rule](?lab=create-and-trigger-ingest-time-detection-rule#Task3:CreateIngestTimeDetectionRule) or [Create a Scheduled Search Detection Rule](?lab=create-scheduled-search-detection-rule).
-
-    * For example, select **Livelab\_detection\_rule**, made in [Create and Trigger a Ingest Time Detection Rule](?lab=create-and-trigger-ingest-time-detection-rule#Task3:CreateIngestTimeDetectionRule).
-    ![detection-rule-page](images/detection-rule-page.png)
-
-2. Click on the **Create Alarm** button, as seen in the figure. The Create Alarm dialog box opens.
-![Create alarm button](images/create-alarm-button.png)
-
-3. Specify the **Alarm name**. For example, **"Livelab_alarm"**.
-
-4. For **Alarm severity**, select the perceived type of response required when the alarm is in the firing state. There are four options for it:
+3. For **Alarm severity**, select the perceived type of response required when the alarm is in the firing state. There are four options for it:
     * Critical (by default)
     * Error
     * Warning
     * Info
 
-5. (Optional) For **Alarm body**, enter the human-readable content of the notification.
+4. (Optional) For **Alarm body**, enter the human-readable content of the notification.
 It is recommended to guide operators in resolving the alarm condition.
 
-6. (Optional) In the **Tags (optional)** area, enter one or more tags for the alarm.
+5. (Optional) In the **Tags (optional)** area, enter one or more tags for the alarm.
 If you have permission to create a resource, you can also apply free-form tags to that resource. To apply a defined tag, you must have permission to use the tag namespace. If you're unsure whether to apply tags, skip this option or ask an administrator. You can apply tags later.
 ![Define alarm and tags](images/define-alarm-and-tags.png)
 
-7. In the **Metric description** area, enter values to specify the metric to evaluate for the alarm.
+6. In the **Metric description** area, enter values to specify the metric to evaluate for the alarm.
 
     1. **Compartment:** Select the compartment containing the resources that emit the metrics evaluated by the alarm. The selected compartment is also the storage location of the alarm. By default, the first accessible compartment is selected.
     2. **Metric namespace:** Select the service or application that emits the metrics for the resources you want to monitor. The Metric namespace list shows metric namespaces for the selected compartment. You selected **"**livelabmetricnamespace"**, which you created while creating a detection rule.
@@ -90,21 +81,24 @@ If you have permission to create a resource, you can also apply free-form tags t
 
     ![Metric description](images/metric-description.png)
 
-8. In the **Metric dimensions** area, specify optional filters to narrow the metric data that's evaluated.
+7. In the **Metric dimensions** area, specify optional filters to narrow the metric data that's evaluated.
     * **Dimension value:** Select the value to use for the specified dimension.
     * **Additional dimension:** Add another name-value pair for a dimension, as needed.
     * **Aggregate metric streams:** Select this check box to return the combined value of all metric streams for the selected statistic.
-Let's say we provide dimension name as **"label"**, which has Dimension value as **"AuthError_Livelabs"**.
-![metric-dimension](images/metric-dimension.png)
 
-9. In the **Trigger rule** area, specify the condition that must be satisfied for the alarm to be in the firing state.
+    Let's say we provide an extra dimension name as **"label"**, which has Dimension value as **"AuthError_Livelabs"**.
+    ![Metric dimension](images/metric-dimension.png)
+
+    >**NOTE :** Metric dimension must have **"rule_ocid"** as one dimension or else this alarm will not be of Logging Analytics and will not show in firing alarm page.
+
+8. In the **Trigger rule** area, specify the condition that must be satisfied for the alarm to be in the firing state.
     * **Operator:** Select the operator to use in the condition threshold.
     * **Value:** Enter the value to use for the condition threshold. For the between and outside operators, enter both values for the range.
     * **Trigger delay minutes:** Enter the number of minutes the condition must be maintained before the alarm is in the firing state.
     Let's say, you have selected operator as **"greater than or equal"**, value as **"30"**, and trigger delay minutes as **"1"**. So, the alarm will be triggered when the count of "AuthError_Livelabs" is greater than or equal to 30 with a delay of 1 minute.
 ![Trigger rule](images/trigger-rule.png)
 
-10. In the **Destination area** under **Define alarm notifications**, select the provider of the destination to use for alarm notifications.
+9. In the **Destination area** under **Define alarm notifications**, select the provider of the destination to use for alarm notifications.
     1. **Destination service:** Select one of the following values:
         * **Notifications:** Send alarm notifications to a topic. Each subscription in the topic receives an alarm message.
         * **Streaming:** Send alarm messages to a stream.
@@ -124,22 +118,22 @@ Let's say we provide dimension name as **"label"**, which has Dimension value as
             6. SMS: Select the country for the phone number, and then enter the phone number.
 ![Define alarm notifications](images/define-alarm-notifications.png)
 
-11. For **Message grouping**, select one of the following options.
+10. For **Message grouping**, select one of the following options.
     * **Group notifications across metric streams:** Collectively track metric status across all metric streams. Send a message when metric status across all metric streams changes.
     * **Split notifications per metric stream:** Individually track metric status by metric stream. Send a message when metric status for each metric stream changes.
 
-12. For **Message Format**, select an option for the appearance of messages you receive from this alarm (for Notifications only).
+11. For **Message Format**, select an option for the appearance of messages you receive from this alarm (for Notifications only).
     * **Send formatted messages:** Simplified, user-friendly layout. To view supported subscription protocols and message types for formatted messages (options other than Raw), see Friendly formatting.
     * **Send Pretty JSON messages (raw text with line breaks):** JSON with new lines and indents.
     * **Send raw messages:** Raw JSON blob.
 
-13. (Optional) If you want to receive notifications at regular intervals when the alarm is firing, select **Repeat notification?** and then select **Notification frequency** to wait before resending the notification.
+12. (Optional) If you want to receive notifications at regular intervals when the alarm is firing, select **Repeat notification?** and then select **Notification frequency** to wait before resending the notification.
 (Optional) To suppress evaluations and notifications for a specified length of time, select **Suppress notifications**. This option helps avoid alarm notifications during system maintenance periods. Specify a start time, end time, and an optional description.
 
-14. (Optional) To save the alarm without starting to evaluate metric data, clear the **Enable this alarm?** check box.
+13. (Optional) To save the alarm without starting to evaluate metric data, clear the **Enable this alarm?** check box.
 ![Message and notification](images/message-and-notification.png)
 
-15. Click **Save alarm**.
+14. Click **Save alarm**.
 
 The **Alarm Definitions** page lists the new alarm. If the alarm is enabled, then Monitoring begins evaluating the configured metric, sending alarm messages when the metric data satisfies the trigger rule.
 
@@ -190,15 +184,18 @@ To verify the alarm, you need to upload log records, which will be parsed by the
 
 ## Task 4: Verify an Alarm
 
-1. From **Navigation Menu** ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Monitoring** > **Alarm Definitions**.
-![alarm-def-navigation](images/alarm-def-navigation.png)
+1. From **Navigation Menu** ![Navigation menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Alarms box**.
+    ![Alarms information](images/alarms-info.png)
 
-2. Click on **Livelab\_alarm**.
+    >**NOTE :** Wait for 1-2 minutes, to trigger an alarm after uploading the file, keep on refreshing the page.
+
+2. **Firing alarm** page will appear. It will show all fired alarms of Logging Analytics. Click on **Livelab\_alarm**.
+    ![Firing alarm information](images/firing-alarm-info.png)
 
 3. All the information regarding the alarm will be shown there. You can change **Quick select** based on the requirement. The graph will show the details. You can hover over the graph know in details. Click on **Show Data Table** to see the timestamp and value.
-![Triggered alarm graph](images/triggered-alarm-graph.png)
+![Triggered alarm graph](images/triggered-alarm.png)
 
-4. Details of logs can be seen from the last two hours. Your threshold value was 30. The value of **AuthError_Livelabs** label can be seen every 15 minutes from 12:15:00 UTC to 14:00:00 UTC. Initially, the alarm was in **Ok** state, then at 13:57:00 UTC, the alarm went into firing state. After one minute of delay, it was reset and changed to **Ok** state, which means it is ready to get triggered.
+4. Details of logs can be seen from the last six hours. Your threshold value was 30. The value of **AuthError_Livelabs** label can be seen every 15 minutes from 09:00:00 UTC to 11:15:00 UTC. Initially, the alarm was in **Ok** state, then the alarm went into firing state.
 ![Triggered alarm table](images/triggered-alarm-table.png)
 
 5. Hence, the alarm is verified.
