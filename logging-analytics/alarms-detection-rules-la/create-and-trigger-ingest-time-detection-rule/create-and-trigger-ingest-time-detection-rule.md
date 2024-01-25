@@ -123,7 +123,7 @@ When the match specified in the log source is encountered in the log record whil
     <copy>
     mkdir Livelab_Lab_06
     cd Livelab_Lab_06
-    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/api-logs-generator.py)
+    python <(curl -s https://raw.githubusercontent.com/oracle-quickstart/oci-observability-and-management/master/utils/api-logs-generator.py)
     </copy>
     ```
 
@@ -133,7 +133,7 @@ When the match specified in the log source is encountered in the log record whil
 
     ```text
     <copy>
-    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-logs-file-to-oci.py) -f ~/Livelab_Lab_06/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
+    python <(curl -s https://raw.githubusercontent.com/oracle-quickstart/oci-observability-and-management/master/utils/upload-logs-file-to-oci.py) -f ~/Livelab_Lab_06/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
     </copy>
     ```
 

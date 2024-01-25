@@ -154,7 +154,7 @@ To verify the alarm, you need to upload log records, which will be parsed by the
     <copy>
     mkdir Livelab_Lab_08
     cd Livelab_Lab_08
-    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-logs-file-to-oci.py)
+    python <(curl -s https://raw.githubusercontent.com/oracle-quickstart/oci-observability-and-management/master/utils/upload-logs-file-to-oci.py)
     </copy>
     ```
 
@@ -164,7 +164,7 @@ To verify the alarm, you need to upload log records, which will be parsed by the
 
     ```text
     <copy>
-    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-helper.py) -f ~/Livelab_Lab_08/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
+    python <(curl -s https://raw.githubusercontent.com/oracle-quickstart/oci-observability-and-management/master/utils/upload-helper.py) -f ~/Livelab_Lab_08/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
     </copy>
     ```
 

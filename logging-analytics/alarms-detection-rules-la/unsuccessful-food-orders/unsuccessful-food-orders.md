@@ -129,7 +129,7 @@ Create two ingest time detection rules, as discussed in [Create and Trigger a In
     <copy>
     mkdir Livelab_Lab_16
     cd Livelab_Lab_16
-    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/api-logs-generator.py)
+    python <(curl -s https://raw.githubusercontent.com/oracle-quickstart/oci-observability-and-management/master/utils/api-logs-generator.py)
     </copy>
     ```
 
@@ -141,7 +141,7 @@ Create two ingest time detection rules, as discussed in [Create and Trigger a In
 
     ```text
     <copy>
-    python <(curl -s https://kalsaria-c.github.io/oci-observability-and-management/utils/upload-logs-file-to-oci.py) -f ~/Livelab_Lab_16/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
+    python <(curl -s https://raw.githubusercontent.com/oracle-quickstart/oci-observability-and-management/master/utils/upload-logs-file-to-oci.py) -f ~/Livelab_Lab_16/livelab_logs.txt -s livelab -l Livelab_source -n Livelab
     </copy>
     ```
 
