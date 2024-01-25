@@ -30,12 +30,8 @@ This lab assumes you have:
 * Familiarity with IT, Applications, Database, and basic security monitoring concepts
 * Familiarity with Oracle Cloud Infrastructure (OCI) and OCI Console
 
-## Learn More
+### Acknowledgements
 
-* [Links](https://docs.oracle.com/en/solutions/kubernetes-oke-logging-analytics/index.html)
-* [Links] (https://oracle-quickstart.github.io/oci-cloudnative/)
-
-## Acknowledgements
-* **Author** - Chintan Kalsaria , OCI Logging Analytics
-* **Contributors** -  Chintan Kalsaria, Santhosh Kumar Vuda , OCI Logging Analytics
-* **Last Updated By/Date** - Chintan Kalsaria, October, 2023
+* **Author** - Chintan Kalsaria, OCI Logging Analytics
+* **Contributors** -  Chintan Kalsaria, Kiran Palukuri, Ashish Gor, Kumar Varun, OCI Logging Analytics
+* **Last Updated By/Date** - Chintan Kalsaria, Jan 2024

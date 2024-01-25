@@ -58,10 +58,10 @@ This lab assumes you have:
     * Select the logical operation to apply on the multiple conditions. Select **AND**.
     * Similarly, add other four conditions where Status does not contain **406,409,400,404**.
     * Click on **Add**.
-![add-label-3](images/add-label-3.png)
+![Create passed label](images/create-passed-label.png)
 
 8. In the **Edit Source**, you will be able to see the two conditions with their associated label. Click on **Save Changes**.
-![labels-added](images/labels-added.png)
+![Labels added](images/labels-added.png)
 
 ## Task 2: Create Detection Rules
 
@@ -85,7 +85,7 @@ Create two ingest time detection rules, as discussed in [Create and Trigger a In
 
 ## Task 3: Create an Alarm
 
-1. Navigate to **Create Alarm page** as discussed in [Create an Verify an Alarm](?lab=create-and-verify-alarm#Task2:CreateanAlarm) using any of the detection rule made above.
+1. Navigate to **Create Alarm page** as discussed in [Create and Verify an Alarm](?lab=create-and-verify-alarm#Task2:CreateanAlarm) using any of the detection rule made above.
 
 2. Provide alarm name as **Livelab Failed APIs more than 30%**. Click on **Switch to Advanced Mode**, as a complex query will be required, using two labels from the detection rule to create this alarm.
 ![Alarm advanced mode](images/alarm-adv-mode.png)

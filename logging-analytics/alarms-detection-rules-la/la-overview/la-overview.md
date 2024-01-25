@@ -4,7 +4,7 @@
 
 Logging Analytics is a cloud solution in Oracle Cloud Infrastructure(OCI) that lets you index, enrich, aggregate, explore, search, analyze, correlate, visualize and monitor all log data from your applications and system infrastructure.
 
-Estimated Time: 5 minutes
+Estimated Time: 10 minutes
 
 ### Objectives
 
@@ -12,8 +12,8 @@ In this lab, you will:
 
 * Learn to navigate to Log Explorer
 * Familiarize with user interfaces of Log Explorer
-* Discover & enable OCI Service Logs in bulk
-* Collect new logs (log sources) for existing entities
+* Learn to use Visualizations panel and Fields panel
+* Learn to find distribution, trends of fields and group-by
 
 ### Prerequisites
 
@@ -21,19 +21,20 @@ This lab assumes you have:
 
 * An Oracle Cloud Infrastructure account
 
-## Task 1:  Navigating to Log Explorer
+## Task 1: Navigate to Log Explorer
 
-From Navigation Menu ![navigation-menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Log Explorer**.
-![log-explorer-navigation](./images/log-explorer-navigation.gif)
+From **Navigation Menu** ![Navigation menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Log Explorer**.
+![Navigate to log explorer](images/navigate-to-log-explorer.png)
+![Log explorer](images/log-explorer.png)
 
-## Task 2:  User interfaces of Log Explorer
+## Task 2: User interfaces of Log Explorer
 
 Here are the main parts of the user interface that will be used throughout this workshop.
-![la-explorer-side-by-side](images/la-explorer-side-by-side.png)
+![la explorer side by side](images/la-explorer-side-by-side.png)
 
 1. **Scope Filter** for setting Entity and Log Group Compartment scope for exploration.
 
-2. **Time range** picker, and **Actions** menu where you can find actions such as, *Open*, *Save*, and *Save as*.
+2. **Time range** picker, and **Actions** menu where you can find actions such as, Open, Save, and Save as.
 
 3. **Query bar**, with **Clear**, **Search Help** and **Run** buttons at the right end of the bar.
 
@@ -43,161 +44,110 @@ Here are the main parts of the user interface that will be used throughout this 
 
 6. **Main panel**, where the visualization output appears above the results of the query.
 
-## Task 3: Navigating to the Add Data Page
+## Task 3: Using Visualizations Panel and Fields Panel
 
-> **Note** : **No action is needed from the user as this is only reading exercise.**
+**Visualization Panel**:
 
-The Add Data Page lists the different mechanisms through which the user can ingest data to Logging Analytics.
+The interactive data visualizations in Oracle Logging Analytics enable you to get deeper insights into your log data. Based on what you want to achieve with your data set, you can select the visualization type that best suits your application.
 
-1. **Monitor OCI core infrastructure:** Allows user setting up data ingestion using Service Connector.
+  ![Visualization panel](images/visualization-panel.png)
 
-2. **Monitor apps and on-premises infrastructure:** Allows user setting up data ingestion using Management Agent.
+  1. **Visualizations:** There are different visualizations type available in this panel, examples are, Pie, Bar, Horizontal bar, Map, Line, World Cloud, Summary Table, Records, Table, Distinct, Tile, Records with histogram, Table with histogram, Sunburn, Treemap. Some of the visualizations are used to perform advanced analysis of large data set to figure out the root cause an issue, to identify potential issues, to view trends, or to detect an anomaly, examples are, Cluster, Link and Issues. Select any of the visualizations to show data according to it.
+  ![Visualization types](images/visualization-types.png)
 
-3. **Advanced collection methods:** Allows user to upload the data from there computer desktop. This mechanism will be used if user wants to ingest log files without continuously collecting them using the Service Connector or Management Agent.
+    - If **Word Cloud** is selected, output will be:
+    ![Word cloud](images/word-cloud.png)
 
-There are two ways to navigate to the **Add Data** page.
+    - If **Records with Histogram** is selected, output will be:
+    ![Records with histogram](images/records-with-histogram.png)
 
-### **Option 1 : Using Compass icon**
+    There will be more options which changes the view of log records or filter the log records based on the visualization selected.
 
-1. In the Log Explorer page, click on the **Compass** icon.
-![compass-icon](./images/compass-icon.png)
+  2. **Display Options** filter the logs on based on options selected:
 
-2. A compass panel will be displayed. In the compass panel, click on the **Add Data** button.
-![compass-panel](./images/compass-panel.png)
+  3. **Show problem logs only:** If selected, it will only show the problem logs which are having any priority. As we can see, **'Problem Priority' != null** is added in the search query.
+      ![Show problem logs only](images/show-problem-logs-only.png)
 
-3. Add Data page will be displayed.
-![add-data-page](./images/add-data-page.png)
+  4. **Show donut chart:** If select, log explorer will show a donut chart instead of pie chart.
+      ![Donut chart](images/donut-chart.png)
 
-### **Option 2 : Via Administration Overview Page**
+  5. **Record per page** allows to modify the number of log records you want to see in a single page.
+      ![Records per page](images/records-per-page.png)
 
-1. In the Log Explorer page, click on the dropdown icon and select **Administration**.
-![select-administration](./images/select-administration.png)
+**Fields Panel**:
 
-2. Administration Overview page will be displayed. Click on **Add Data** button.
-![add-data-via-administration](./images/add-data-via-administration.png)
+  It has different fields from which we can filter out the data as per the requirement. Some of the fields are Entity, Entity Type, Host name, Label, Log Origin, Log Source, Original Log Content, Problem Priority, Service and many more.
+  ![Fields panel](images/fields-panel.png)
 
-3. Add Data page will be displayed.
-![add-data-page](./images/add-data-page.png)
+  Below are some examples, showing how we can filter log records using fields.
 
-## Task 4: Ingesting logs using Service Connector
+  1. Filtering of log records based on **Entity**:
+    - Select **Entity** from Pinned Field. A Filter Entity popup will appear.
+    - Select the Entity for which logs must be filtered.
+    - Click on **Apply**.
+    ![Filter entity](images/filter-entity.png)
+    - **Entity = ' '** is been added in the search query and result is shown in Pie Chart.
+    ![Entity data](images/entity-data.png)
 
-> **Note** : **No action is needed from the user as this is only reading exercise.**
+  2. Filtering of log records based on **Severity**:
+    - Select **Severity** from Pinned Field. A Filter Severity popup will appear.
+    - Select the Severity for which logs must be filtered, for example, **error**.
+    - Click on **Apply**.
+    ![Filter severity](images/filter-severity.png)
+    - **Severity = error** is been added in the search query and result is shown in Pie Chart.
+    ![Severity data](images/severity-data.png)
 
-The following setup is already done for this **Workshop**, no further action required.
+Some of the fields can change as per the visualization selected and the nature of log records.
 
-1. Click on the **Monitor OCI core infrastructure** header. OCI Core Infrastructure section will be displayed.
-![oci-core-infrastructure](./images/oci-core-infrastructure.png)
+## Task 4: Finding distribution, trends of fields and group-by
 
-2. Click on the **Configure log collection for OCI resources** button.
-![configure-log-collection-for-oci-resources-button](./images/configure-log-collection-for-oci-resources-button.png)
+Use the following visualizations to perform advanced analysis of the large data set to figure out the root cause an issue, to identify potential issues, to view trends, or to detect an anomaly:
 
-3. The **Configure log collection for OCI resources** page will be displayed and table will display all OCI Resources (entities) which your user has access (read) to and from which logs can be collected.
-![configure-log-collection-for-oci-resources-page](./images/configure-log-collection-for-oci-resources-page.png)
+* **Cluster:**
 
-      * **Log Source** - Log Sources define where the log files are located and how to parse and enrich the logs while ingesting them, irrespective of the method of ingestion.
+    * Clustering uses machine learning to identify the pattern of log records, and then to group the logs that have a similar pattern. Clustering helps significantly reduce the total number of log entries that you have to explore and easily points out the outliers.
+    * Go to Visualization Panel -> Visualizations -> Analysis -> **Cluster**.
+    * You can see that similar log records are grouped in clusters along with a histogram view of all the records grouped by time interval. You can zoom in to a particular set of intervals (records grouped by time intervals in this case) in the histogram by keeping your left mouse button pressed and drawing a rectangle over the required set of intervals. After you zoom in, the cluster records change based on the selected interval.
+      ![Cluster](images/cluster.png)
+    * The Cluster view displays a summary banner at the top showing the following tabs:
+      ![Cluster options](images/cluster-options.png)
 
-      * **Entity** - An entity is a resource in Logging Analytics which is used to reference the real asset on your on-premises host or virtual host. After you discover this entity in Logging Analytics, you can associate it with a log source and enable log collection from it.
+      * **Total Clusters:** Total number of clusters for the selected log records.
+      * **Potential Issues:** Number of clusters that have potential issues based on log records containing words such as error, fatal, exception, and so on.
+      * **Outliers:** Number of clusters that have occurred only once during a given time period.
+      * **Trends:** Number of unique trends during the time period. Many clusters may have the same trend. So, clicking this panel shows a cluster from each of the trends.
 
-4. Load Balancer Flow
+* **Link:**
 
-      * Under OCI resource types select the **Specific resource types** radio button. An empty textbox to select resource types will be displayed.
-      ![specific-resource-types-radio-button](./images/specific-resource-types-radio-button.png)
+    * Link lets you perform advanced analysis of log records by combining individual log records from across log sources into groups, based on the fields you’ve selected for linking. You can analyze the groups by using the same fields as the ones you used for linking or additional fields for observing unusual patterns to detect anomalies
+    * Go to Visualization Panel -> Visualizations -> Analysis -> **Link**.
+      ![Link](images/link.png)
+    * By default, Log Source is used in the Group By field to run the link command. You can change it if you want.
+    * To analyze the fields that are relevant to your analysis, drag and drop one or more fields to Group By, remove Log Source which is the default field in Group By, and click the check mark to run the Link query.
+    * You can use **Analyze**, **Options**, **Tiles** and **Show** options to perform more better analysis of log records.
 
-      * In the textbox enter the text **LoadBalancer**  and click on the resultant **LoadBalancer** text. A list of all available Load Balancers will be displayed.
-      ![load-balancers-list](./images/load-balancers-list.png)
+**Group-by**
 
-      * Select the Load Balancer from which logs needs to be collected. Click **Next**
-      ![select-load-balancer-click-next](./images/select-load-balancer-click-next.png)
+Group-by takes one/multiple fields as a parameter and shows the grouping of log records based on parameters. Group-by is supported by all visualizations except Table, Records and Cluster. For most of the cases, default field parameter of group-by is **Log Source**.
 
-      * Configure Service Connector Panel will be displayed. Click on **Configure Log Collection** button.
-      ![configure-log-collection-button](./images/configure-log-collection-button.png)
+1. Only one field parameter is supported by Pie Chart, Heatmap, Line and Table with histogram.
 
-      * In the next page Log Configuration will start. And the successful configuration will look like below.
-      Click on **Take me to Log Explorer** button.
-      ![loadbalancer-config-success](./images/loadbalancer-config-success.png)
+  Pie Chart with group-by **Log Source** (default)
+    ![Pie default](images/pie-default.png)
 
-      * Log Explorer will display all the logs ingested using the **Service Connector Flow** in previous steps of this task.
-      ![sc-take-me-to-log-explorer](./images/sc-take-me-to-log-explorer.png)
+  Pie Chart with group-by **Entity Type**
+    * Click on cross icon near Log Source under Group by.
+    * Drag and drop the Entity Type field from Fields panel to Group by in Visualization panel.
+    * Click on **Apply**.
+    ![Pie entity type](images/pie-entity-type.png)
 
-## Task 5: Ingesting logs using Management Agent
+2. Multiple filed parameters are supported by Bar, Horizontal bar, Summary table, Treemap, Sunburst, Map, World cloud, Tile, Distinct, Link.
 
-> **Note** : **No action is needed from the user as this is only reading exercise.**
-
-This task will walk you through the steps for setting up Log collection with Management Agent. As part of this workshop the following tasks have already been done.
-
-1. Required entities have been created, entity properties have been set, and entity has been mapped with an agent which has access to the entity's logs.
-
-2. Users can select a specific entity type (database).
-
-3. Each Log Source has one or more target entity-types. This information is used to identify and configure which logs can be collected for an entity.
-
-The following GIF shows the steps for setting up Log collection with Management Agent.
-
-![management-agent-log-configuration](./images/management-agent-log-configuration.gif)
-
-## Task 6: Upload log files from your computer desktop
-
-> **Note** : **No action is needed from the user as this is only reading exercise.**
-
-1. Navigate to the **Add Data** page by using any one of the options in Task #3.
-
-2. Click on the **Advanced Collection Methods**.
-![advanced-collection-methods-button](./images/advanced-collection-methods-button.png)
-
-3. A section with different Advanced Collection Methods will be displayed.
-![advanced-collection-methods-list](./images/advanced-collection-methods-list.png)
-
-4. Click on the Upload tile.
-![upload-tile](./images/upload-tile.png)
-
-5. Upload files page will be displayed.
-![upload-files-page](./images/upload-files-page.png)
-
-6. In the Upload Files Page, perform the following actions:
-
-    * **Upload Name** - Specify any text value.
-
-    * **Log Group Compartment** - Select your user's Log Group Compartment from the dropdown.
-
-    * **Log Group** - Select your user's Log Group Name in the Log Group Compartment.
-
-      > **Note** : **Log Group Compartment** &  **Log Group** can be found in **View Login Info** page.
-
-    * Click on the **Select Files** button and select the file to upload from your **Computer Desktop**.
-
-      > **Note** : I have selected LinuxSyslogSource.log file from the  **Computer Desktop**.
-
-    * Click on **Next** button.
-      ![upload-details](./images/upload-details.png)
-    * Set Properties page will be displayed.
-      ![set-properties-page](./images/set-properties-page.png)
-
-7. Click on the **Set Properties** button. A Set Properties panel will be displayed.
-      ![set-properties-button](./images/set-properties-button.png)
-      ![set-properties-panel](./images/set-properties-panel.png)
-
-8. In the Set Properties panel, perform the following actions
-    * Select **Source**.
-
-    * In Entity Section, select **Compartment** and **Entity Name**.
-
-    * Click **Save Changes** button.
-      ![set-log-source-and-entity](./images/set-log-source-and-entity.png)
-
-    * Click on **Next** button in the Set Properties page.
-      ![set-properties-next-button](./images/set-properties-next-button.png)
-
-9. Review page will be displayed. Click on the **Upload** button.
-![review-upload-page](./images/review-upload-page.png)
-
-10. File(s) will be sent to processing. Click on the **Close** button.
-![file-sent-for-processing](./images/file-sent-for-processing.png)
-
-11. Uploads Information page will be displayed. Click on the **View In Log Explorer**  button.
-![upload-successful-page](./images/upload-successful-page.png)
-
-12. Log Explorer will display all the logs collected/parsed via On-Demand Upload (ODU).
-![log-explorer-view-of-upload](./images/log-explorer-view-of-upload.png)
+  Bar graph with group-by **Entity Type** and **Log Source**
+    * Click on cross icon near Log Source under Group by.
+    * Drag and drop the Entity Type and Log Source field from Fields panel to Group by in Visualization panel.
+    * Click on **Apply**.
+    ![Bar multiple](images/bar-multiple.png)
 
 You may now **proceed to the next lab**.
 
@@ -205,11 +155,13 @@ You may now **proceed to the next lab**.
 
 For further reading please refer to the resources.
 
-[Configure Sources] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/configure-sources.html>)
+* [Select the Visualization Type] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/select-visualization-type.html>)
 
-[Manage Entities] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/manage-entities.html>)
+* [Search in UI] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/search-ui.html>)
 
-[Upload Logs on Demand] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/upload-logs-demand.html>)
+* [Cluster Visualization] (<https://docs.oracle.com/en-us/iaas/logging-analytics/doc/clusters-visualization.html>)
+
+* [Link Visualization] (https://docs.oracle.com/en-us/iaas/logging-analytics/doc/link-visualization.html>)
 
 ## Acknowledgements
 

@@ -30,7 +30,6 @@ If you don't find an Oracle-defined source that suits your requirement, then you
 
 ## Task 2: Create a Source
 
-
 1. From **Navigation Menu** ![Navigation menu](images/navigation-menu.png) > **Observability & Management** > **Logging Analytics** > **Administration** > **Sources box** > **Create Source**.
 ![Navigate to administration](images/administration-navigation.png)
 ![Navigate to source](images/sources-navigation.png)

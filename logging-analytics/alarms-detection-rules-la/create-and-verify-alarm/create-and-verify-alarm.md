@@ -37,8 +37,8 @@ The detected events can emit metrics to the Monitoring service. Managing alarms 
     ![Navigate to administration overview](images/navigate-administration-overview.png)
     ![Navigate to detection rules](images/navigate-detection-rule.png)
 
-    * For example, select **Livelab\_detection\_rule**, made in [How do I create and trigger an ingest time detection rule in Logging Analytics?](?lab=sprint-create-and-trigger-ingest-time-detection-rule).
-        ![detection-rule-page](images/detection-rule-page.png)
+    * For example, select **Livelab\_detection\_rule**, made in [Create and trigger an ingest time detection rule.](?lab=create-and-trigger-ingest-time-detection-rule).
+        ![Detection rule page](images/detection-rule-page.png)
 
     * Click on the **Create Alarm** button, as seen in the figure. The Create Alarm dialog box opens.
     ![Create alarm button](images/create-alarm-button.png)
@@ -146,7 +146,7 @@ To verify the alarm, you need to upload log records, which will be parsed by the
 2. You will use log records on which the **livelab\_mushop\_api\_logs** parser is created.
 
 3. Navigate to **OCI Cloud Shell**, as shown in the image.
-![oci-cloud-shell](images/oci-cloud-shell.png)
+![OCI cloud shell](images/oci-cloud-shell.png)
 
 4. Run the following commands in **OCI Cloud Shell**.
 
